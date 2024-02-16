@@ -10,11 +10,16 @@ const config: Config = {
     extend: {
       backgroundColor: {
         "theme-beige-500": "#D7CFB1",
-        "theme-beige-400": "#F0EAD7"
+        "theme-beige-400": "#F0EAD7",
+        "theme-gray-500": "#808080",
+        "theme-gray-400": "#9E9E9E"
       },
       borderRadius: {
         "theme-small": "4px",
         "theme-large": "8px"
+      },
+      textColor: {
+        "theme-gray-400": "#9E9E9E"
       }
     },
   },

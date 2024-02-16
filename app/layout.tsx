@@ -1,11 +1,10 @@
 import type { Metadata } from "next"
-import { Jost, DM_Serif_Display } from "next/font/google"
+import { Jost } from "next/font/google"
 import "./globals.css"
 import { Header } from "@/components/Header"
+import { twMerge } from "tailwind-merge"
 
 const jost = Jost({ subsets: ["latin"] })
-
-export const dmSerifDisplay = DM_Serif_Display({ weight: "400", subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: "Reading Room",
@@ -22,13 +21,9 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/images/logo.png" />
       </head>
-      <body className={jost.className}>
+      <body className={twMerge(jost.className, "flex flex-col items-center min-h-screen")}>
         <Header />
-        <div className="w-full flex items-center flex-col">
-          <div className="w-full max-w-6xl">
-            {children}
-          </div>
-        </div>
+        {children}
       </body>
     </html>
   )
