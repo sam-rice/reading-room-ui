@@ -9,7 +9,12 @@ const config: Config = {
   theme: {
     extend: {
       backgroundColor: {
-        "theme-beige-500": "#D7CFB1"
+        "theme-beige-500": "#D7CFB1",
+        "theme-beige-400": "#F0EAD7"
+      },
+      borderRadius: {
+        "theme-small": "4px",
+        "theme-large": "8px"
       }
     },
   },

@@ -1,9 +1,11 @@
 import type { Metadata } from "next"
-import { Jost } from "next/font/google"
+import { Jost, DM_Serif_Display } from "next/font/google"
 import "./globals.css"
 import { Header } from "@/components/Header"
 
 const jost = Jost({ subsets: ["latin"] })
+
+export const dmSerifDisplay = DM_Serif_Display({ weight: "400", subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: "Reading Room",
@@ -17,9 +19,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/images/logo.png" />
+      </head>
       <body className={jost.className}>
         <Header />
-        {children}
+        <div className="w-full flex items-center flex-col">
+          <div className="w-full max-w-6xl">
+            {children}
+          </div>
+        </div>
       </body>
     </html>
   )
