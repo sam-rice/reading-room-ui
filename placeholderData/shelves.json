@@ -1,0 +1,34 @@
+[
+  {
+      "shelfId": 3,
+      "userId": 2,
+      "title": "English & Misc. Architecture",
+      "description": "Books on historical architecture of the British Isles.",
+      "totalSavedBooks": 3,
+      "featuredCoverUrl": "https://covers.openlibrary.org/b/id/300234-L.jpg"
+  },
+  {
+      "shelfId": 4,
+      "userId": 2,
+      "title": "Occult",
+      "description": "Aleister Crowley and other freakshows that influenced Led Zeppelin.",
+      "totalSavedBooks": 2,
+      "featuredCoverUrl": "https://covers.openlibrary.org/b/id/13344966-L.jpg"
+  },
+  {
+      "shelfId": 5,
+      "userId": 2,
+      "title": "Books About Led Zeppelin",
+      "description": "A complete collection of books about my favorite band, Led Zeppelin.",
+      "totalSavedBooks": 3,
+      "featuredCoverUrl": "https://covers.openlibrary.org/b/id/13168614-L.jpg"
+  },
+  {
+      "shelfId": 7,
+      "userId": 2,
+      "title": "Jimmy's New Shelf",
+      "description": "A new shelf for Jimmy.",
+      "totalSavedBooks": 1,
+      "featuredCoverUrl": "https://covers.openlibrary.org/b/id/180715-L.jpg"
+  }
+]
