@@ -25,7 +25,7 @@ const RegisterPage: FC = () => {
           <div className="text-xl">Sign up</div>
           <div className="text-sm">
             already signed up?{" "}
-            <Link className="underline" href="login">
+            <Link className="underline" href="/login">
               log in
             </Link>
           </div>

@@ -1,7 +1,7 @@
 "use client"
 
 import Image from "next/image"
-import logo from "../public/images/Logo.png"
+import logo from "../../public/images/Logo.png"
 import Link from "next/link"
 import { Search } from "@mui/icons-material"
 import { useState, KeyboardEvent, FC } from "react"
@@ -48,7 +48,7 @@ export const Header: FC = () => {
               className="absolute right-[7px] top-[9px]"
               onClick={navigateToSearch}
             >
-              <Search className="text-theme-gray-400 hover:text-black transition-colors duration-150"/>
+              <Search className="text-theme-gray-400 hover:text-theme-gray-500 transition-colors"/>
             </button>
             <input
               className="rounded-theme-small h-full w-full pl-3"
@@ -58,7 +58,7 @@ export const Header: FC = () => {
               onKeyDown={handleKeyDown}
             />
           </span>
-          <Link href="/">log in</Link>
+          <Link href="/login">log in</Link>
         </div>
       </div>
     </header>
