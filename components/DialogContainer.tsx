@@ -30,10 +30,11 @@ const DialogContainer: FC<DialogContainerProps> = ({
           flexDirection: "column",
           alignItems: "center",
           position: "relative",
-          width: "55%",
+          width: "50%",
           maxWidth: 850,
           minWidth: 700,
           backgroundColor: "#EFE7CC",
+          borderRadius: 8
         },
       }}
       isOpen={isOpen}
