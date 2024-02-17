@@ -58,7 +58,7 @@ export const Header: FC = () => {
               onKeyDown={handleKeyDown}
             />
           </span>
-          <Link href="/">sign in</Link>
+          <Link href="/">log in</Link>
         </div>
       </div>
     </header>
