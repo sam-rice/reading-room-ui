@@ -1,0 +1,158 @@
+[
+  {
+    "bookId": 10003,
+    "shelfId": 3,
+    "userId": 2,
+    "key": "OL8208787W",
+    "title": "Philip Webb: Pioneer of Arts & Crafts Architecture",
+    "authors": [
+      {
+        "name": "Sheila Kirk",
+        "key": "OL2732304A"
+      }
+    ],
+    "coverUrl": "https://covers.openlibrary.org/b/id/300234-L.jpg",
+    "userNote": "A great resource for info on the red house.",
+    "savedDate": 1704341375550
+  },
+  {
+    "bookId": 10004,
+    "shelfId": 3,
+    "userId": 2,
+    "key": "OL113116W",
+    "title": "The Cecils of Hatfield House",
+    "authors": [
+      {
+        "name": "David Lord Cecil",
+        "key": "OL1216967A"
+      }
+    ],
+    "coverUrl": null,
+    "userNote": "Book received from John Paul Jones.",
+    "savedDate": 1704341377500
+  },
+  {
+    "bookId": 10005,
+    "shelfId": 3,
+    "userId": 2,
+    "key": "OL820369W",
+    "title": "Bath",
+    "authors": [
+      {
+        "name": "Thom Gorst",
+        "key": "OL69317A"
+      },
+      {
+        "name": "James Jamerson",
+        "key": "OL69317A"
+      }
+    ],
+    "coverUrl": "https://covers.openlibrary.org/b/id/946298-L.jpg",
+    "userNote": null,
+    "savedDate": 1704341381405
+  },
+  {
+    "bookId": 10003,
+    "shelfId": 3,
+    "userId": 2,
+    "key": "OL8208787W",
+    "title": "Philip Webb: Pioneer of Arts & Crafts Architecture",
+    "authors": [
+      {
+        "name": "Sheila Kirk",
+        "key": "OL2732304A"
+      }
+    ],
+    "coverUrl": "https://covers.openlibrary.org/b/id/300234-L.jpg",
+    "userNote": "A great resource for info on the red house.",
+    "savedDate": 1704341375550
+  },
+  {
+    "bookId": 10004,
+    "shelfId": 3,
+    "userId": 2,
+    "key": "OL113116W",
+    "title": "The Cecils of Hatfield House",
+    "authors": [
+      {
+        "name": "David Lord Cecil",
+        "key": "OL1216967A"
+      }
+    ],
+    "coverUrl": null,
+    "userNote": "Book received from John Paul Jones.",
+    "savedDate": 1704341377500
+  },
+  {
+    "bookId": 10005,
+    "shelfId": 3,
+    "userId": 2,
+    "key": "OL820369W",
+    "title": "Bath",
+    "authors": [
+      {
+        "name": "Thom Gorst",
+        "key": "OL69317A"
+      },
+      {
+        "name": "James Jamerson",
+        "key": "OL69317A"
+      }
+    ],
+    "coverUrl": "https://covers.openlibrary.org/b/id/946298-L.jpg",
+    "userNote": null,
+    "savedDate": 1704341381405
+  },
+  {
+    "bookId": 10003,
+    "shelfId": 3,
+    "userId": 2,
+    "key": "OL8208787W",
+    "title": "Philip Webb: Pioneer of Arts & Crafts Architecture",
+    "authors": [
+      {
+        "name": "Sheila Kirk",
+        "key": "OL2732304A"
+      }
+    ],
+    "coverUrl": "https://covers.openlibrary.org/b/id/300234-L.jpg",
+    "userNote": "A great resource for info on the red house.",
+    "savedDate": 1704341375550
+  },
+  {
+    "bookId": 10004,
+    "shelfId": 3,
+    "userId": 2,
+    "key": "OL113116W",
+    "title": "The Cecils of Hatfield House",
+    "authors": [
+      {
+        "name": "David Lord Cecil",
+        "key": "OL1216967A"
+      }
+    ],
+    "coverUrl": null,
+    "userNote": "Book received from John Paul Jones.",
+    "savedDate": 1704341377500
+  },
+  {
+    "bookId": 10005,
+    "shelfId": 3,
+    "userId": 2,
+    "key": "OL820369W",
+    "title": "Bath",
+    "authors": [
+      {
+        "name": "Thom Gorst",
+        "key": "OL69317A"
+      },
+      {
+        "name": "James Jamerson",
+        "key": "OL69317A"
+      }
+    ],
+    "coverUrl": "https://covers.openlibrary.org/b/id/946298-L.jpg",
+    "userNote": null,
+    "savedDate": 1704341381405
+  }
+]

@@ -1,7 +1,7 @@
 "use client"
 
 import Image from "next/image"
-import logo from "../../public/images/Logo.png"
+import logo from "@/public/images/logo.png"
 import Link from "next/link"
 import { Search } from "@mui/icons-material"
 import { useState, KeyboardEvent, FC } from "react"

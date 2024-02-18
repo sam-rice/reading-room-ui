@@ -22,6 +22,9 @@ const config: Config = {
         "theme-small": "4px",
         "theme-large": "8px"
       },
+      borderColor: {
+        "theme-gray-400": "#9E9E9E"
+      },
       textColor: {
         "theme-gray-500": "#808080",
         "theme-gray-400": "#9E9E9E",
