@@ -19,16 +19,8 @@
       "shelfId": 5,
       "userId": 2,
       "title": "Books About Led Zeppelin",
-      "description": "A complete collection of books about my favorite band, Led Zeppelin.",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim veritatis obcaecati consequuntur eligendi fugit laudantium expedita ad odit quia architecto incidunt doloremque perferendis autem a adipisci corrupti ducimus quo iure repudiandae, quod nobis cumque officiis itaque! Voluptatem aperiam, quibusdam explicabo rem possimus et officiis, eaque eligendi asperiores modi minima facilis!",
       "totalSavedBooks": 3,
       "featuredCoverUrl": "https://covers.openlibrary.org/b/id/13168614-L.jpg"
-  },
-  {
-      "shelfId": 7,
-      "userId": 2,
-      "title": "Jimmy's New Shelf",
-      "description": "A new shelf for Jimmy.",
-      "totalSavedBooks": 0,
-      "featuredCoverUrl": null
   }
 ]

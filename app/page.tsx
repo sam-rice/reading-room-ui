@@ -31,23 +31,25 @@ const Home: FC = () => {
   ))
 
   return (
-    <main className="flex w-full max-w-6xl flex-1 flex-col justify-start">
-      <div className="mb-7 flex h-24 w-full items-end justify-between">
-        <div>
-          <span className="mr-4 text-2xl">My Shelves</span>
-          <span className="text-sm italic text-theme-gray-300">{`(viewing 4 of 4)`}</span>
+    <>
+      <main className="flex w-full max-w-6xl flex-1 flex-col justify-start">
+        <div className="mb-7 flex h-24 w-full items-end justify-between">
+          <div>
+            <span className="mr-4 text-2xl">My Shelves</span>
+            <span className="text-sm italic text-theme-gray-300">{`(viewing 4 of 4)`}</span>
+          </div>
+          <button className="flex items-center" onClick={toggleDialogOpen}>
+            new shelf{" "}
+            <span className="bg-theme-gray-200 ml-2 flex aspect-square w-8 items-center justify-center rounded-full text-white transition-colors hover:bg-theme-gray-300">
+              <AddIcon />
+            </span>
+          </button>
         </div>
-        <button className="flex items-center" onClick={toggleDialogOpen}>
-          new shelf{" "}
-          <span className="bg-theme-gray-200 ml-2 flex aspect-square w-8 items-center justify-center rounded-full text-white transition-colors hover:bg-theme-gray-300">
-            <AddIcon />
-          </span>
-        </button>
-      </div>
-      <ul className="space-y-5">{shelfTiles}</ul>
+        <ul className="space-y-5">{shelfTiles}</ul>
+      </main>
       <Pager />
       <NewShelfDialog isOpen={dialogOpen} closeModal={toggleDialogOpen} />
-    </main>
+    </>
   )
 }
 

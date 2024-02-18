@@ -27,7 +27,7 @@ const ShelfTile: FC<ShelfTileProps> = ({
     >
       {coverUrl && <img className="mr-6 h-full" src={coverUrl} />}
       <div className="flex-1">
-        <h2 className="text-2xl">{title}</h2>
+        <h2 className="text-2xl mb-2">{title}</h2>
         <p className="text-theme-gray-300">{description}</p>
       </div>
       <div className="text-xl text-theme-gray-300">{totalSavedBooks} books</div>
