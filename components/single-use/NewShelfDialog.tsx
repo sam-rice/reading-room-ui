@@ -7,10 +7,10 @@ import { Button } from "../Button"
 
 interface NewShelfDialogProps {
   isOpen: boolean
-  closeModal: () => void
+  closeDialog: () => void
 }
 
-const NewShelfDialog: FC<NewShelfDialogProps> = ({ isOpen, closeModal }) => {
+const NewShelfDialog: FC<NewShelfDialogProps> = ({ isOpen, closeDialog }) => {
   const [shelfName, setShelfName] = useState("")
   const [description, setDescription] = useState("")
 
@@ -21,7 +21,7 @@ const NewShelfDialog: FC<NewShelfDialogProps> = ({ isOpen, closeModal }) => {
   const submitShelf = () => console.log("submit")
 
   return (
-    <DialogContainer isOpen={isOpen} closeModal={closeModal}>
+    <DialogContainer isOpen={isOpen} closeDialog={closeDialog}>
       <h1 className="text-2xl mt-5 mb-7">Add New Shelf</h1>
       <div className="mb-9 w-2/3">
         <Input
@@ -41,7 +41,7 @@ const NewShelfDialog: FC<NewShelfDialogProps> = ({ isOpen, closeModal }) => {
         />
       </div>
       <Button className="mb-2" onClick={submitShelf}>create</Button>
-      <button className="underline" onClick={closeModal}>cancel</button>
+      <button className="underline" onClick={closeDialog}>cancel</button>
     </DialogContainer>
   )
 }

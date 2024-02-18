@@ -10,6 +10,8 @@ import { FC, useState } from "react"
 import books from "../../../placeholder-data/savedBooks.json"
 import { ISavedBook } from "@/interfaces/entities"
 import SavedBookTile from "@/components/SavedBookTile"
+import { Search } from "@mui/icons-material"
+import DeleteShelfDialog from "@/components/single-use/DeleteShelfDialog"
 
 interface ShelfDetailsPageProps {
   params: {
@@ -30,6 +32,8 @@ const ShelfDetailsPage: FC<ShelfDetailsPageProps> = ({ params }) => {
   const filterBooks = () => console.log("filtering")
 
   const navigateToBook = (apiKey: string) => console.log(`go here: ${apiKey}`)
+
+  const deleteShelf = () => console.log(`deleting shelf #${params.shelfId}`)
 
   const bookTiles = books.map((b: ISavedBook) => (
     <SavedBookTile
@@ -53,7 +57,7 @@ const ShelfDetailsPage: FC<ShelfDetailsPageProps> = ({ params }) => {
         <div className="mb-8 w-full">
           <div className="flex w-full items-end justify-between">
             <div>
-              <div>
+              <div className="flex items-baseline">
                 <h1 className="mr-4 text-2xl">Postmodern Picks</h1>
                 <span className="text-sm italic text-theme-gray-300">{`(13 books)`}</span>
               </div>
@@ -68,18 +72,31 @@ const ShelfDetailsPage: FC<ShelfDetailsPageProps> = ({ params }) => {
               </span>
             </button>
           </div>
-          <Input
-            className="mt-3 w-72"
-            value={filterValue}
-            name="search-shelf"
-            label="Search shelf"
-            onChange={setFilterValue}
-            onKeyDown={onFilterKeyDown}
-          />
+          <div className="relative mt-3 w-72">
+            <Input
+              value={filterValue}
+              name="search-shelf"
+              label="Search shelf"
+              onChange={setFilterValue}
+              onKeyDown={onFilterKeyDown}
+            />
+            <button
+              className="absolute right-[7px] top-[33px]"
+              onClick={filterBooks}
+            >
+              <Search className="hover:text-theme-gray-500 text-theme-gray-400 transition-colors" />
+            </button>
+          </div>
         </div>
         <ul className="mb-14 grid grid-cols-2 gap-8">{bookTiles}</ul>
       </PageContainer>
       <Pager />
+      <DeleteShelfDialog
+        isOpen={dialogOpen}
+        shelfTitle="Postmodern Picks"
+        closeDialog={toggleDialogOpen}
+        deleteShelf={deleteShelf}
+      />
     </>
   )
 }

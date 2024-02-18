@@ -71,7 +71,7 @@ const SavedBookTile: FC<SavedBookTileProps> = ({
           {formattedUserNote}
         </div>
       </div>
-      <button className="absolute right-3 top-1" onClick={deleteBook}>
+      <button className="absolute right-3 top-2" onClick={deleteBook}>
         <ClearIcon className="hover:text-red-800" fontSize="small" />
       </button>
     </li>

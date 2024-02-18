@@ -6,13 +6,13 @@ import Modal from "react-modal"
 interface DialogContainerProps {
   isOpen: boolean
   children: ReactNode
-  closeModal: () => void
+  closeDialog: () => void
 }
 
 const DialogContainer: FC<DialogContainerProps> = ({
   isOpen,
   children,
-  closeModal,
+  closeDialog,
 }) => {
   Modal.setAppElement("body")
 
@@ -39,8 +39,10 @@ const DialogContainer: FC<DialogContainerProps> = ({
       }}
       isOpen={isOpen}
       closeTimeoutMS={400}
+      shouldCloseOnOverlayClick
+      shouldCloseOnEsc
     >
-      <button className="absolute right-2 top-2" onClick={closeModal}>
+      <button className="absolute right-2 top-2" onClick={closeDialog}>
         close
       </button>
       {children}

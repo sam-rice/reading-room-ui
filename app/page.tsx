@@ -49,7 +49,7 @@ const Home: FC = () => {
         <ul className="space-y-5">{shelfTiles}</ul>
       </PageContainer>
       <Pager />
-      <NewShelfDialog isOpen={dialogOpen} closeModal={toggleDialogOpen} />
+      <NewShelfDialog isOpen={dialogOpen} closeDialog={toggleDialogOpen} />
     </>
   )
 }
