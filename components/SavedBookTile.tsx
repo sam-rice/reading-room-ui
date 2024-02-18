@@ -1,7 +1,7 @@
-import Link from "next/link"
-import { FC } from "react"
+import { FC, MouseEvent } from "react"
 import fallbackCover from "@/public/images/fallback-cover.png"
 import Image from "next/image"
+import ClearIcon from "@mui/icons-material/Clear"
 
 interface SavedBookTileProps {
   bookId: number
@@ -10,8 +10,7 @@ interface SavedBookTileProps {
   authors: string[]
   coverUrl: string | null
   userNote: string | null
-  //make deleteBook required
-  deleteBook?: (bookId: number) => void
+  navigateToBook: (apiKey: string) => void
 }
 
 const SavedBookTile: FC<SavedBookTileProps> = ({
@@ -21,16 +20,35 @@ const SavedBookTile: FC<SavedBookTileProps> = ({
   authors,
   coverUrl,
   userNote,
-  deleteBook,
+  navigateToBook,
 }) => {
+  const handleClick = (e: MouseEvent<HTMLElement>) => {
+    const element = e.target as HTMLElement
+    if (element.tagName === "BUTTON" || element.tagName === "svg" || element.tagName === "path") {
+      e.stopPropagation()
+    } else {
+      navigateToBook(apiKey)
+    }
+  }
 
-  const formattedAuthors = authors.length > 1 ? authors.join(", ") : authors[0]
+  const deleteBook = () => console.log("deleting")
+
+  const formattedAuthors =
+    authors.length > 2
+      ? `${authors[0]}, ${authors[1]}, and others`
+      : authors.length > 1
+        ? authors.join(", ")
+        : authors[0]
+
+  const formattedUserNote =
+    !!userNote && userNote.length > 115
+      ? userNote.substring(0, 116) + "..."
+      : userNote
 
   return (
-    <Link
-      className="col-span-1 flex h-48 rounded-theme-large bg-theme-beige-400 px-8 py-5 transition-colors hover:bg-theme-beige-500"
-      href={`/books/${apiKey}`}
-      role="listitem"
+    <li
+      className="relative col-span-1 flex h-48 rounded-theme-large bg-theme-beige-400 px-8 py-5 transition-colors hover:cursor-pointer hover:bg-theme-beige-500"
+      onClick={handleClick}
     >
       {coverUrl ? (
         <img
@@ -46,12 +64,17 @@ const SavedBookTile: FC<SavedBookTileProps> = ({
           width={110}
         />
       )}
-      <div className="my-3">
+      <div className="mt-3">
         <h2 className="text-xl">{title}</h2>
-        <div className="text-theme-gray-300 mb-3">{formattedAuthors}</div>
-        <div className="text-theme-gray-300 italic text-sm">{userNote}</div>
+        <div className="mb-3 text-theme-gray-300">{formattedAuthors}</div>
+        <div className="text-sm italic text-theme-gray-300">
+          {formattedUserNote}
+        </div>
       </div>
-    </Link>
+      <button className="absolute right-3 top-1" onClick={deleteBook}>
+        <ClearIcon className="hover:text-red-800" fontSize="small" />
+      </button>
+    </li>
   )
 }
 

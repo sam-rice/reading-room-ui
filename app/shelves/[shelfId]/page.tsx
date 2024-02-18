@@ -29,6 +29,8 @@ const ShelfDetailsPage: FC<ShelfDetailsPageProps> = ({ params }) => {
 
   const filterBooks = () => console.log("filtering")
 
+  const navigateToBook = (apiKey: string) => console.log(`go here: ${apiKey}`)
+
   const bookTiles = books.map((b: ISavedBook) => (
     <SavedBookTile
       key={b.bookId}
@@ -38,13 +40,14 @@ const ShelfDetailsPage: FC<ShelfDetailsPageProps> = ({ params }) => {
       authors={b.authors.map((a) => a.name)}
       coverUrl={b.coverUrl}
       userNote={b.userNote}
+      navigateToBook={navigateToBook}
     />
   ))
 
   return (
     <>
       <PageContainer>
-        <Link className="my-6" href={"/"}>
+        <Link className="my-6 w-fit" href={"/"}>
           <ArrowBackIcon className="text-4xl" />
         </Link>
         <div className="mb-8 w-full">

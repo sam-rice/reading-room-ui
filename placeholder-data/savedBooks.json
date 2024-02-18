@@ -28,7 +28,7 @@
       }
     ],
     "coverUrl": null,
-    "userNote": "Book received from John Paul Jones.",
+    "userNote": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse culpa consequuntur distinctio ullam itaque repellat unde, blanditiis ipsum exercitationem. Placeat nam incidunt voluptatibus animi voluptates! Impedit molestias esse ullam. Odit facere quo aut natus ab iste fugit autem sapiente, eveniet magnam esse soluta harum qui error maxime, ipsam quidem deleniti.",
     "savedDate": 1704341377500
   },
   {
@@ -52,7 +52,7 @@
     "savedDate": 1704341381405
   },
   {
-    "bookId": 10003,
+    "bookId": 10006,
     "shelfId": 3,
     "userId": 2,
     "key": "OL8208787W",
@@ -61,6 +61,14 @@
       {
         "name": "Sheila Kirk",
         "key": "OL2732304A"
+      },
+      {
+        "name": "Thom Gorst",
+        "key": "OL69317A"
+      },
+      {
+        "name": "James Jamerson",
+        "key": "OL69317A"
       }
     ],
     "coverUrl": "https://covers.openlibrary.org/b/id/300234-L.jpg",
@@ -68,7 +76,7 @@
     "savedDate": 1704341375550
   },
   {
-    "bookId": 10004,
+    "bookId": 10007,
     "shelfId": 3,
     "userId": 2,
     "key": "OL113116W",
@@ -84,7 +92,7 @@
     "savedDate": 1704341377500
   },
   {
-    "bookId": 10005,
+    "bookId": 10008,
     "shelfId": 3,
     "userId": 2,
     "key": "OL820369W",
@@ -104,7 +112,7 @@
     "savedDate": 1704341381405
   },
   {
-    "bookId": 10003,
+    "bookId": 10009,
     "shelfId": 3,
     "userId": 2,
     "key": "OL8208787W",
@@ -120,7 +128,7 @@
     "savedDate": 1704341375550
   },
   {
-    "bookId": 10004,
+    "bookId": 10010,
     "shelfId": 3,
     "userId": 2,
     "key": "OL113116W",
@@ -136,7 +144,7 @@
     "savedDate": 1704341377500
   },
   {
-    "bookId": 10005,
+    "bookId": 10011,
     "shelfId": 3,
     "userId": 2,
     "key": "OL820369W",
