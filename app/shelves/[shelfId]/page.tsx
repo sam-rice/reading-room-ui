@@ -12,6 +12,7 @@ import { ISavedBook } from "@/interfaces/entities"
 import SavedBookTile from "@/components/SavedBookTile"
 import { Search } from "@mui/icons-material"
 import DeleteShelfDialog from "@/components/single-use/DeleteShelfDialog"
+import { useRouter } from "next/navigation"
 
 interface ShelfDetailsPageProps {
   params: {
@@ -20,6 +21,7 @@ interface ShelfDetailsPageProps {
 }
 
 const ShelfDetailsPage: FC<ShelfDetailsPageProps> = ({ params }) => {
+  const router = useRouter()
   const [dialogOpen, setDialogOpen] = useState(false)
   const [filterValue, setFilterValue] = useState("")
 
@@ -31,7 +33,7 @@ const ShelfDetailsPage: FC<ShelfDetailsPageProps> = ({ params }) => {
 
   const filterBooks = () => console.log("filtering")
 
-  const navigateToBook = (apiKey: string) => console.log(`go here: ${apiKey}`)
+  const navigateToBook = (apiKey: string) => router.push(`/book/${apiKey}`)
 
   const deleteShelf = () => console.log(`deleting shelf #${params.shelfId}`)
 

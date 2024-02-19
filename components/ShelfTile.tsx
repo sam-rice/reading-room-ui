@@ -27,7 +27,7 @@ const ShelfTile: FC<ShelfTileProps> = ({
         <h2 className="mb-2 text-2xl">{title}</h2>
         <p className="text-theme-gray-300">{description}</p>
       </div>
-      <div className="text-xl text-theme-gray-300">{totalSavedBooks} books</div>
+      <div className="text-xl text-theme-gray-300 ml-5">{totalSavedBooks} books</div>
     </Link>
   )
 }

@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { Jost } from "next/font/google"
+import { Jost, Libre_Franklin } from "next/font/google"
 import "./globals.css"
 import { Header } from "@/components/single-use/Header"
 import { twMerge } from "tailwind-merge"
@@ -33,7 +33,7 @@ export default function RootLayout({
         <footer className="w-full text-right text-theme-gray-400">
           created by Sam Rice | view on{" "}
           <Link
-            className=" text-blue-600 hover:underline mr-2"
+            className=" mr-2 text-blue-600 hover:underline"
             href="https://github.com/sam-rice/reading-room-ui"
           >
             GitHub

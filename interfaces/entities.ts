@@ -21,3 +21,8 @@ export interface ISavedBook {
   userNote: string | null
   savedDate: number
 }
+
+export interface IAuthorBasic {
+  name: string
+  key: string
+}
