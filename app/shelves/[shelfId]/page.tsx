@@ -33,7 +33,7 @@ const ShelfDetailsPage: FC<ShelfDetailsPageProps> = ({ params }) => {
 
   const filterBooks = () => console.log("filtering")
 
-  const navigateToBook = (apiKey: string) => router.push(`/book/${apiKey}`)
+  const navigateToBook = (libraryKey: string) => router.push(`/book/${libraryKey}`)
 
   const deleteShelf = () => console.log(`deleting shelf #${params.shelfId}`)
 
@@ -41,7 +41,7 @@ const ShelfDetailsPage: FC<ShelfDetailsPageProps> = ({ params }) => {
     <SavedBookTile
       key={b.bookId}
       bookId={b.bookId}
-      apiKey={b.key}
+      libraryKey={b.key}
       title={b.title}
       authors={b.authors.map((a) => a.name)}
       coverUrl={b.coverUrl}

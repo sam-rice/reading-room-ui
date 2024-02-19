@@ -9,7 +9,7 @@ import AddToShelfControls from "@/components/single-use/AddToShelfControls"
 
 interface BookDetailsPageProps {
   params: {
-    apiKey: string
+    libraryKey: string
   }
 }
 
@@ -73,7 +73,7 @@ const BookDetailsPage: FC<BookDetailsPageProps> = ({ params }) => {
           </table>
         </div>
       </div>
-      <AddToShelfControls libraryKey={params.apiKey} />
+      <AddToShelfControls libraryKey={params.libraryKey} />
     </PageContainer>
   )
 }

@@ -5,17 +5,17 @@ import ClearIcon from "@mui/icons-material/Clear"
 
 interface SavedBookTileProps {
   bookId: number
-  apiKey: string
+  libraryKey: string
   title: string
   authors: string[]
   coverUrl: string | null
   userNote: string | null
-  navigateToBook: (apiKey: string) => void
+  navigateToBook: (libraryKey: string) => void
 }
 
 const SavedBookTile: FC<SavedBookTileProps> = ({
   bookId,
-  apiKey,
+  libraryKey,
   title,
   authors,
   coverUrl,
@@ -27,7 +27,7 @@ const SavedBookTile: FC<SavedBookTileProps> = ({
     if (element.tagName === "BUTTON" || element.tagName === "svg" || element.tagName === "path") {
       e.stopPropagation()
     } else {
-      navigateToBook(apiKey)
+      navigateToBook(libraryKey)
     }
   }
 
