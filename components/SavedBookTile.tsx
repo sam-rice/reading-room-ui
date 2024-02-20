@@ -1,16 +1,17 @@
-import { FC, MouseEvent } from "react"
+import { FC } from "react"
 import fallbackCover from "@/public/images/fallback-cover.png"
 import Image from "next/image"
 import ClearIcon from "@mui/icons-material/Clear"
+import { IAuthorBasic } from "@/interfaces/entities"
+import EntityLink from "./EntityLink"
 
 interface SavedBookTileProps {
   bookId: number
   libraryKey: string
   title: string
-  authors: string[]
+  authors: IAuthorBasic[]
   coverUrl: string | null
   userNote: string | null
-  navigateToBook: (libraryKey: string) => void
 }
 
 const SavedBookTile: FC<SavedBookTileProps> = ({
@@ -20,25 +21,29 @@ const SavedBookTile: FC<SavedBookTileProps> = ({
   authors,
   coverUrl,
   userNote,
-  navigateToBook,
 }) => {
-  const handleClick = (e: MouseEvent<HTMLElement>) => {
-    const element = e.target as HTMLElement
-    if (element.tagName === "BUTTON" || element.tagName === "svg" || element.tagName === "path") {
-      e.stopPropagation()
-    } else {
-      navigateToBook(libraryKey)
-    }
-  }
+  const deleteBook = () => console.log(`deleting book #${bookId}`)
 
-  const deleteBook = () => console.log("deleting")
-
-  const formattedAuthors =
-    authors.length > 2
-      ? `${authors[0]}, ${authors[1]}, and others`
-      : authors.length > 1
-        ? authors.join(", ")
-        : authors[0]
+  const authorsNode = (
+    <>
+      <EntityLink
+        libraryKey={authors[0].libraryKey}
+        title={authors[0].name}
+        variant="author"
+      />
+      {authors.length > 1 && (
+        <>
+          {", "}
+          <EntityLink
+            libraryKey={authors[1].libraryKey}
+            title={authors[1].name}
+            variant="author"
+          />
+        </>
+      )}
+      {authors.length > 2 && " and others"}
+    </>
+  )
 
   const formattedUserNote =
     !!userNote && userNote.length > 115
@@ -46,10 +51,7 @@ const SavedBookTile: FC<SavedBookTileProps> = ({
       : userNote
 
   return (
-    <li
-      className="relative col-span-1 flex h-48 rounded-theme-large bg-theme-beige-400 px-8 py-5 transition-colors hover:cursor-pointer hover:bg-theme-beige-500"
-      onClick={handleClick}
-    >
+    <li className="relative col-span-1 flex h-48 rounded-theme-large bg-theme-beige-400 px-8 py-5 transition-colors hover:bg-theme-beige-500">
       {coverUrl ? (
         <img
           className="mr-6 h-full"
@@ -65,9 +67,14 @@ const SavedBookTile: FC<SavedBookTileProps> = ({
         />
       )}
       <div className="mt-3">
-        <h2 className="text-xl">{title}</h2>
-        <div className="mb-3 text-theme-gray-300">{formattedAuthors}</div>
-        <div className="text-sm italic text-theme-gray-300">
+        <EntityLink
+          libraryKey={libraryKey}
+          title={title}
+          variant="book"
+          isSubHeader
+        />
+        <div className="mb-3">{authorsNode}</div>
+        <div className="text-sm italic text-theme-gray-400">
           {formattedUserNote}
         </div>
       </div>

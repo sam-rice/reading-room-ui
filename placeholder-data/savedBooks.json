@@ -3,12 +3,12 @@
     "bookId": 10003,
     "shelfId": 3,
     "userId": 2,
-    "key": "OL8208787W",
+    "libraryKey": "OL8208787W",
     "title": "Philip Webb: Pioneer of Arts & Crafts Architecture",
     "authors": [
       {
         "name": "Sheila Kirk",
-        "key": "OL2732304A"
+        "libraryKey": "OL2732304A"
       }
     ],
     "coverUrl": "https://covers.openlibrary.org/b/id/300234-L.jpg",
@@ -19,12 +19,12 @@
     "bookId": 10004,
     "shelfId": 3,
     "userId": 2,
-    "key": "OL113116W",
+    "libraryKey": "OL113116W",
     "title": "The Cecils of Hatfield House",
     "authors": [
       {
         "name": "David Lord Cecil",
-        "key": "OL1216967A"
+        "libraryKey": "OL1216967A"
       }
     ],
     "coverUrl": null,
@@ -35,16 +35,16 @@
     "bookId": 10005,
     "shelfId": 3,
     "userId": 2,
-    "key": "OL820369W",
+    "libraryKey": "OL820369W",
     "title": "Bath",
     "authors": [
       {
         "name": "Thom Gorst",
-        "key": "OL69317A"
+        "libraryKey": "OL69317A"
       },
       {
         "name": "James Jamerson",
-        "key": "OL69317A"
+        "libraryKey": "OL69317A"
       }
     ],
     "coverUrl": "https://covers.openlibrary.org/b/id/946298-L.jpg",
@@ -55,20 +55,20 @@
     "bookId": 10006,
     "shelfId": 3,
     "userId": 2,
-    "key": "OL8208787W",
+    "libraryKey": "OL8208787W",
     "title": "Philip Webb: Pioneer of Arts & Crafts Architecture",
     "authors": [
       {
         "name": "Sheila Kirk",
-        "key": "OL2732304A"
+        "libraryKey": "OL2732304A"
       },
       {
         "name": "Thom Gorst",
-        "key": "OL69317A"
+        "libraryKey": "OL69317A"
       },
       {
         "name": "James Jamerson",
-        "key": "OL69317A"
+        "libraryKey": "OL69317A"
       }
     ],
     "coverUrl": "https://covers.openlibrary.org/b/id/300234-L.jpg",
@@ -79,12 +79,12 @@
     "bookId": 10007,
     "shelfId": 3,
     "userId": 2,
-    "key": "OL113116W",
+    "libraryKey": "OL113116W",
     "title": "The Cecils of Hatfield House",
     "authors": [
       {
         "name": "David Lord Cecil",
-        "key": "OL1216967A"
+        "libraryKey": "OL1216967A"
       }
     ],
     "coverUrl": null,
@@ -95,16 +95,16 @@
     "bookId": 10008,
     "shelfId": 3,
     "userId": 2,
-    "key": "OL820369W",
+    "libraryKey": "OL820369W",
     "title": "Bath",
     "authors": [
       {
         "name": "Thom Gorst",
-        "key": "OL69317A"
+        "libraryKey": "OL69317A"
       },
       {
         "name": "James Jamerson",
-        "key": "OL69317A"
+        "libraryKey": "OL69317A"
       }
     ],
     "coverUrl": "https://covers.openlibrary.org/b/id/946298-L.jpg",
@@ -115,12 +115,12 @@
     "bookId": 10009,
     "shelfId": 3,
     "userId": 2,
-    "key": "OL8208787W",
+    "libraryKey": "OL8208787W",
     "title": "Philip Webb: Pioneer of Arts & Crafts Architecture",
     "authors": [
       {
         "name": "Sheila Kirk",
-        "key": "OL2732304A"
+        "libraryKey": "OL2732304A"
       }
     ],
     "coverUrl": "https://covers.openlibrary.org/b/id/300234-L.jpg",
@@ -131,12 +131,12 @@
     "bookId": 10010,
     "shelfId": 3,
     "userId": 2,
-    "key": "OL113116W",
+    "libraryKey": "OL113116W",
     "title": "The Cecils of Hatfield House",
     "authors": [
       {
         "name": "David Lord Cecil",
-        "key": "OL1216967A"
+        "libraryKey": "OL1216967A"
       }
     ],
     "coverUrl": null,
@@ -147,20 +147,20 @@
     "bookId": 10011,
     "shelfId": 3,
     "userId": 2,
-    "key": "OL820369W",
+    "libraryKey": "OL820369W",
     "title": "Bath",
     "authors": [
       {
         "name": "Thom Gorst",
-        "key": "OL69317A"
+        "libraryKey": "OL69317A"
       },
       {
         "name": "James Jamerson",
-        "key": "OL69317A"
+        "libraryKey": "OL69317A"
       }
     ],
     "coverUrl": "https://covers.openlibrary.org/b/id/946298-L.jpg",
-    "userNote": null,
+    "userNote": "",
     "savedDate": 1704341381405
   }
 ]

@@ -11,12 +11,9 @@ export interface ISavedBook {
   bookId: number
   shelfId: number
   userId: number
-  key: string
+  libraryKey: string
   title: string
-  authors: {
-    name: string
-    key: string
-  }[]
+  authors: IAuthorBasic[]
   coverUrl: string | null
   userNote: string | null
   savedDate: number
@@ -24,5 +21,35 @@ export interface ISavedBook {
 
 export interface IAuthorBasic {
   name: string
-  key: string
+  libraryKey: string
+}
+
+export interface IAuthorDetails {
+  libraryKey: string
+  name: string
+  bio: string | null
+  photoUrl: string | null
+  birthDate: string
+  deathDate: string | null
+  books: IAuthorBook[]
+}
+
+export interface IAuthorBook {
+  libraryKey: string
+  title: string
+  publishDate: string
+  primaryAuthor: IAuthorBasic
+  byMultipleAuthors: boolean
+  coverUrl: string | null
+  subjects: string[] | null
+}
+
+export interface IBookDetails {
+  libraryKey: string
+  title: string
+  description: string | null
+  publishDate: string
+  authors: IAuthorBasic[]
+  coverUrl: string
+  subjects: string[] | null
 }

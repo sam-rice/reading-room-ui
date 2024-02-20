@@ -19,7 +19,7 @@ const ShelfTile: FC<ShelfTileProps> = ({
   return (
     <Link
       className="flex h-48 w-full items-center justify-between rounded-theme-large bg-theme-beige-400 px-8 py-5 transition-colors hover:bg-theme-beige-500"
-      href={`/shelves/${shelfId}`}
+      href={`/shelf/${shelfId}`}
       role="listitem"
     >
       {coverUrl && <img className="mr-6 h-full" src={coverUrl} />}

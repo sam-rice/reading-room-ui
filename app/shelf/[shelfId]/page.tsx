@@ -33,20 +33,17 @@ const ShelfDetailsPage: FC<ShelfDetailsPageProps> = ({ params }) => {
 
   const filterBooks = () => console.log("filtering")
 
-  const navigateToBook = (libraryKey: string) => router.push(`/book/${libraryKey}`)
-
   const deleteShelf = () => console.log(`deleting shelf #${params.shelfId}`)
 
   const bookTiles = books.map((b: ISavedBook) => (
     <SavedBookTile
       key={b.bookId}
       bookId={b.bookId}
-      libraryKey={b.key}
+      libraryKey={b.libraryKey}
       title={b.title}
-      authors={b.authors.map((a) => a.name)}
+      authors={b.authors}
       coverUrl={b.coverUrl}
       userNote={b.userNote}
-      navigateToBook={navigateToBook}
     />
   ))
 

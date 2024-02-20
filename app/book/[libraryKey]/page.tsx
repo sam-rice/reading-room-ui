@@ -23,7 +23,7 @@ const BookDetailsPage: FC<BookDetailsPageProps> = ({ params }) => {
     return (
       <Link
         className="text-lg text-theme-gray-400 underline"
-        href={`/author/${a.key}`}
+        href={`/author/${a.libraryKey}`}
       >
         {name}
       </Link>
@@ -32,7 +32,7 @@ const BookDetailsPage: FC<BookDetailsPageProps> = ({ params }) => {
 
   return (
     <PageContainer className="max-w-5xl">
-      <div className="mt-28 flex">
+      <div className="mt-20 flex">
         {book.coverUrl ? (
           <img
             className="mr-14 h-[450px]"
@@ -42,7 +42,7 @@ const BookDetailsPage: FC<BookDetailsPageProps> = ({ params }) => {
         ) : (
           <Image
             className="mr-14"
-            alt={`cover for ${book.title}`}
+            alt="book cover not available"
             src={fallbackCover}
             width={295}
           />
@@ -67,7 +67,7 @@ const BookDetailsPage: FC<BookDetailsPageProps> = ({ params }) => {
               </tr>
               <tr>
                 <td align="right">tags:</td>
-                <td>{book.tags.join(", ")}</td>
+                <td>{book.subjects.join(", ")}</td>
               </tr>
             </tbody>
           </table>
