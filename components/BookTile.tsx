@@ -1,10 +1,8 @@
-"use client"
-
 import { FC } from "react"
 import fallbackCover from "@/public/images/fallback-cover.png"
 import Image from "next/image"
 import { IAuthorBasic } from "@/interfaces/entities"
-import Link from "next/link"
+import EntityLink from "./EntityLink"
 
 interface BookTileProps {
   libraryKey: string
@@ -41,15 +39,22 @@ const BookTile: FC<BookTileProps> = ({
           width={110}
         />
       )}
-      <div className="mt-3">
-        <Link href={`/book/${libraryKey}`}>
-          <h2 className="w-fit text-xl hover:underline">{title}</h2>
-        </Link>
-        <div className="text-base">{publishDate}</div>
-        <div className="mb-3 text-theme-gray-300">
-          <Link className="hover:underline" href={`/author/${author.libraryKey}`}>{author.name}</Link>
+      <div>
+        <EntityLink
+          className="text-2xl"
+          libraryKey={libraryKey}
+          title={title}
+          variant="book"
+        />
+        <div className="mb-2 text-theme-gray-300">
+          <EntityLink
+            libraryKey={author.libraryKey}
+            title={author.name}
+            variant="author"
+          />
           {hasMultipleAuthors && " and others"}
         </div>
+        <div className="text-base mb-2">{publishDate}</div>
         {subjects && (
           <div className="text-sm italic text-theme-gray-300">
             {subjects.slice(0, 4).join(", ")}

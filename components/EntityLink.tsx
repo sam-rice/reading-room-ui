@@ -1,6 +1,5 @@
 "use client"
 
-import classNames from "classnames"
 import Link from "next/link"
 import { FC } from "react"
 import { twMerge } from "tailwind-merge"
@@ -22,17 +21,12 @@ const EntityLink: FC<EntityLinkProps> = ({
   className,
   isSubHeader,
 }) => {
-  const linkClasses = classNames(
-    { "text-theme-gray-400": !isSubHeader },
-    { "text-xl": isSubHeader },
-  )
-
   return (
     <Link
-      className={twMerge("w-fit hover:underline", linkClasses, className)}
+      className={twMerge("hover:underline w-fit", className)}
       href={`/${variant}/${libraryKey}`}
     >
-      {isSubHeader ? <h2>{title}</h2> : title}
+      {isSubHeader ? <h2 className="text-xl">{title}</h2> : title}
     </Link>
   )
 }

@@ -73,7 +73,7 @@ const SavedBookTile: FC<SavedBookTileProps> = ({
           variant="book"
           isSubHeader
         />
-        <div className="mb-3">{authorsNode}</div>
+        <div className="mb-3 text-theme-gray-400">{authorsNode}</div>
         <div className="text-sm italic text-theme-gray-400">
           {formattedUserNote}
         </div>

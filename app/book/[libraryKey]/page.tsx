@@ -4,8 +4,8 @@ import book from "@/placeholder-data/bookDetails.json"
 import Image from "next/image"
 import fallbackCover from "@/public/images/fallback-cover.png"
 import { IAuthorBasic } from "@/interfaces/entities"
-import Link from "next/link"
 import AddToShelfControls from "@/components/single-use/AddToShelfControls"
+import EntityLink from "@/components/EntityLink"
 
 interface BookDetailsPageProps {
   params: {
@@ -21,12 +21,13 @@ const BookDetailsPage: FC<BookDetailsPageProps> = ({ params }) => {
         : a.name
 
     return (
-      <Link
-        className="text-lg text-theme-gray-400 underline"
-        href={`/author/${a.libraryKey}`}
-      >
-        {name}
-      </Link>
+      <EntityLink
+        className="text-theme-gray-400 underline"
+        libraryKey={a.libraryKey}
+        title={name}
+        variant="author"
+        isSubHeader
+      />
     )
   })
 

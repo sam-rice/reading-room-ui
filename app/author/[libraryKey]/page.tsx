@@ -6,6 +6,7 @@ import fallbackCover from "@/public/images/fallback-cover.png"
 import { IAuthorBook } from "@/interfaces/entities"
 import Pager from "@/components/Pager"
 import BookTile from "@/components/BookTile"
+import PageableList from "@/components/PageableList"
 
 interface AuthorDetailsPageProps {
   params: {
@@ -14,7 +15,6 @@ interface AuthorDetailsPageProps {
 }
 
 const AuthorDetailsPage: FC<AuthorDetailsPageProps> = ({ params }) => {
-
   const bookTiles = author.books.map((b: IAuthorBook) => {
     return (
       <BookTile
@@ -28,6 +28,13 @@ const AuthorDetailsPage: FC<AuthorDetailsPageProps> = ({ params }) => {
       />
     )
   })
+
+  const listHeadingNode = (
+    <>
+      <h2 className="mb-1 text-lg">Books by {author.name}:</h2>
+      <div className="mb-4 text-sm italic text-theme-gray-400">{`(${author.books.length} total results)`}</div>
+    </>
+  )
 
   return (
     <PageContainer className="max-w-5xl">
@@ -54,11 +61,9 @@ const AuthorDetailsPage: FC<AuthorDetailsPageProps> = ({ params }) => {
           {author.bio && <p className="mt-10">{author.bio}</p>}
         </div>
       </div>
-      <div className="">
-        <h2>{author.name}'s books:</h2>
-        <ul>{bookTiles}</ul>
-        <Pager />
-      </div>
+      <PageableList outerClassName="mt-8" headingNode={listHeadingNode} itemsPerPage={30}>
+        {bookTiles}
+      </PageableList>
     </PageContainer>
   )
 }
