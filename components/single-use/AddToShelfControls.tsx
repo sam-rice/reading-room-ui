@@ -10,7 +10,7 @@ interface AddToShelfControlsProps {
 }
 
 const AddToShelfControls: FC<AddToShelfControlsProps> = ({ libraryKey }) => {
-  const [value, setValue] = useState<number | undefined>(undefined)
+  const [value, setValue] = useState<number | "">("")
 
   const addBookToShelf = () => {
     if (!!value) {
@@ -19,7 +19,7 @@ const AddToShelfControls: FC<AddToShelfControlsProps> = ({ libraryKey }) => {
   }
 
   const shelfOptions = shelves.map((s: IShelfBasic) => (
-    <option value={s.shelfId}>{s.title}</option>
+    <option key={s.shelfId} value={s.shelfId}>{s.title}</option>
   ))
 
   return (
@@ -31,7 +31,7 @@ const AddToShelfControls: FC<AddToShelfControlsProps> = ({ libraryKey }) => {
           value={value}
           onChange={(e) => setValue(parseInt(e.target.value))}
         >
-          <option className="text-theme-gray-400" value={undefined}>
+          <option className="text-theme-gray-400" value="" disabled>
             select shelf
           </option>
           {shelfOptions}

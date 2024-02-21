@@ -13,6 +13,7 @@ import SavedBookTile from "@/components/SavedBookTile"
 import { Search } from "@mui/icons-material"
 import DeleteShelfDialog from "@/components/single-use/DeleteShelfDialog"
 import { useRouter } from "next/navigation"
+import PageableList from "@/components/PageableList"
 
 interface ShelfDetailsPageProps {
   params: {
@@ -87,9 +88,10 @@ const ShelfDetailsPage: FC<ShelfDetailsPageProps> = ({ params }) => {
             </button>
           </div>
         </div>
-        <ul className="mb-14 grid grid-cols-2 gap-8">{bookTiles}</ul>
+        <PageableList itemsPerPage={50}>
+          {bookTiles}
+        </PageableList>
       </PageContainer>
-      <Pager />
       <DeleteShelfDialog
         isOpen={dialogOpen}
         shelfTitle="Postmodern Picks"
