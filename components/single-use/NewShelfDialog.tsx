@@ -1,9 +1,9 @@
 "use client"
 
 import { FC, useState } from "react"
+import { Button } from "../Button"
 import DialogContainer from "../DialogContainer"
 import { Input } from "../Input"
-import { Button } from "../Button"
 
 interface NewShelfDialogProps {
   isOpen: boolean
@@ -40,8 +40,12 @@ const NewShelfDialog: FC<NewShelfDialogProps> = ({ isOpen, closeDialog }) => {
           onKeyDown={onKeyDown}
         />
       </div>
-      <Button className="mb-2" onClick={submitShelf}>create</Button>
-      <button className="underline" onClick={closeDialog}>cancel</button>
+      <Button className="mb-2" onClick={submitShelf}>
+        create
+      </Button>
+      <button className="underline" onClick={closeDialog}>
+        cancel
+      </button>
     </DialogContainer>
   )
 }

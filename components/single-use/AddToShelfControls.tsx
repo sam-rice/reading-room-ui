@@ -1,8 +1,8 @@
 "use client"
 
-import { FC, useState } from "react"
-import shelves from "@/placeholder-data/shelves.json"
 import { IShelfBasic } from "@/interfaces/persistenceDtos"
+import shelves from "@/placeholder-data/shelves.json"
+import { FC, useState } from "react"
 import { Button } from "../Button"
 
 interface AddToShelfControlsProps {
@@ -19,7 +19,9 @@ const AddToShelfControls: FC<AddToShelfControlsProps> = ({ libraryKey }) => {
   }
 
   const shelfOptions = shelves.map((s: IShelfBasic) => (
-    <option key={s.shelfId} value={s.shelfId}>{s.title}</option>
+    <option key={s.shelfId} value={s.shelfId}>
+      {s.title}
+    </option>
   ))
 
   return (

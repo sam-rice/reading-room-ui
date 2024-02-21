@@ -1,9 +1,9 @@
-import type { Metadata } from "next"
-import { Jost, Libre_Franklin } from "next/font/google"
-import "./globals.css"
 import { Header } from "@/components/single-use/Header"
-import { twMerge } from "tailwind-merge"
+import type { Metadata } from "next"
+import { Jost } from "next/font/google"
 import Link from "next/link"
+import { twMerge } from "tailwind-merge"
+import "./globals.css"
 
 const jost = Jost({ subsets: ["latin"] })
 

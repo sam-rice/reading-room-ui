@@ -20,4 +20,3 @@ export interface ISavedBook {
   userNote: string | null
   savedDate: number
 }
-

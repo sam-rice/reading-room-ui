@@ -1,7 +1,7 @@
-import { FC } from "react"
+import { IAuthorBasic } from "@/interfaces/browseDtos"
 import fallbackCover from "@/public/images/fallback-cover.png"
 import Image from "next/image"
-import { IAuthorBasic } from "@/interfaces/browseDtos"
+import { FC } from "react"
 import EntityLink from "./EntityLink"
 
 interface BookTileProps {

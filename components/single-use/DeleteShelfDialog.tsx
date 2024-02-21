@@ -1,6 +1,6 @@
 import { FC } from "react"
-import DialogContainer from "../DialogContainer"
 import { Button } from "../Button"
+import DialogContainer from "../DialogContainer"
 
 interface DeleteShelfDialogProps {
   isOpen: boolean

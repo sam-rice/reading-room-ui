@@ -2,10 +2,10 @@
 
 import { Button } from "@/components/Button"
 import PageContainer from "@/components/PageContainer"
-import { FC, useState } from "react"
 import { DM_Serif_Display } from "next/font/google"
-import { twMerge } from "tailwind-merge"
 import { useRouter } from "next/navigation"
+import { FC, useState } from "react"
+import { twMerge } from "tailwind-merge"
 
 const dmSerifDisplay = DM_Serif_Display({ weight: "400", subsets: ["latin"] })
 

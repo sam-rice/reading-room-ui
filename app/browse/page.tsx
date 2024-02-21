@@ -1,9 +1,9 @@
 "use client"
 
-import { FC } from "react"
 import { useSearchParams } from "next/navigation"
-import BrowseLandingPage from "./landingPage"
+import { FC } from "react"
 import ResultsPage from "./ResultsPage"
+import BrowseLandingPage from "./landingPage"
 
 const BrowsePage: FC = () => {
   const searchParams = useSearchParams()

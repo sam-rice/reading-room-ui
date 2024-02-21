@@ -1,12 +1,12 @@
 "use client"
 
-import Image from "next/image"
 import logo from "@/public/images/logo.png"
-import Link from "next/link"
 import { Search } from "@mui/icons-material"
-import { useState, KeyboardEvent, FC } from "react"
-import { twMerge } from "tailwind-merge"
 import { DM_Serif_Display } from "next/font/google"
+import Image from "next/image"
+import Link from "next/link"
+import { FC, KeyboardEvent, useState } from "react"
+import { twMerge } from "tailwind-merge"
 
 const dmSerifDisplay = DM_Serif_Display({ weight: "400", subsets: ["latin"] })
 
@@ -48,7 +48,7 @@ export const Header: FC = () => {
               className="absolute right-[7px] top-[9px]"
               onClick={navigateToSearch}
             >
-              <Search className="text-theme-gray-400 hover:text-theme-gray-500 transition-colors"/>
+              <Search className="text-theme-gray-400 hover:text-theme-gray-500 transition-colors" />
             </button>
             <input
               className="rounded-theme-small h-full w-full pl-3"

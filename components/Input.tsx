@@ -29,8 +29,8 @@ export const Input: FC<InputProps> = ({
         className="rounded-theme-small border h-9 mt-1 pl-2 border-theme-gray-400"
         value={value}
         name={name}
-        onChange={e => onChange(e.target.value)}
-        onKeyDown={onKeyDown ? e => onKeyDown(e.key) : () => undefined}
+        onChange={(e) => onChange(e.target.value)}
+        onKeyDown={onKeyDown ? (e) => onKeyDown(e.key) : () => undefined}
         placeholder={placeholder}
         type={type}
       />

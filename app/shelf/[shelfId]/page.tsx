@@ -2,17 +2,17 @@
 
 import { Input } from "@/components/Input"
 import PageContainer from "@/components/PageContainer"
+import PageableList from "@/components/PageableList"
 import Pager from "@/components/Pager"
+import SavedBookTile from "@/components/SavedBookTile"
+import DeleteShelfDialog from "@/components/single-use/DeleteShelfDialog"
+import { ISavedBook } from "@/interfaces/persistenceDtos"
+import { Search } from "@mui/icons-material"
 import ArrowBackIcon from "@mui/icons-material/ArrowBack"
 import RemoveIcon from "@mui/icons-material/Remove"
 import Link from "next/link"
 import { FC, useState } from "react"
 import books from "../../../placeholder-data/savedBooks.json"
-import { ISavedBook } from "@/interfaces/persistenceDtos"
-import SavedBookTile from "@/components/SavedBookTile"
-import { Search } from "@mui/icons-material"
-import DeleteShelfDialog from "@/components/single-use/DeleteShelfDialog"
-import PageableList from "@/components/PageableList"
 
 interface ShelfDetailsPageProps {
   params: {
@@ -86,9 +86,7 @@ const ShelfDetailsPage: FC<ShelfDetailsPageProps> = ({ params }) => {
             </button>
           </div>
         </div>
-        <PageableList itemsPerPage={50}>
-          {bookTiles}
-        </PageableList>
+        <PageableList itemsPerPage={50}>{bookTiles}</PageableList>
       </PageContainer>
       <DeleteShelfDialog
         isOpen={dialogOpen}

@@ -1,7 +1,7 @@
 "use client"
 
-import { FC } from "react"
 import Link from "next/link"
+import { FC } from "react"
 
 interface AuthorTileProps {
   libraryKey: string
@@ -36,12 +36,12 @@ const AuthorTile: FC<AuthorTileProps> = ({
       <table>
         <tbody>
           <tr>
-            <td className=" w-24">top work:</td>
+            <td className="w-24 font-semibold">top work:</td>
             <td>{topBook}</td>
           </tr>
           {topSubjects && (
             <tr>
-              <td>subjects:</td>
+              <td className="font-semibold">subjects:</td>
               <td>{topSubjects.slice(0, 6).join(", ")}</td>
             </tr>
           )}

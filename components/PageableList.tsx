@@ -1,8 +1,8 @@
 "use client"
 
-import { FC, ReactNode, useState, Children, useRef } from "react"
-import Pager from "./Pager"
+import { Children, FC, ReactNode, useRef, useState } from "react"
 import { twMerge } from "tailwind-merge"
+import Pager from "./Pager"
 
 interface PageableListProps {
   outerClassName?: string
@@ -31,8 +31,7 @@ const PageableList: FC<PageableListProps> = ({
 
   const currentPageItems = allChildren.slice(firstItemIndex, lastItemIndex)
 
-  const scrollToSection = () =>
-    sectionRef.current?.scrollIntoView()
+  const scrollToSection = () => sectionRef.current?.scrollIntoView()
 
   const pageForward = () => {
     setCurrentPage(currentPage + 1)
@@ -51,7 +50,8 @@ const PageableList: FC<PageableListProps> = ({
     >
       {headingNode}
       <div className="text-right mb-3">
-        showing {firstItemIndex + 1} - {firstItemIndex + currentPageItems.length} of {totalItems}
+        showing {firstItemIndex + 1} -{" "}
+        {firstItemIndex + currentPageItems.length} of {totalItems}
       </div>
       <ul
         className={twMerge("mb-6 grid grow grid-cols-2 gap-6", listClassName)}

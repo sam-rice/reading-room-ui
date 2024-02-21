@@ -1,11 +1,11 @@
-import PageContainer from "@/components/PageContainer"
-import { FC } from "react"
-import book from "@/placeholder-data/bookDetails.json"
-import Image from "next/image"
-import fallbackCover from "@/public/images/fallback-cover.png"
-import { IAuthorBasic } from "@/interfaces/browseDtos"
-import AddToShelfControls from "@/components/single-use/AddToShelfControls"
 import EntityLink from "@/components/EntityLink"
+import PageContainer from "@/components/PageContainer"
+import AddToShelfControls from "@/components/single-use/AddToShelfControls"
+import { IAuthorBasic } from "@/interfaces/browseDtos"
+import book from "@/placeholder-data/bookDetails.json"
+import fallbackCover from "@/public/images/fallback-cover.png"
+import Image from "next/image"
+import { FC } from "react"
 
 interface BookDetailsPageProps {
   params: {

@@ -1,8 +1,8 @@
-import { FC } from "react"
-import fallbackCover from "@/public/images/fallback-cover.png"
-import Image from "next/image"
-import ClearIcon from "@mui/icons-material/Clear"
 import { IAuthorBasic } from "@/interfaces/browseDtos"
+import fallbackCover from "@/public/images/fallback-cover.png"
+import ClearIcon from "@mui/icons-material/Clear"
+import Image from "next/image"
+import { FC } from "react"
 import EntityLink from "./EntityLink"
 
 interface SavedBookTileProps {

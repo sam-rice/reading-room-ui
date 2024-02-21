@@ -34,7 +34,7 @@ const DialogContainer: FC<DialogContainerProps> = ({
           maxWidth: 850,
           minWidth: 700,
           backgroundColor: "#EFE7CC",
-          borderRadius: 8
+          borderRadius: 8,
         },
       }}
       isOpen={isOpen}

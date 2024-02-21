@@ -1,12 +1,11 @@
-import PageContainer from "@/components/PageContainer"
-import { FC } from "react"
-import author from "@/placeholder-data/authorDetails.json"
-import Image from "next/image"
-import fallbackCover from "@/public/images/fallback-cover.png"
-import { IAuthorBook } from "@/interfaces/browseDtos"
-import Pager from "@/components/Pager"
 import BookTile from "@/components/BookTile"
+import PageContainer from "@/components/PageContainer"
 import PageableList from "@/components/PageableList"
+import { IAuthorBook } from "@/interfaces/browseDtos"
+import author from "@/placeholder-data/authorDetails.json"
+import fallbackCover from "@/public/images/fallback-cover.png"
+import Image from "next/image"
+import { FC } from "react"
 
 interface AuthorDetailsPageProps {
   params: {
@@ -29,7 +28,9 @@ const AuthorDetailsPage: FC<AuthorDetailsPageProps> = ({ params }) => {
     )
   })
 
-  const listHeadingNode = <h2 className="mb-1 text-lg">Books by {author.name}:</h2>
+  const listHeadingNode = (
+    <h2 className="mb-1 text-lg">Books by {author.name}:</h2>
+  )
 
   return (
     <PageContainer className="max-w-5xl">
@@ -56,7 +57,11 @@ const AuthorDetailsPage: FC<AuthorDetailsPageProps> = ({ params }) => {
           {author.bio && <p className="mt-10">{author.bio}</p>}
         </div>
       </div>
-      <PageableList outerClassName="mt-8" headingNode={listHeadingNode} itemsPerPage={30}>
+      <PageableList
+        outerClassName="mt-8"
+        headingNode={listHeadingNode}
+        itemsPerPage={30}
+      >
         {bookTiles}
       </PageableList>
     </PageContainer>
