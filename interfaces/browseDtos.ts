@@ -43,3 +43,12 @@ export interface IBookSearchResult {
   coverUrl: string | null
   subjects: string[] | null
 }
+
+export interface IAuthorSearchResult {
+  libraryKey: string
+  name: string
+  birthDate: string | null
+  deathDate: string | null
+  topBook: string
+  topSubjects: string[] | null
+}

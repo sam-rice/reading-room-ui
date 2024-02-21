@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation"
 
 const dmSerifDisplay = DM_Serif_Display({ weight: "400", subsets: ["latin"] })
 
-type SearchCategory = "authors" | "books"
+export type SearchCategory = "authors" | "books"
 
 const BrowseLandingPage: FC = () => {
   const [query, setQuery] = useState("")
