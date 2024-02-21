@@ -12,7 +12,6 @@ import { ISavedBook } from "@/interfaces/entities"
 import SavedBookTile from "@/components/SavedBookTile"
 import { Search } from "@mui/icons-material"
 import DeleteShelfDialog from "@/components/single-use/DeleteShelfDialog"
-import { useRouter } from "next/navigation"
 import PageableList from "@/components/PageableList"
 
 interface ShelfDetailsPageProps {
@@ -22,7 +21,6 @@ interface ShelfDetailsPageProps {
 }
 
 const ShelfDetailsPage: FC<ShelfDetailsPageProps> = ({ params }) => {
-  const router = useRouter()
   const [dialogOpen, setDialogOpen] = useState(false)
   const [filterValue, setFilterValue] = useState("")
 

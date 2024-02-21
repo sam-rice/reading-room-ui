@@ -16,7 +16,7 @@ export const Input: FC<InputProps> = ({
   className,
   value,
   name,
-  type,
+  type = "text",
   placeholder,
   onChange,
   onKeyDown,
@@ -26,13 +26,13 @@ export const Input: FC<InputProps> = ({
     <label className={twMerge("w-full flex flex-col", className)}>
       <span>{label}: </span>
       <input
-        className="rounded-theme-small border h-9 mt-1 pl-2"
+        className="rounded-theme-small border h-9 mt-1 pl-2 border-theme-gray-400"
         value={value}
         name={name}
         onChange={e => onChange(e.target.value)}
         onKeyDown={onKeyDown ? e => onKeyDown(e.key) : () => undefined}
         placeholder={placeholder}
-        type={type || "text"}
+        type={type}
       />
     </label>
   )
