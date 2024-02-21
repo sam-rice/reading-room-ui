@@ -1,7 +1,7 @@
 import { FC } from "react"
 import fallbackCover from "@/public/images/fallback-cover.png"
 import Image from "next/image"
-import { IAuthorBasic } from "@/interfaces/entities"
+import { IAuthorBasic } from "@/interfaces/browseDtos"
 import EntityLink from "./EntityLink"
 
 interface BookTileProps {
@@ -10,8 +10,9 @@ interface BookTileProps {
   author: IAuthorBasic
   hasMultipleAuthors: boolean
   subjects: string[] | null
-  publishDate: string
+  publishDate: string | number
   coverUrl: string | null
+  editionCount?: number
 }
 
 const BookTile: FC<BookTileProps> = ({
@@ -22,6 +23,7 @@ const BookTile: FC<BookTileProps> = ({
   subjects,
   publishDate,
   coverUrl,
+  editionCount,
 }) => {
   return (
     <li className="relative col-span-1 flex h-48 rounded-theme-large bg-theme-beige-400 px-8 py-5 transition-colors hover:bg-theme-beige-500">
@@ -54,8 +56,9 @@ const BookTile: FC<BookTileProps> = ({
           />
           {hasMultipleAuthors && " and others"}
         </div>
-        <div className="text-base mb-2">{publishDate}</div>
-        {subjects && (
+        <div className="mb-2 text-base">{publishDate}</div>
+        {!!editionCount && <div>{editionCount} editions</div>}
+        {subjects && title.length < 40 && (
           <div className="text-sm italic text-theme-gray-300">
             {subjects.slice(0, 4).join(", ")}
           </div>

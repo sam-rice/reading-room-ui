@@ -3,7 +3,7 @@ import { FC } from "react"
 import author from "@/placeholder-data/authorDetails.json"
 import Image from "next/image"
 import fallbackCover from "@/public/images/fallback-cover.png"
-import { IAuthorBook } from "@/interfaces/entities"
+import { IAuthorBook } from "@/interfaces/browseDtos"
 import Pager from "@/components/Pager"
 import BookTile from "@/components/BookTile"
 import PageableList from "@/components/PageableList"
@@ -29,12 +29,7 @@ const AuthorDetailsPage: FC<AuthorDetailsPageProps> = ({ params }) => {
     )
   })
 
-  const listHeadingNode = (
-    <>
-      <h2 className="mb-1 text-lg">Books by {author.name}:</h2>
-      <div className="mb-4 text-sm italic text-theme-gray-400">{`(${author.books.length} total results)`}</div>
-    </>
-  )
+  const listHeadingNode = <h2 className="mb-1 text-lg">Books by {author.name}:</h2>
 
   return (
     <PageContainer className="max-w-5xl">

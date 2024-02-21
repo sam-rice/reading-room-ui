@@ -3,7 +3,7 @@ import { FC } from "react"
 import book from "@/placeholder-data/bookDetails.json"
 import Image from "next/image"
 import fallbackCover from "@/public/images/fallback-cover.png"
-import { IAuthorBasic } from "@/interfaces/entities"
+import { IAuthorBasic } from "@/interfaces/browseDtos"
 import AddToShelfControls from "@/components/single-use/AddToShelfControls"
 import EntityLink from "@/components/EntityLink"
 

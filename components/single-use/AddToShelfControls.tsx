@@ -2,7 +2,7 @@
 
 import { FC, useState } from "react"
 import shelves from "@/placeholder-data/shelves.json"
-import { IShelfBasic } from "@/interfaces/entities"
+import { IShelfBasic } from "@/interfaces/persistenceDtos"
 import { Button } from "../Button"
 
 interface AddToShelfControlsProps {
