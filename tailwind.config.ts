@@ -8,11 +8,28 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      backgroundColor: {
+        "theme-beige-500": "#E4DABB",
+        "theme-beige-400": "#F0EAD7",
+        "theme-beige-300": "#EFE7CC",
+        "theme-gray-500": "#808080",
+        "theme-gray-400": "#9E9E9E",
+        "theme-gray-300": "#C9C9C9",
+        "theme-gray-200": "#D9D9D9",
+        "theme-gray-100": "#EDEDED"
       },
+      borderRadius: {
+        "theme-small": "4px",
+        "theme-large": "8px"
+      },
+      borderColor: {
+        "theme-gray-400": "#9E9E9E"
+      },
+      textColor: {
+        "theme-gray-500": "#808080",
+        "theme-gray-400": "#9E9E9E",
+        "theme-gray-300": "#959595"
+      }
     },
   },
   plugins: [],

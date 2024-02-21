@@ -1,0 +1,166 @@
+[
+  {
+    "bookId": 10003,
+    "shelfId": 3,
+    "userId": 2,
+    "libraryKey": "OL8208787W",
+    "title": "Philip Webb: Pioneer of Arts & Crafts Architecture",
+    "authors": [
+      {
+        "name": "Sheila Kirk",
+        "libraryKey": "OL2732304A"
+      }
+    ],
+    "coverUrl": "https://covers.openlibrary.org/b/id/300234-L.jpg",
+    "userNote": "A great resource for info on the red house.",
+    "savedDate": 1704341375550
+  },
+  {
+    "bookId": 10004,
+    "shelfId": 3,
+    "userId": 2,
+    "libraryKey": "OL113116W",
+    "title": "The Cecils of Hatfield House",
+    "authors": [
+      {
+        "name": "David Lord Cecil",
+        "libraryKey": "OL1216967A"
+      }
+    ],
+    "coverUrl": null,
+    "userNote": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse culpa consequuntur distinctio ullam itaque repellat unde, blanditiis ipsum exercitationem. Placeat nam incidunt voluptatibus animi voluptates! Impedit molestias esse ullam. Odit facere quo aut natus ab iste fugit autem sapiente, eveniet magnam esse soluta harum qui error maxime, ipsam quidem deleniti.",
+    "savedDate": 1704341377500
+  },
+  {
+    "bookId": 10005,
+    "shelfId": 3,
+    "userId": 2,
+    "libraryKey": "OL820369W",
+    "title": "Bath",
+    "authors": [
+      {
+        "name": "Thom Gorst",
+        "libraryKey": "OL69317A"
+      },
+      {
+        "name": "James Jamerson",
+        "libraryKey": "OL69317A"
+      }
+    ],
+    "coverUrl": "https://covers.openlibrary.org/b/id/946298-L.jpg",
+    "userNote": null,
+    "savedDate": 1704341381405
+  },
+  {
+    "bookId": 10006,
+    "shelfId": 3,
+    "userId": 2,
+    "libraryKey": "OL8208787W",
+    "title": "Philip Webb: Pioneer of Arts & Crafts Architecture",
+    "authors": [
+      {
+        "name": "Sheila Kirk",
+        "libraryKey": "OL2732304A"
+      },
+      {
+        "name": "Thom Gorst",
+        "libraryKey": "OL69317A"
+      },
+      {
+        "name": "James Jamerson",
+        "libraryKey": "OL69317A"
+      }
+    ],
+    "coverUrl": "https://covers.openlibrary.org/b/id/300234-L.jpg",
+    "userNote": "A great resource for info on the red house.",
+    "savedDate": 1704341375550
+  },
+  {
+    "bookId": 10007,
+    "shelfId": 3,
+    "userId": 2,
+    "libraryKey": "OL113116W",
+    "title": "The Cecils of Hatfield House",
+    "authors": [
+      {
+        "name": "David Lord Cecil",
+        "libraryKey": "OL1216967A"
+      }
+    ],
+    "coverUrl": null,
+    "userNote": "Book received from John Paul Jones.",
+    "savedDate": 1704341377500
+  },
+  {
+    "bookId": 10008,
+    "shelfId": 3,
+    "userId": 2,
+    "libraryKey": "OL820369W",
+    "title": "Bath",
+    "authors": [
+      {
+        "name": "Thom Gorst",
+        "libraryKey": "OL69317A"
+      },
+      {
+        "name": "James Jamerson",
+        "libraryKey": "OL69317A"
+      }
+    ],
+    "coverUrl": "https://covers.openlibrary.org/b/id/946298-L.jpg",
+    "userNote": null,
+    "savedDate": 1704341381405
+  },
+  {
+    "bookId": 10009,
+    "shelfId": 3,
+    "userId": 2,
+    "libraryKey": "OL8208787W",
+    "title": "Philip Webb: Pioneer of Arts & Crafts Architecture",
+    "authors": [
+      {
+        "name": "Sheila Kirk",
+        "libraryKey": "OL2732304A"
+      }
+    ],
+    "coverUrl": "https://covers.openlibrary.org/b/id/300234-L.jpg",
+    "userNote": "A great resource for info on the red house.",
+    "savedDate": 1704341375550
+  },
+  {
+    "bookId": 10010,
+    "shelfId": 3,
+    "userId": 2,
+    "libraryKey": "OL113116W",
+    "title": "The Cecils of Hatfield House",
+    "authors": [
+      {
+        "name": "David Lord Cecil",
+        "libraryKey": "OL1216967A"
+      }
+    ],
+    "coverUrl": null,
+    "userNote": "Book received from John Paul Jones.",
+    "savedDate": 1704341377500
+  },
+  {
+    "bookId": 10011,
+    "shelfId": 3,
+    "userId": 2,
+    "libraryKey": "OL820369W",
+    "title": "Bath",
+    "authors": [
+      {
+        "name": "Thom Gorst",
+        "libraryKey": "OL69317A"
+      },
+      {
+        "name": "James Jamerson",
+        "libraryKey": "OL69317A"
+      }
+    ],
+    "coverUrl": "https://covers.openlibrary.org/b/id/946298-L.jpg",
+    "userNote": "",
+    "savedDate": 1704341381405
+  }
+]
