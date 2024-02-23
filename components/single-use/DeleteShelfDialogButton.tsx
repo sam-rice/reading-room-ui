@@ -29,7 +29,7 @@ const DeleteShelfDialogButton: FC<DeleteShelfDialogButtonProps> = ({
       </button>
       <DeleteShelfDialog
         isOpen={dialogOpen}
-        shelfTitle="Postmodern Picks"
+        shelfTitle={shelfName}
         closeDialog={toggleDialogOpen}
         deleteShelf={deleteShelf}
       />

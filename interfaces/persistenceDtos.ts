@@ -9,6 +9,10 @@ export interface IShelfBasic {
   featuredCoverUrl: string | null
 }
 
+export interface IShelfDetails extends IShelfBasic {
+  books: ISavedBook[]
+}
+
 export interface ISavedBook {
   bookId: number
   shelfId: number
@@ -22,13 +26,7 @@ export interface ISavedBook {
 }
 
 export interface ISuccessfulAuthResponse {
-  userData: IAuthenticatedUser
-  token: string
-}
-
-interface IAuthenticatedUser {
   firstName: string
   lastName: string
-  userId: number
   email: string
 }

@@ -14,11 +14,13 @@ const login = async (email: string, password: string) => {
   })
   const setCookie = response.headers.getSetCookie()
   const authArray = setCookie[0].split(/[=;]/)
+
   cookies().set("token", authArray[1], {
-    expires: new Date(authArray[3]),
+    maxAge: parseInt(authArray[3]) / 10,
     httpOnly: true,
     path: "/",
   })
+  
   return response.json()
 }
 
