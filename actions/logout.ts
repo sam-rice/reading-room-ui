@@ -5,7 +5,7 @@ import { redirect } from "next/navigation"
 
 const logout = (): void => {
   cookies().delete("token")
-  
+
   redirect("/login")
 }
 

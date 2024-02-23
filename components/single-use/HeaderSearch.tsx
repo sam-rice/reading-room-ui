@@ -3,8 +3,6 @@
 import { Search } from "@mui/icons-material"
 import { FC, KeyboardEvent, useState } from "react"
 
-
-
 const HeaderSearch: FC = () => {
   const [query, setQuery] = useState("")
 

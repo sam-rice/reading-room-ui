@@ -1,3 +1,5 @@
+"use client"
+
 import { IAuthorBasic } from "@/interfaces/browseDtos"
 import fallbackCover from "@/public/images/fallback-cover.png"
 import ClearIcon from "@mui/icons-material/Clear"

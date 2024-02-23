@@ -1,22 +1,18 @@
-"use client"
-
-import auth from "@/actions/getShelf"
-import getShelf from "@/actions/getShelf"
+import { getShelf } from "@/actions/shelfFetches"
 import { Button } from "@/components/Button"
 import { Input } from "@/components/Input"
 import PageContainer from "@/components/PageContainer"
 import PageableList from "@/components/PageableList"
-import Pager from "@/components/Pager"
 import SavedBookTile from "@/components/SavedBookTile"
 import DeleteShelfDialog from "@/components/single-use/DeleteShelfDialog"
 import { ISavedBook } from "@/interfaces/persistenceDtos"
-import { API_BASE_URL } from "@/utilities/constants"
 import { Search } from "@mui/icons-material"
 import ArrowBackIcon from "@mui/icons-material/ArrowBack"
-import RemoveIcon from "@mui/icons-material/Remove"
+// import RemoveIcon from "@mui/icons-material/Remove"
 import Link from "next/link"
 import { FC, useState } from "react"
 import books from "../../../placeholder-data/savedBooks.json"
+import DeleteShelfDialogButton from "@/components/single-use/DeleteShelfDialogButton"
 
 interface ShelfDetailsPageProps {
   params: {
@@ -24,21 +20,10 @@ interface ShelfDetailsPageProps {
   }
 }
 
-const ShelfDetailsPage: FC<ShelfDetailsPageProps> = ({ params }) => {
-  const [dialogOpen, setDialogOpen] = useState(false)
-  const [filterValue, setFilterValue] = useState("")
+const ShelfDetailsPage: FC<ShelfDetailsPageProps> = async ({ params }) => {
+  const shelf = await getShelf(parseInt(params.shelfId))
 
-  const toggleDialogOpen = () => setDialogOpen(!dialogOpen)
-
-  const onFilterKeyDown = (key: string) => {
-    if (key === "Enter") filterBooks()
-  }
-
-  const filterBooks = () => console.log("filtering")
-
-  const deleteShelf = () => console.log(`deleting shelf #${params.shelfId}`)
-
-  const bookTiles = books.map((b: ISavedBook) => (
+  const bookTiles = shelf.books.map((b: ISavedBook) => (
     <SavedBookTile
       key={b.bookId}
       bookId={b.bookId}
@@ -49,15 +34,6 @@ const ShelfDetailsPage: FC<ShelfDetailsPageProps> = ({ params }) => {
       userNote={b.userNote}
     />
   ))
-
-  const handleTest = async () => {
-    try {
-      const data = await getShelf(3)
-      console.log(data)
-    } catch (error) {
-      console.error(error)
-    }
-  }
 
   return (
     <>
@@ -76,38 +52,23 @@ const ShelfDetailsPage: FC<ShelfDetailsPageProps> = ({ params }) => {
                 Pynchon, Delillo, and others. A revolving list.
               </div>
             </div>
-            <button className="flex items-center" onClick={toggleDialogOpen}>
+            <DeleteShelfDialogButton shelfId={params.shelfId} shelfName="something here" />
+            {/* <button className="flex items-center" onClick={toggleDialogOpen}>
               delete shelf{" "}
               <span className="bg-theme-gray-200 ml-2 flex aspect-square w-8 items-center justify-center rounded-full text-white transition-colors hover:bg-theme-gray-300">
                 <RemoveIcon />
               </span>
-            </button>
-          </div>
-          <div className="relative mt-3 w-72">
-            <Input
-              value={filterValue}
-              name="search-shelf"
-              label="Search shelf"
-              onChange={setFilterValue}
-              onKeyDown={onFilterKeyDown}
-            />
-            <button
-              className="absolute right-[7px] top-[33px]"
-              onClick={filterBooks}
-            >
-              <Search className="hover:text-theme-gray-500 text-theme-gray-400 transition-colors" />
-            </button>
+            </button> */}
           </div>
         </div>
-        <Button onClick={handleTest}>test</Button>
-        <PageableList itemsPerPage={50}>{bookTiles}</PageableList>
+        <PageableList itemsPerPage={50} includeFilter>{bookTiles}</PageableList>
       </PageContainer>
-      <DeleteShelfDialog
+      {/* <DeleteShelfDialog
         isOpen={dialogOpen}
         shelfTitle="Postmodern Picks"
         closeDialog={toggleDialogOpen}
         deleteShelf={deleteShelf}
-      />
+      /> */}
     </>
   )
 }
