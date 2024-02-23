@@ -1,5 +1,8 @@
 "use client"
 
+import auth from "@/actions/getShelf"
+import getShelf from "@/actions/getShelf"
+import { Button } from "@/components/Button"
 import { Input } from "@/components/Input"
 import PageContainer from "@/components/PageContainer"
 import PageableList from "@/components/PageableList"
@@ -7,6 +10,7 @@ import Pager from "@/components/Pager"
 import SavedBookTile from "@/components/SavedBookTile"
 import DeleteShelfDialog from "@/components/single-use/DeleteShelfDialog"
 import { ISavedBook } from "@/interfaces/persistenceDtos"
+import { API_BASE_URL } from "@/utilities/constants"
 import { Search } from "@mui/icons-material"
 import ArrowBackIcon from "@mui/icons-material/ArrowBack"
 import RemoveIcon from "@mui/icons-material/Remove"
@@ -45,6 +49,15 @@ const ShelfDetailsPage: FC<ShelfDetailsPageProps> = ({ params }) => {
       userNote={b.userNote}
     />
   ))
+
+  const handleTest = async () => {
+    try {
+      const data = await getShelf(3)
+      console.log(data)
+    } catch (error) {
+      console.error(error)
+    }
+  }
 
   return (
     <>
@@ -86,6 +99,7 @@ const ShelfDetailsPage: FC<ShelfDetailsPageProps> = ({ params }) => {
             </button>
           </div>
         </div>
+        <Button onClick={handleTest}>test</Button>
         <PageableList itemsPerPage={50}>{bookTiles}</PageableList>
       </PageContainer>
       <DeleteShelfDialog

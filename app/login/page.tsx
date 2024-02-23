@@ -1,7 +1,9 @@
 "use client"
 
+import login from "@/actions/login"
 import { Button } from "@/components/Button"
 import { Input } from "@/components/Input"
+import { API_BASE_URL } from "@/utilities/constants"
 import Link from "next/link"
 import { FC, useState } from "react"
 
@@ -13,8 +15,13 @@ const LoginPage: FC = () => {
     if (key === "Enter") submit()
   }
 
-  const submit = () => {
-    console.log(`log in with email: ${email} and password: ${password}`)
+  const submit = async () => {
+    try {
+      const userData = await login(email, password)
+      console.log(userData)
+    } catch (error) {
+      console.error(error)
+    }
   }
 
   return (
@@ -44,6 +51,7 @@ const LoginPage: FC = () => {
           value={password}
           name="password-login"
           label="password"
+          type="password"
           onChange={setPassword}
           onKeyDown={onKeyDown}
         />

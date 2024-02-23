@@ -20,3 +20,15 @@ export interface ISavedBook {
   userNote: string | null
   savedDate: number
 }
+
+export interface ISuccessfulAuthResponse {
+  userData: IAuthenticatedUser
+  token: string
+}
+
+interface IAuthenticatedUser {
+  firstName: string
+  lastName: string
+  userId: number
+  email: string
+}
