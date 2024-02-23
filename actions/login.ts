@@ -18,7 +18,6 @@ const login = async (email: string, password: string) => {
     expires: new Date(authArray[3]),
     httpOnly: true,
     path: "/",
-    secure: true,
   })
   return response.json()
 }

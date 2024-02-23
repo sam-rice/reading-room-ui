@@ -3,11 +3,12 @@
 import login from "@/actions/login"
 import { Button } from "@/components/Button"
 import { Input } from "@/components/Input"
-import { API_BASE_URL } from "@/utilities/constants"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 import { FC, useState } from "react"
 
 const LoginPage: FC = () => {
+  const router = useRouter()
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
@@ -19,6 +20,7 @@ const LoginPage: FC = () => {
     try {
       const userData = await login(email, password)
       console.log(userData)
+      router.push("/shelves")
     } catch (error) {
       console.error(error)
     }
