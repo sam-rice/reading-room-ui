@@ -3,6 +3,7 @@
 import RemoveIcon from "@mui/icons-material/Remove"
 import { FC, useState } from "react"
 import DeleteShelfDialog from "./DeleteShelfDialog"
+import { IDeleteShelfResponse } from "@/interfaces/persistenceDtos"
 
 interface DeleteShelfDialogButtonProps {
   shelfId: string
@@ -11,11 +12,9 @@ interface DeleteShelfDialogButtonProps {
 
 const DeleteShelfDialogButton: FC<DeleteShelfDialogButtonProps> = ({
   shelfId,
-  shelfName
+  shelfName,
 }) => {
   const [dialogOpen, setDialogOpen] = useState(false)
-
-  const deleteShelf = () => console.log(`deleting shelf ${shelfName} with id# ${shelfId}`)
 
   const toggleDialogOpen = () => setDialogOpen(!dialogOpen)
 
@@ -30,8 +29,8 @@ const DeleteShelfDialogButton: FC<DeleteShelfDialogButtonProps> = ({
       <DeleteShelfDialog
         isOpen={dialogOpen}
         shelfTitle={shelfName}
+        shelfId={shelfId}
         closeDialog={toggleDialogOpen}
-        deleteShelf={deleteShelf}
       />
     </>
   )

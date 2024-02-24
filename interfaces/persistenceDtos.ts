@@ -30,3 +30,7 @@ export interface ISuccessfulAuthResponse {
   lastName: string
   email: string
 }
+
+export interface IDeleteShelfResponse {
+  success: boolean
+}

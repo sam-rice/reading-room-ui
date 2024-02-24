@@ -1,3 +1,5 @@
+import { deleteShelf } from "@/actions/shelf"
+import { useRouter } from "next/navigation"
 import { FC } from "react"
 import { Button } from "../Button"
 import DialogContainer from "../DialogContainer"
@@ -5,19 +7,27 @@ import DialogContainer from "../DialogContainer"
 interface DeleteShelfDialogProps {
   isOpen: boolean
   shelfTitle: string
+  shelfId: string
   closeDialog: () => void
-  deleteShelf: () => void
 }
 
 const DeleteShelfDialog: FC<DeleteShelfDialogProps> = ({
   isOpen,
   shelfTitle,
+  shelfId,
   closeDialog,
-  deleteShelf,
 }) => {
-  const handleDelete = () => {
-    deleteShelf()
-    closeDialog()
+  const router = useRouter()
+
+  const handleDelete = async () => {
+    try {
+      const result = await deleteShelf(parseInt(shelfId))
+      if (result.success) router.replace("/shelves")
+      else throw new Error("failed to delete")
+    } catch (error) {
+      // "failed to delete" etc..
+      console.error(error)
+    }
   }
 
   return (

@@ -1,4 +1,4 @@
-import { getShelf } from "@/actions/shelfFetches"
+import { getShelf } from "@/actions/shelf"
 import PageContainer from "@/components/PageContainer"
 import PageableList from "@/components/PageableList"
 import SavedBookTile from "@/components/SavedBookTile"

@@ -3,7 +3,11 @@
 import { API_BASE_URL } from "@/utilities/constants"
 import { cookies } from "next/headers"
 
-const login = async (email: string, password: string) => {
+export const isActiveSession = async () => {
+  return cookies().has("token")
+}
+
+export const login = async (email: string, password: string) => {
   const response = await fetch(`${API_BASE_URL}/users/login`, {
     method: "POST",
     headers: {
@@ -20,8 +24,10 @@ const login = async (email: string, password: string) => {
     httpOnly: true,
     path: "/",
   })
-  
+
   return response.json()
 }
 
-export default login
+export const logout = async () => {
+  cookies().delete("token")
+}

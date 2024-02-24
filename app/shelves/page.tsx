@@ -1,4 +1,4 @@
-import { getAllShelves } from "@/actions/shelfFetches"
+import { getAllShelves } from "@/actions/shelf"
 import PageContainer from "@/components/PageContainer"
 import PageableList from "@/components/PageableList"
 import ShelfTile from "@/components/ShelfTile"

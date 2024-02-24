@@ -1,12 +1,12 @@
 "use client"
 
-import isActiveSession from "@/actions/isActiveSession"
-import logout from "@/actions/logout"
+import { isActiveSession } from "@/actions/session"
+import { logout } from "@/actions/session"
 import logo from "@/public/images/logo.png"
 import { DM_Serif_Display } from "next/font/google"
 import Image from "next/image"
 import Link from "next/link"
-import { usePathname } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation"
 import { FC, useEffect, useState } from "react"
 import { twMerge } from "tailwind-merge"
 import HeaderSearch from "./HeaderSearch"
@@ -15,6 +15,8 @@ const dmSerifDisplay = DM_Serif_Display({ weight: "400", subsets: ["latin"] })
 
 export const Header: FC = () => {
   const pathname = usePathname()
+  const router = useRouter()
+  const [isLoadingSession, setIsLoadingSession] = useState(true)
   const [isLoggedIn, setIsLoggedIn] = useState(false)
 
   useEffect(() => {
@@ -24,6 +26,12 @@ export const Header: FC = () => {
   const getSessionStatus = async () => {
     const status = await isActiveSession()
     setIsLoggedIn(status)
+    setIsLoadingSession(false)
+  }
+
+  const handleLogout = async () => {
+    await logout()
+    router.push("/login")
   }
 
   return (
@@ -51,10 +59,14 @@ export const Header: FC = () => {
         </div>
         <div className="flex w-1/3 items-center justify-between">
           <HeaderSearch />
-          {isLoggedIn ? (
-            <button onClick={() => logout()}>log out</button>
-          ) : (
-            <Link href="/login">log in</Link>
+          {!isLoadingSession && (
+            <span>
+              {isLoggedIn ? (
+                <button onClick={handleLogout}>log out</button>
+              ) : (
+                <Link href="/login">log in</Link>
+              )}
+            </span>
           )}
         </div>
       </div>
