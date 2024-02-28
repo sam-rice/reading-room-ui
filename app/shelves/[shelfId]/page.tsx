@@ -1,8 +1,8 @@
-import { getShelf } from "@/actions/shelf"
+import { getShelf } from "@/actions/persistence"
 import PageContainer from "@/components/PageContainer"
 import PageableList from "@/components/PageableList"
-import SavedBookTile from "@/components/SavedBookTile"
-import DeleteShelfDialogButton from "@/components/single-use/DeleteShelfDialogButton"
+import SavedBookTile from "./_components/SavedBookTile"
+import DeleteShelfDialogButton from "./_components/DeleteShelfDialogButton"
 import { ISavedBook, IShelfDetails } from "@/interfaces/persistenceDtos"
 import ArrowBackIcon from "@mui/icons-material/ArrowBack"
 import Link from "next/link"
@@ -51,7 +51,11 @@ const ShelfDetailsPage: FC<ShelfDetailsPageProps> = async ({ params }) => {
             />
           </div>
         </div>
-        <PageableList itemsPerPage={50}>{bookTiles}</PageableList>
+        {bookTiles.length ? (
+          <PageableList itemsPerPage={50}>{bookTiles}</PageableList>
+        ) : (
+          <div className="text-center mt-16 text-theme-gray-500 text-xl">No books added.</div>
+        )}
       </PageContainer>
     </>
   )

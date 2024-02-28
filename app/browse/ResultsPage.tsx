@@ -1,4 +1,4 @@
-import AuthorTile from "@/components/AuthorTile"
+import AuthorTile from "./_components/AuthorTile"
 import BookTile from "@/components/BookTile"
 import PageContainer from "@/components/PageContainer"
 import PageableList from "@/components/PageableList"

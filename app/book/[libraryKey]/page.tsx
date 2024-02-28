@@ -1,8 +1,8 @@
+import { getBookDetails } from "@/actions/browse"
 import EntityLink from "@/components/EntityLink"
 import PageContainer from "@/components/PageContainer"
-import AddToShelfControls from "@/components/single-use/AddToShelfControls"
+import AddToShelfControls from "./_components/AddToShelfControls"
 import { IAuthorBasic } from "@/interfaces/browseDtos"
-import book from "@/placeholder-data/bookDetails.json"
 import fallbackCover from "@/public/images/fallback-cover.png"
 import Image from "next/image"
 import { FC } from "react"
@@ -13,7 +13,9 @@ interface BookDetailsPageProps {
   }
 }
 
-const BookDetailsPage: FC<BookDetailsPageProps> = ({ params }) => {
+const BookDetailsPage: FC<BookDetailsPageProps> = async ({ params }) => {
+  const book = await getBookDetails(params.libraryKey)
+
   const authors = book.authors.map((a: IAuthorBasic, idx: number) => {
     const name =
       book.authors.length > 1 && book.authors.length !== idx + 1
@@ -22,6 +24,7 @@ const BookDetailsPage: FC<BookDetailsPageProps> = ({ params }) => {
 
     return (
       <EntityLink
+        key={a.libraryKey}
         className="text-theme-gray-400 underline"
         libraryKey={a.libraryKey}
         title={name}
@@ -56,20 +59,26 @@ const BookDetailsPage: FC<BookDetailsPageProps> = ({ params }) => {
           <div>{authors}</div>
           <table className="mt-6 border-separate border-spacing-5">
             <tbody>
-              <tr>
-                <td className="w-24" align="right">
-                  publish date:
-                </td>
-                <td>{book.publishDate}</td>
-              </tr>
-              <tr>
-                <td align="right">description:</td>
-                <td>{book.description}</td>
-              </tr>
-              <tr>
-                <td align="right">tags:</td>
-                <td>{book.subjects.join(", ")}</td>
-              </tr>
+              {book.publishDate && (
+                <tr>
+                  <td className="w-24" align="right">
+                    publish date:
+                  </td>
+                  <td>{book.publishDate}</td>
+                </tr>
+              )}
+              {book.description && (
+                <tr>
+                  <td align="right">description:</td>
+                  <td>{book.description}</td>
+                </tr>
+              )}
+              {book.subjects && (
+                <tr>
+                  <td align="right">tags:</td>
+                  <td>{book.subjects.join(", ")}</td>
+                </tr>
+              )}
             </tbody>
           </table>
         </div>

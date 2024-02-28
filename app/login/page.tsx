@@ -1,8 +1,8 @@
 "use client"
 
 import { login } from "@/actions/session"
-import { Button } from "@/components/Button"
-import { Input } from "@/components/Input"
+import Button from "@/components/Button"
+import Input from "@/components/Input"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { FC, useState } from "react"

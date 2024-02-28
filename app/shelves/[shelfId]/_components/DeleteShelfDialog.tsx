@@ -1,8 +1,8 @@
-import { deleteShelf } from "@/actions/shelf"
+import { deleteShelf } from "@/actions/persistence"
 import { useRouter } from "next/navigation"
 import { FC } from "react"
-import { Button } from "../Button"
-import DialogContainer from "../DialogContainer"
+import Button from "@/components/Button"
+import DialogContainer from "@/components/DialogContainer"
 
 interface DeleteShelfDialogProps {
   isOpen: boolean

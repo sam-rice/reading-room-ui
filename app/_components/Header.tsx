@@ -13,7 +13,7 @@ import HeaderSearch from "./HeaderSearch"
 
 const dmSerifDisplay = DM_Serif_Display({ weight: "400", subsets: ["latin"] })
 
-export const Header: FC = () => {
+const Header: FC = () => {
   const pathname = usePathname()
   const router = useRouter()
   const [isLoadingSession, setIsLoadingSession] = useState(true)
@@ -73,3 +73,5 @@ export const Header: FC = () => {
     </header>
   )
 }
+
+export default Header

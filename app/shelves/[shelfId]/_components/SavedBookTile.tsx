@@ -5,8 +5,8 @@ import fallbackCover from "@/public/images/fallback-cover.png"
 import ClearIcon from "@mui/icons-material/Clear"
 import Image from "next/image"
 import { FC } from "react"
-import EntityLink from "./EntityLink"
-import { deleteBookFromShelf } from "@/actions/shelf"
+import EntityLink from "@/components/EntityLink"
+import { deleteBookFromShelf } from "@/actions/persistence"
 
 interface SavedBookTileProps {
   bookId: number

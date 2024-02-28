@@ -1,6 +1,6 @@
 "use client"
 
-import { Button } from "@/components/Button"
+import Button from "@/components/Button"
 import PageContainer from "@/components/PageContainer"
 import { DM_Serif_Display } from "next/font/google"
 import { useRouter } from "next/navigation"
