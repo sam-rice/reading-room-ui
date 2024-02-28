@@ -31,6 +31,6 @@ export interface ISuccessfulAuthResponse {
   email: string
 }
 
-export interface IDeleteShelfResponse {
+export interface IDeleteEntityResponse {
   success: boolean
 }

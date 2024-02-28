@@ -1,7 +1,7 @@
 "use server"
 
 import {
-  IDeleteShelfResponse,
+  IDeleteEntityResponse,
   IShelfBasic,
   IShelfDetails,
 } from "@/interfaces/persistenceDtos"
@@ -31,7 +31,7 @@ export const getAllShelves = async (): Promise<IShelfBasic[]> => {
 
 export const deleteShelf = async (
   shelfId: number,
-): Promise<IDeleteShelfResponse> => {
+): Promise<IDeleteEntityResponse> => {
   const authToken = cookies().get("token")?.value
   const response = await fetch(`${API_BASE_URL}/shelves/${shelfId}`, {
     method: "DELETE",
@@ -40,5 +40,17 @@ export const deleteShelf = async (
     },
   })
   revalidatePath("/shelves")
+  return response.json()
+}
+
+export const deleteBookFromShelf = async (shelfId: number, bookId: number): Promise<IDeleteEntityResponse> => {
+  const authToken = cookies().get("token")?.value
+  const response = await fetch(`${API_BASE_URL}/shelves/${shelfId}/books/${bookId}`, {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${authToken}`,
+    },
+  })
+  revalidatePath(`/shelves/${shelfId}`)
   return response.json()
 }

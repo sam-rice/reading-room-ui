@@ -21,6 +21,7 @@ const ShelfDetailsPage: FC<ShelfDetailsPageProps> = async ({ params }) => {
     <SavedBookTile
       key={b.bookId}
       bookId={b.bookId}
+      shelfId={b.shelfId}
       libraryKey={b.libraryKey}
       title={b.title}
       authors={b.authors}

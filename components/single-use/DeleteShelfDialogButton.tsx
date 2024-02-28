@@ -3,7 +3,7 @@
 import RemoveIcon from "@mui/icons-material/Remove"
 import { FC, useState } from "react"
 import DeleteShelfDialog from "./DeleteShelfDialog"
-import { IDeleteShelfResponse } from "@/interfaces/persistenceDtos"
+import { IDeleteEntityResponse } from "@/interfaces/persistenceDtos"
 
 interface DeleteShelfDialogButtonProps {
   shelfId: string

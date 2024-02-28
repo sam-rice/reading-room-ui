@@ -6,9 +6,11 @@ import ClearIcon from "@mui/icons-material/Clear"
 import Image from "next/image"
 import { FC } from "react"
 import EntityLink from "./EntityLink"
+import { deleteBookFromShelf } from "@/actions/shelf"
 
 interface SavedBookTileProps {
   bookId: number
+  shelfId: number
   libraryKey: string
   title: string
   authors: IAuthorBasic[]
@@ -18,13 +20,22 @@ interface SavedBookTileProps {
 
 const SavedBookTile: FC<SavedBookTileProps> = ({
   bookId,
+  shelfId,
   libraryKey,
   title,
   authors,
   coverUrl,
   userNote,
 }) => {
-  const deleteBook = () => console.log(`deleting book #${bookId}`)
+
+  const deleteBook = async () => {
+    try {
+      const result = await deleteBookFromShelf(shelfId, bookId)
+      if (!result.success) throw new Error("Failed to remove book from shelf.")
+    } catch (error) {
+      console.error(error)
+    }
+  }
 
   const authorsNode = (
     <>

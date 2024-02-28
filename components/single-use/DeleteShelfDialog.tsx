@@ -22,10 +22,12 @@ const DeleteShelfDialog: FC<DeleteShelfDialogProps> = ({
   const handleDelete = async () => {
     try {
       const result = await deleteShelf(parseInt(shelfId))
-      if (result.success) router.replace("/shelves")
-      else throw new Error("failed to delete")
+      if (result.success) {
+        router.replace("/shelves")
+      } else {
+        throw new Error("Failed to delete shelf.")
+      }
     } catch (error) {
-      // "failed to delete" etc..
       console.error(error)
     }
   }
