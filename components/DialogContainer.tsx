@@ -41,6 +41,7 @@ const DialogContainer: FC<DialogContainerProps> = ({
       closeTimeoutMS={400}
       shouldCloseOnOverlayClick
       shouldCloseOnEsc
+      onRequestClose={closeDialog}
     >
       <button className="absolute right-2 top-2" onClick={closeDialog}>
         close

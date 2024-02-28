@@ -1,9 +1,11 @@
 "use client"
 
+import { createNewShelf } from "@/actions/shelf"
 import { FC, useState } from "react"
 import { Button } from "../Button"
 import DialogContainer from "../DialogContainer"
 import { Input } from "../Input"
+import { IShelfBasic } from "@/interfaces/persistenceDtos"
 
 interface NewShelfDialogProps {
   isOpen: boolean
@@ -18,7 +20,21 @@ const NewShelfDialog: FC<NewShelfDialogProps> = ({ isOpen, closeDialog }) => {
     if (key === "Enter") submitShelf()
   }
 
-  const submitShelf = () => console.log("submit")
+  const clearFields = () => {
+    setShelfName("")
+    setDescription("")
+  }
+
+  const submitShelf = async () => {
+    clearFields()
+    try {
+      const newShelf = await createNewShelf(shelfName, description)
+      console.log(newShelf)
+      closeDialog()
+    } catch (error) {
+      console.error(error)
+    }
+  }
 
   return (
     <DialogContainer isOpen={isOpen} closeDialog={closeDialog}>

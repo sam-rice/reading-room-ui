@@ -29,6 +29,30 @@ export const getAllShelves = async (): Promise<IShelfBasic[]> => {
   return response.json()
 }
 
+export const createNewShelf = async (
+  title: string,
+  description: string,
+): Promise<IShelfBasic> => {
+  try {
+    const authToken = cookies().get("token")?.value
+    const response = await fetch(`${API_BASE_URL}/shelves`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${authToken}`,
+      },
+      body: JSON.stringify({ title, description }),
+    })
+    if (response.status !== 201) {
+      throw new Error()
+    }
+    revalidatePath("/shelves")
+    return response.json()
+  } catch (error) {
+    throw new Error("Failed to create shelf.")
+  }
+}
+
 export const deleteShelf = async (
   shelfId: number,
 ): Promise<IDeleteEntityResponse> => {
@@ -43,14 +67,22 @@ export const deleteShelf = async (
   return response.json()
 }
 
-export const deleteBookFromShelf = async (shelfId: number, bookId: number): Promise<IDeleteEntityResponse> => {
+export const deleteBookFromShelf = async (
+  shelfId: number,
+  bookId: number,
+): Promise<IDeleteEntityResponse> => {
   const authToken = cookies().get("token")?.value
-  const response = await fetch(`${API_BASE_URL}/shelves/${shelfId}/books/${bookId}`, {
-    method: "DELETE",
-    headers: {
-      Authorization: `Bearer ${authToken}`,
+  const response = await fetch(
+    `${API_BASE_URL}/shelves/${shelfId}/books/${bookId}`,
+    {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${authToken}`,
+      },
     },
-  })
+  )
   revalidatePath(`/shelves/${shelfId}`)
   return response.json()
 }
+
+// const getToken = () => cookies().get("token")?.value
