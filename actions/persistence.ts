@@ -2,6 +2,7 @@
 
 import {
   IDeleteEntityResponse,
+  ISavedBook,
   IShelfBasic,
   IShelfDetails,
 } from "@/interfaces/persistenceDtos"
@@ -10,23 +11,37 @@ import { revalidatePath } from "next/cache"
 import { cookies } from "next/headers"
 
 export const getShelf = async (shelfId: number): Promise<IShelfDetails> => {
-  const authToken = cookies().get("token")?.value
-  const response = await fetch(`${API_BASE_URL}/shelves/${shelfId}`, {
-    headers: {
-      Authorization: `Bearer ${authToken}`,
-    },
-  })
-  return response.json()
+  try {
+    const authToken = cookies().get("token")?.value
+    const response = await fetch(`${API_BASE_URL}/shelves/${shelfId}`, {
+      headers: {
+        Authorization: `Bearer ${authToken}`,
+      },
+    })
+    if (response.status !== 200) {
+      throw new Error()
+    }
+    return response.json()
+  } catch (error) {
+    throw new Error("Failed to get shelf details.")
+  }
 }
 
 export const getAllShelves = async (): Promise<IShelfBasic[]> => {
-  const authToken = cookies().get("token")?.value
-  const response = await fetch(`${API_BASE_URL}/shelves`, {
-    headers: {
-      Authorization: `Bearer ${authToken}`,
-    },
-  })
-  return response.json()
+  try {
+    const authToken = cookies().get("token")?.value
+    const response = await fetch(`${API_BASE_URL}/shelves`, {
+      headers: {
+        Authorization: `Bearer ${authToken}`,
+      },
+    })
+    if (response.status !== 200) {
+      throw new Error()
+    }
+    return response.json()
+  } catch (error) {
+    throw new Error("Failed to get all shelves.")
+  }
 }
 
 export const createNewShelf = async (
@@ -56,33 +71,66 @@ export const createNewShelf = async (
 export const deleteShelf = async (
   shelfId: number,
 ): Promise<IDeleteEntityResponse> => {
-  const authToken = cookies().get("token")?.value
-  const response = await fetch(`${API_BASE_URL}/shelves/${shelfId}`, {
-    method: "DELETE",
-    headers: {
-      Authorization: `Bearer ${authToken}`,
-    },
-  })
-  revalidatePath("/shelves")
-  return response.json()
+  try {
+    const authToken = cookies().get("token")?.value
+    const response = await fetch(`${API_BASE_URL}/shelves/${shelfId}`, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${authToken}`,
+      },
+    })
+    if (response.status !== 200) {
+      throw new Error()
+    }
+    revalidatePath("/shelves")
+    return response.json()
+  } catch (error) {
+    throw new Error("Failed to delete shelf.")
+  }
 }
 
 export const deleteBookFromShelf = async (
   shelfId: number,
   bookId: number,
 ): Promise<IDeleteEntityResponse> => {
-  const authToken = cookies().get("token")?.value
-  const response = await fetch(
-    `${API_BASE_URL}/shelves/${shelfId}/books/${bookId}`,
-    {
-      method: "DELETE",
-      headers: {
-        Authorization: `Bearer ${authToken}`,
+  try {
+    const authToken = cookies().get("token")?.value
+    const response = await fetch(
+      `${API_BASE_URL}/shelves/${shelfId}/books/${bookId}`,
+      {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${authToken}`,
+        },
       },
-    },
-  )
-  revalidatePath(`/shelves/${shelfId}`)
-  return response.json()
+    )
+    if (response.status !== 200) {
+      throw new Error()
+    }
+    revalidatePath(`/shelves/${shelfId}`)
+    return response.json()
+  } catch (error) {
+    throw new Error("Failed to delete book from shelf.")
+  }
 }
 
-// const getToken = () => cookies().get("token")?.value
+export const addBookToShelf = async (shelfId: number, libraryKey: string): Promise<ISavedBook> => {
+  try {
+    const authToken = cookies().get("token")?.value
+    const response = await fetch(`${API_BASE_URL}/shelves/${shelfId}/books`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${authToken}`,
+      },
+      body: JSON.stringify({ libraryKey }),
+    })
+    if (response.status !== 201) {
+      throw new Error()
+    }
+    revalidatePath("/shelves")
+    return response.json()
+  } catch (error) {
+    throw new Error("Failed to add book to shelf.")
+  }
+}

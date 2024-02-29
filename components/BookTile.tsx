@@ -44,13 +44,13 @@ const BookTile: FC<BookTileProps> = ({
       <div>
         <EntityLink
           className="text-2xl"
-          libraryKey={libraryKey}
+          routeSegmentId={libraryKey}
           title={title}
           variant="book"
         />
         <div className="mb-2 text-theme-gray-300">
           <EntityLink
-            libraryKey={author.libraryKey}
+            routeSegmentId={author.libraryKey}
             title={author.name}
             variant="author"
           />

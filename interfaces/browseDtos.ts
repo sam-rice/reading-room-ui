@@ -31,10 +31,12 @@ export interface IBookDetails {
   authors: IAuthorBasic[]
   coverUrl: string | null
   subjects: string[] | null
-  associatedShelves: {
-    shelfId: number
-    title: string
-  }[]
+  associatedShelves: IAssociatedShelf[]
+}
+
+export interface IAssociatedShelf {
+  shelfId: number
+  title: string
 }
 
 export interface IBookSearchResult {

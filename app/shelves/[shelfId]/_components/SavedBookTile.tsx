@@ -1,12 +1,13 @@
 "use client"
 
+import { deleteBookFromShelf } from "@/actions/persistence"
+import EntityImage from "@/components/EntityImage"
+import EntityLink from "@/components/EntityLink"
 import { IAuthorBasic } from "@/interfaces/browseDtos"
 import fallbackCover from "@/public/images/fallback-cover.png"
 import ClearIcon from "@mui/icons-material/Clear"
 import Image from "next/image"
 import { FC } from "react"
-import EntityLink from "@/components/EntityLink"
-import { deleteBookFromShelf } from "@/actions/persistence"
 
 interface SavedBookTileProps {
   bookId: number
@@ -27,7 +28,6 @@ const SavedBookTile: FC<SavedBookTileProps> = ({
   coverUrl,
   userNote,
 }) => {
-
   const deleteBook = async () => {
     try {
       const result = await deleteBookFromShelf(shelfId, bookId)
@@ -40,7 +40,7 @@ const SavedBookTile: FC<SavedBookTileProps> = ({
   const authorsNode = (
     <>
       <EntityLink
-        libraryKey={authors[0].libraryKey}
+        routeSegmentId={authors[0].libraryKey}
         title={authors[0].name}
         variant="author"
       />
@@ -48,7 +48,7 @@ const SavedBookTile: FC<SavedBookTileProps> = ({
         <>
           {", "}
           <EntityLink
-            libraryKey={authors[1].libraryKey}
+            routeSegmentId={authors[1].libraryKey}
             title={authors[1].name}
             variant="author"
           />
@@ -65,23 +65,18 @@ const SavedBookTile: FC<SavedBookTileProps> = ({
 
   return (
     <li className="relative col-span-1 flex h-48 rounded-theme-large bg-theme-beige-400 px-8 py-5 transition-colors hover:bg-theme-beige-500">
-      {coverUrl ? (
-        <img
-          className="mr-6 h-full"
-          alt={`cover for ${title}`}
-          src={coverUrl}
-        />
-      ) : (
-        <Image
-          className="border-theme-gray-400 mr-6 border"
-          alt={`cover for ${title}`}
-          src={fallbackCover}
-          width={110}
-        />
-      )}
+      <EntityImage
+        className="mr-6 h-full"
+        fallbackClassName="border-theme-gray-400 mr-6 border"
+        alt={`cover for ${title}`}
+        src={coverUrl}
+        fallbackWidth={110}
+        variant="book"
+      />
+
       <div className="mt-3">
         <EntityLink
-          libraryKey={libraryKey}
+          routeSegmentId={libraryKey}
           title={title}
           variant="book"
           isSubHeader

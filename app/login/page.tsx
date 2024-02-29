@@ -18,8 +18,7 @@ const LoginPage: FC = () => {
 
   const submit = async () => {
     try {
-      const userData = await login(email, password)
-      console.log(userData)
+      await login(email, password)
       router.push("/shelves")
     } catch (error) {
       console.error(error)
