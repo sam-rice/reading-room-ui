@@ -32,7 +32,7 @@ const ShelfHeadingInputs: FC<ShelfHeadingInputsProps> = ({
 
   return (
     <div className="w-1/2">
-      <div className="mb-2 relative w-full">
+      <div className="mb-1 relative w-full">
         <input
           className={twMerge(
             "mr-4 w-full text-2xl rounded-theme-small hover:bg-theme-gray-50 px-2 py-2",

@@ -1,13 +1,10 @@
-"use client"
-
 import { deleteBookFromShelf, updateBook } from "@/actions/persistence"
 import EntityImage from "@/components/EntityImage"
 import EntityLink from "@/components/EntityLink"
 import { IAuthorBasic } from "@/interfaces/browseDtos"
-import ClearIcon from "@mui/icons-material/Clear"
-import classNames from "classnames"
-import { FC, useState } from "react"
-import { twMerge } from "tailwind-merge"
+import { FC } from "react"
+import SavedBookDeleteButton from "./SavedBookDeleteButton"
+import SavedBookUserNote from "./SavedBookUserNote"
 
 interface SavedBookTileProps {
   bookId: number
@@ -28,10 +25,8 @@ const SavedBookTile: FC<SavedBookTileProps> = ({
   coverUrl,
   userNote,
 }) => {
-  const [userNoteValue, setUserNoteValue] = useState(userNote || "")
-  const buttonVisible = userNoteValue !== userNote && userNoteValue !== ""
-
   const deleteBook = async () => {
+    "use server"
     try {
       const result = await deleteBookFromShelf(shelfId, bookId)
       if (!result.success) throw new Error("Failed to remove book from shelf.")
@@ -40,17 +35,14 @@ const SavedBookTile: FC<SavedBookTileProps> = ({
     }
   }
 
-  const submitUserNoteUpdate = async () => {
+  const submitUserNoteUpdate = async (updatedNote: string) => {
+    "use server"
     try {
-      const result = await updateBook(shelfId, bookId, userNoteValue)
+      const result = await updateBook(shelfId, bookId, updatedNote)
       if (!result.success) throw new Error("Failed to update user note.")
     } catch (error) {
       console.error(error)
     }
-  }
-
-  const handleOnBlur = () => {
-    if (userNoteValue === "") setUserNoteValue(userNote || "")
   }
 
   const authorsNode = (
@@ -92,31 +84,12 @@ const SavedBookTile: FC<SavedBookTileProps> = ({
           isSubHeader
         />
         <div className="mb-2 text-theme-gray-400">{authorsNode}</div>
-        <label className="text-sm italic text-theme-gray-400 block relative">
-          <div>note:</div>
-          <textarea
-            className={twMerge(
-              "w-full bg-theme-beige-400 py-1 px-2 border border-theme-gray-200 hover:bg-theme-beige-200 resize-none",
-              classNames({ "pr-14": buttonVisible }),
-            )}
-            maxLength={115}
-            value={userNoteValue}
-            onChange={(e) => setUserNoteValue(e.target.value)}
-            onBlur={handleOnBlur}
-          />
-          {buttonVisible && (
-            <button
-              className="hover:underline absolute text-black right-5 bottom-[17px] bg-theme-beige-400 h-[26px] w-12 rounded-theme-small"
-              onClick={submitUserNoteUpdate}
-            >
-              save
-            </button>
-          )}
-        </label>
+        <SavedBookUserNote
+          userNoteDefaultValue={userNote}
+          submitUpdate={submitUserNoteUpdate}
+        />
       </div>
-      <button className="absolute right-3 top-2" onClick={deleteBook}>
-        <ClearIcon className="hover:text-red-800" fontSize="small" />
-      </button>
+      <SavedBookDeleteButton deleteBook={deleteBook} />
     </li>
   )
 }
