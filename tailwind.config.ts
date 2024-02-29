@@ -17,7 +17,8 @@ const config: Config = {
         "theme-gray-400": "#9E9E9E",
         "theme-gray-300": "#C9C9C9",
         "theme-gray-200": "#D9D9D9",
-        "theme-gray-100": "#EDEDED"
+        "theme-gray-100": "#EDEDED",
+        "theme-gray-50": "#F2F2F2"
       },
       borderRadius: {
         "theme-small": "4px",

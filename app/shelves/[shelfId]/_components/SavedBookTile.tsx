@@ -40,13 +40,17 @@ const SavedBookTile: FC<SavedBookTileProps> = ({
     }
   }
 
-  const updateUserNote = async () => {
+  const submitUserNoteUpdate = async () => {
     try {
       const result = await updateBook(shelfId, bookId, userNoteValue)
       if (!result.success) throw new Error("Failed to update user note.")
     } catch (error) {
       console.error(error)
     }
+  }
+
+  const handleOnBlur = () => {
+    if (userNoteValue === "") setUserNoteValue(userNote || "")
   }
 
   const authorsNode = (
@@ -98,11 +102,12 @@ const SavedBookTile: FC<SavedBookTileProps> = ({
             maxLength={115}
             value={userNoteValue}
             onChange={(e) => setUserNoteValue(e.target.value)}
+            onBlur={handleOnBlur}
           />
           {buttonVisible && (
             <button
               className="hover:underline absolute text-black right-5 bottom-[17px] bg-theme-beige-400 h-[26px] w-12 rounded-theme-small"
-              onClick={updateUserNote}
+              onClick={submitUserNoteUpdate}
             >
               save
             </button>

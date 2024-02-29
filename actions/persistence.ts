@@ -89,6 +89,27 @@ export const deleteShelf = async (
   }
 }
 
+export const updateShelf = async (shelfId: number, title: string, description: string): Promise<IUpdateOrDeleteEntityResponse> => {
+  try {
+    const authToken = cookies().get("token")?.value
+    const response = await fetch(`${API_BASE_URL}/shelves/${shelfId}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${authToken}`,
+      },
+      body: JSON.stringify({ title, description }),
+    })
+    if (response.status !== 200) {
+      throw new Error()
+    }
+    revalidatePath(`/shelves/${shelfId}`)
+    return response.json()
+  } catch (error) {
+    throw new Error("Failed to update shelf description.")
+  }
+}
+
 export const deleteBookFromShelf = async (
   shelfId: number,
   bookId: number,

@@ -1,12 +1,13 @@
-import { getShelf } from "@/actions/persistence"
+import { getShelf, updateShelf } from "@/actions/persistence"
 import PageContainer from "@/components/PageContainer"
 import PageableList from "@/components/PageableList"
-import SavedBookTile from "./_components/SavedBookTile"
-import DeleteShelfDialogButton from "./_components/DeleteShelfDialogButton"
 import { ISavedBook, IShelfDetails } from "@/interfaces/persistenceDtos"
 import ArrowBackIcon from "@mui/icons-material/ArrowBack"
 import Link from "next/link"
 import { FC } from "react"
+import DeleteShelfDialogButton from "./_components/DeleteShelfDialogButton"
+import SavedBookTile from "./_components/SavedBookTile"
+import ShelfHeadingInputs from "./_components/ShelfHeadingInputs"
 
 interface ShelfDetailsPageProps {
   params: {
@@ -16,6 +17,20 @@ interface ShelfDetailsPageProps {
 
 const ShelfDetailsPage: FC<ShelfDetailsPageProps> = async ({ params }) => {
   const shelf: IShelfDetails = await getShelf(parseInt(params.shelfId))
+
+  const submitShelfUpdate = async (title: string, description: string) => {
+    "use server"
+    try {
+      const result = await updateShelf(
+        parseInt(params.shelfId),
+        title,
+        description,
+      )
+      if (!result.success) throw new Error("Failed to update shelf.")
+    } catch (error) {
+      console.error(error)
+    }
+  }
 
   const bookTiles = shelf.books.map((b: ISavedBook) => (
     <SavedBookTile
@@ -38,13 +53,11 @@ const ShelfDetailsPage: FC<ShelfDetailsPageProps> = async ({ params }) => {
         </Link>
         <div className="mb-8 w-full">
           <div className="flex w-full items-end justify-between">
-            <div>
-              <div className="flex items-baseline">
-                <h1 className="mr-4 text-2xl">{shelf.title}</h1>
-                <span className="text-sm italic text-theme-gray-300">{`(${shelf.totalSavedBooks} books)`}</span>
-              </div>
-              <div className="text-theme-gray-300">{shelf.description}</div>
-            </div>
+            <ShelfHeadingInputs
+              title={shelf.title}
+              description={shelf.description}
+              updateShelf={submitShelfUpdate}
+            />
             <DeleteShelfDialogButton
               shelfId={params.shelfId}
               shelfName={shelf.title}
@@ -54,7 +67,9 @@ const ShelfDetailsPage: FC<ShelfDetailsPageProps> = async ({ params }) => {
         {bookTiles.length ? (
           <PageableList itemsPerPage={50}>{bookTiles}</PageableList>
         ) : (
-          <div className="text-center mt-16 text-theme-gray-500 text-xl">No books added.</div>
+          <div className="text-center mt-16 text-theme-gray-500 text-xl">
+            No books added.
+          </div>
         )}
       </PageContainer>
     </>
