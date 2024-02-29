@@ -33,7 +33,7 @@ const LoginPage: FC = () => {
           <div className="text-xl">Log in</div>
           <div className="text-sm">
             or{" "}
-            <Link className="underline" href="login/register">
+            <Link className="underline" href="register">
               sign up
             </Link>
           </div>

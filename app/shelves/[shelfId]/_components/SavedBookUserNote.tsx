@@ -29,7 +29,7 @@ const SavedBookUserNote: FC<SavedBookUserNoteProps> = ({
       <div>note:</div>
       <textarea
         className={twMerge(
-          "w-full bg-theme-beige-400 py-1 px-2 border border-theme-gray-200 hover:bg-theme-beige-200 resize-none",
+          "w-full bg-theme-beige-400 py-1 px-2 border border-theme-gray-200 hover:bg-theme-beige-200 transition-all duration-100 resize-none",
           classNames({ "pr-16": buttonVisible }),
         )}
         maxLength={115}
