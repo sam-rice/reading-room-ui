@@ -1,58 +1,62 @@
-"use client"
-
-import AuthorTile from "./@authors/_components/AuthorTile"
 import BookTile from "@/components/BookTile"
 import PageContainer from "@/components/PageContainer"
-import PageableList from "@/components/PageableList"
 import { IAuthorSearchResult, IBookSearchResult } from "@/interfaces/browseDtos"
-// import results from "@/placeholder-data/bookSearchResponse.json"
-import results from "@/placeholder-data/authorSearchResponse.json"
+import { SearchCategory } from "@/interfaces/utilities"
 import { DM_Serif_Display } from "next/font/google"
-import { useSearchParams } from "next/navigation"
-import { FC } from "react"
+import { FC, ReactNode } from "react"
 import { twMerge } from "tailwind-merge"
-import { SearchCategory } from "../@form/page"
+import AuthorTile from "./_components/AuthorTile"
+import Results from "./_components/Results"
 
 const dmSerifDisplay = DM_Serif_Display({ weight: "400", subsets: ["latin"] })
 
-const ResultsPage: FC = () => {
-  const searchParams = useSearchParams()
+interface ResultsPageProps {
+  searchParams: {
+    q: string
+    cat: SearchCategory
+  }
+}
 
-  const searchSummary = (
-    <div className="text-theme-gray-400">{`${results.length} ${searchParams.get("cat") === "books" ? "book" : "author"} results for "${searchParams.get("q")}"`}</div>
-  )
+const ResultsPage: FC<ResultsPageProps> = ({ searchParams }) => {
+  const mapToAuthorTiles = (results: IAuthorSearchResult[]) => {
+    return results.map((a: IAuthorSearchResult) => (
+      <AuthorTile key={a.libraryKey} {...a} />
+    ))
+  }
 
-  // result tiles for books
-  // const resultTiles = results.map((b: IBookSearchResult) => (
-  //       <BookTile
-  //         key={b.libraryKey}
-  //         libraryKey={b.libraryKey}
-  //         title={b.title}
-  //         author={b.authors[0]}
-  //         hasMultipleAuthors={b.authors.length > 1}
-  //         subjects={b.subjects}
-  //         publishDate={b.publishYear}
-  //         coverUrl={b.coverUrl}
-  //       />
-  //     ))
-
-  //result tiles for authors
-  const resultTiles = results.map((a: IAuthorSearchResult) => (
-    <AuthorTile key={a.libraryKey} {...a} />
-  ))
+  const mapToBookTiles = (results: IBookSearchResult[]) => {
+    return results.map((b: IBookSearchResult) => (
+      <BookTile
+        key={b.libraryKey}
+        libraryKey={b.libraryKey}
+        title={b.title}
+        author={b.authors[0]}
+        hasMultipleAuthors={b.authors.length > 1}
+        subjects={b.subjects}
+        publishDate={b.publishYear}
+        coverUrl={b.coverUrl}
+      />
+    ))
+  }
 
   return (
     <PageContainer className="max-w-5xl">
       <h1 className={twMerge(dmSerifDisplay.className, "mb-1 mt-16 text-3xl")}>
         BROWSE LIBRARY
       </h1>
-      <PageableList
-        listClassName="grid-cols-1"
-        headingNode={searchSummary}
-        itemsPerPage={50}
-      >
-        {resultTiles}
-      </PageableList>
+      <Results
+        query={searchParams.q}
+        category={searchParams.cat}
+        resultsMapper={
+          searchParams.cat === "authors"
+            ? (mapToAuthorTiles as (
+                results: IAuthorSearchResult[],
+              ) => ReactNode[])
+            : (mapToBookTiles as (
+                results: (IAuthorSearchResult | IBookSearchResult)[],
+              ) => ReactNode[])
+        }
+      />
     </PageContainer>
   )
 }

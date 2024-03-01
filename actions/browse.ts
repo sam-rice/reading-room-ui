@@ -1,6 +1,7 @@
 "use server"
 
 import { IBookDetails, IBookSearchResult } from "@/interfaces/browseDtos"
+import { SearchCategory } from "@/interfaces/utilities"
 import { API_BASE_URL } from "@/utilities/constants"
 import { cookies } from "next/headers"
 
@@ -21,10 +22,10 @@ export const getBookDetails = async (libraryKey: string): Promise<IBookDetails> 
   }
 }
 
-export const getBookSearchResults = async (query: string): Promise<IBookSearchResult[]> => {
+export const getSearchResults = async<T> (query: string, category: SearchCategory): Promise<T[]> => {
   try {
     const authToken = cookies().get("token")?.value
-    const response = await fetch(`${API_BASE_URL}/search/books?q=${query}`, {
+    const response = await fetch(`${API_BASE_URL}/search/${category}?q=${query}`, {
       headers: {
         Authorization: `Bearer ${authToken}`
       }
@@ -34,6 +35,6 @@ export const getBookSearchResults = async (query: string): Promise<IBookSearchRe
     }
     return response.json()
   } catch (error) {
-    throw new Error("Failed to search for books.")
+    throw new Error(`Failed to search for ${category}.`)
   }
 }
