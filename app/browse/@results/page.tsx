@@ -1,6 +1,6 @@
 "use client"
 
-import AuthorTile from "./_components/AuthorTile"
+import AuthorTile from "./@authors/_components/AuthorTile"
 import BookTile from "@/components/BookTile"
 import PageContainer from "@/components/PageContainer"
 import PageableList from "@/components/PageableList"
