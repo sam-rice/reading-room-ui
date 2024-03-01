@@ -11,7 +11,7 @@ const dmSerifDisplay = DM_Serif_Display({ weight: "400", subsets: ["latin"] })
 
 export type SearchCategory = "authors" | "books"
 
-const BrowseLandingPage: FC = () => {
+const SearchFormPage: FC = () => {
   const [query, setQuery] = useState("")
   const [category, setCategory] = useState<SearchCategory | "">("")
   const router = useRouter()
@@ -54,4 +54,4 @@ const BrowseLandingPage: FC = () => {
   )
 }
 
-export default BrowseLandingPage
+export default SearchFormPage

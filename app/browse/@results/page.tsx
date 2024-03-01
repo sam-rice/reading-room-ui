@@ -1,3 +1,5 @@
+"use client"
+
 import AuthorTile from "./_components/AuthorTile"
 import BookTile from "@/components/BookTile"
 import PageContainer from "@/components/PageContainer"
@@ -9,7 +11,7 @@ import { DM_Serif_Display } from "next/font/google"
 import { useSearchParams } from "next/navigation"
 import { FC } from "react"
 import { twMerge } from "tailwind-merge"
-import { SearchCategory } from "./landingPage"
+import { SearchCategory } from "../@form/page"
 
 const dmSerifDisplay = DM_Serif_Display({ weight: "400", subsets: ["latin"] })
 
