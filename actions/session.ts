@@ -3,10 +3,6 @@
 import { API_BASE_URL } from "@/utilities/constants"
 import { cookies } from "next/headers"
 
-export const isActiveSession = async () => {
-  return cookies().has("token")
-}
-
 export const logout = async () => {
   cookies().delete("token")
 }
