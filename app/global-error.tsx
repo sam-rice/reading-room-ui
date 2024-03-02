@@ -28,7 +28,7 @@ export default function GlobalError({
           "flex min-h-screen flex-col items-center",
         )}
       >
-        <PageContainer className=" justify-center items-center">
+        <PageContainer className="justify-center items-center">
           <h1 className="mb-8 text-xl">Something went wrong!</h1>
           <LinkButton href="/" variant="dark">
             Back to Home

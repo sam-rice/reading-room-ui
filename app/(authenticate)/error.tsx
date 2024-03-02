@@ -16,8 +16,8 @@ export default function Error({
   return (
     <PageContainer className="justify-center items-center">
       <h1 className="mb-8 text-xl">Something went wrong!</h1>
-      <LinkButton href="/" variant="dark">
-        Back to Home
+      <LinkButton href="/login" variant="dark">
+        Back to Log In
       </LinkButton>
     </PageContainer>
   )
