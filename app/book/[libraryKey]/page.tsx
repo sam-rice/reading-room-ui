@@ -1,8 +1,8 @@
-import { getBookDetails } from "@/actions/browse"
+import { getEntityDetails } from "@/actions/browse"
 import EntityImage from "@/components/EntityImage"
 import EntityLink from "@/components/EntityLink"
 import PageContainer from "@/components/PageContainer"
-import { IAuthorBasic } from "@/interfaces/browseDtos"
+import { IAuthorBasic, IBookDetails } from "@/interfaces/browseDtos"
 import { FC } from "react"
 import AddToShelfWidget from "./_components/AddToShelfWidget"
 import AssociatedShelvesMessage from "./_components/AssociatedShelvesMessage"
@@ -14,13 +14,14 @@ interface BookDetailsPageProps {
 }
 
 const BookDetailsPage: FC<BookDetailsPageProps> = async ({ params }) => {
-  const book = await getBookDetails(params.libraryKey)
+  const book = await getEntityDetails<IBookDetails>(params.libraryKey, "books")
 
   const authors = book.authors.map((a: IAuthorBasic, idx: number) => {
     const name =
       book.authors.length > 1 && book.authors.length !== idx + 1
         ? a.name + ", "
         : a.name
+    
 
     return (
       <EntityLink

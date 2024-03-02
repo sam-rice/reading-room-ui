@@ -13,10 +13,5 @@ export function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/((?!api|_next/static|_next/image|favicon.ico).*)|/login|/register"],
+  matcher: ["/shelves/:path*", "/book/:path*", "/author/:path*", "/", "/browse/:path*"]
 }
-
-// implemented config produces same result as below config, but avoids the need to explicitly add new paths as new routes are added to application
-// export const config = {
-//   matcher: ["/shelves/:path*", "/book/:path*", "/author/:path*", "/", "/browse/:path*"]
-// }

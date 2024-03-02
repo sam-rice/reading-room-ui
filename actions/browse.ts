@@ -1,14 +1,13 @@
 "use server"
 
-import { IBookDetails, IBookSearchResult } from "@/interfaces/browseDtos"
-import { SearchCategory } from "@/interfaces/utilities"
+import { EntityType } from "@/interfaces/utilities"
 import { API_BASE_URL } from "@/utilities/constants"
 import { cookies } from "next/headers"
 
-export const getBookDetails = async (libraryKey: string): Promise<IBookDetails> => {
+export const getEntityDetails = async<T> (libraryKey: string, type: EntityType): Promise<T> => {
   try {
     const authToken = cookies().get("token")?.value
-    const response = await fetch(`${API_BASE_URL}/search/books/${libraryKey}`, {
+    const response = await fetch(`${API_BASE_URL}/search/${type}/${libraryKey}`, {
       headers: {
         Authorization: `Bearer ${authToken}`
       }
@@ -18,14 +17,14 @@ export const getBookDetails = async (libraryKey: string): Promise<IBookDetails> 
     }
     return response.json()
   } catch (error) {
-    throw new Error("Failed to find book details.")
+    throw new Error(`Failed to find ${type === "books" ? "book" : "author"} details.`)
   }
 }
 
-export const getSearchResults = async<T> (query: string, category: SearchCategory): Promise<T[]> => {
+export const getSearchResults = async<T> (query: string, type: EntityType): Promise<T[]> => {
   try {
     const authToken = cookies().get("token")?.value
-    const response = await fetch(`${API_BASE_URL}/search/${category}?q=${query}`, {
+    const response = await fetch(`${API_BASE_URL}/search/${type}?q=${query}`, {
       headers: {
         Authorization: `Bearer ${authToken}`
       }
@@ -35,6 +34,6 @@ export const getSearchResults = async<T> (query: string, category: SearchCategor
     }
     return response.json()
   } catch (error) {
-    throw new Error(`Failed to search for ${category}.`)
+    throw new Error(`Failed to search for ${type}.`)
   }
 }

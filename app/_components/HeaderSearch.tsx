@@ -1,12 +1,17 @@
 "use client"
 
 import { Search } from "@mui/icons-material"
+import { useRouter } from "next/navigation"
 import { FC, KeyboardEvent, useState } from "react"
 
 const HeaderSearch: FC = () => {
+  const router = useRouter()
   const [query, setQuery] = useState("")
 
-  const executeSearch = () => console.log("search for ", query)
+  const executeSearch = () => {
+    router.push(`/browse?q=${query}&cat=books`)
+    setQuery("")
+  }
 
   const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") executeSearch()

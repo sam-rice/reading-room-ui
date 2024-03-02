@@ -1,11 +1,11 @@
 import { getSearchResults } from "@/actions/browse"
 import PageableList from "@/components/PageableList"
-import { SearchCategory } from "@/interfaces/utilities"
+import { EntityType } from "@/interfaces/utilities"
 import { ReactNode } from "react"
 
 interface ResultsProps<T> {
   query: string
-  category: SearchCategory
+  category: EntityType
   resultsMapper: (results: T[]) => ReactNode[]
 }
 

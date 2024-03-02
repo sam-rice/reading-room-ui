@@ -1,1 +1,1 @@
-export type SearchCategory = "books" | "authors"
+export type EntityType = "books" | "authors"

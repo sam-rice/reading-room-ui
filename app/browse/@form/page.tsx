@@ -13,10 +13,14 @@ export type SearchCategory = "authors" | "books"
 
 const SearchFormPage: FC = () => {
   const [query, setQuery] = useState("")
-  const [category, setCategory] = useState<SearchCategory | "">("")
+  const [category, setCategory] = useState<SearchCategory>("books")
   const router = useRouter()
 
   const submit = () => router.push(`?q=${query}&cat=${category}`)
+
+  const handleKeyDown = (key: string) => {
+    if (key === "Enter") submit()
+  }
 
   return (
     <PageContainer className=" items-center justify-center">
@@ -31,6 +35,7 @@ const SearchFormPage: FC = () => {
           className="mt-3 h-11 w-1/2 min-w-64 pl-3"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
+          onKeyDown={(e) => handleKeyDown(e.key)}
           aria-labelledby="search-library"
           placeholder="search..."
         />
@@ -41,9 +46,6 @@ const SearchFormPage: FC = () => {
             value={category}
             onChange={(e) => setCategory(e.target.value as SearchCategory)}
           >
-            <option value="" disabled>
-              select
-            </option>
             <option value="books">book title</option>
             <option value="authors">author name</option>
           </select>
