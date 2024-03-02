@@ -1,8 +1,9 @@
 "use server"
 
-import { EntityType } from "@/interfaces/utilities"
 import { API_BASE_URL } from "@/utilities/constants"
 import { fetchWrapper } from "./utilities"
+
+export type EntityType = "books" | "authors"
 
 export const getEntityDetails = async <T>(
   libraryKey: string,

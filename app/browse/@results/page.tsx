@@ -1,7 +1,7 @@
 import BookTile from "@/components/BookTile"
 import PageContainer from "@/components/PageContainer"
 import { IAuthorSearchResult, IBookSearchResult } from "@/interfaces/browseDtos"
-import { EntityType } from "@/interfaces/utilities"
+import { EntityType } from "@/actions/browse"
 import { DM_Serif_Display } from "next/font/google"
 import { FC, ReactNode } from "react"
 import { twMerge } from "tailwind-merge"
