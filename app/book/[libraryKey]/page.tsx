@@ -37,7 +37,7 @@ const BookDetailsPage: FC<BookDetailsPageProps> = async ({ params }) => {
 
   return (
     <PageContainer className="max-w-5xl">
-      <div className="mt-20 flex">
+      <div className="mt-20 mb-8 flex">
         <EntityImage
           className="mr-14 h-[450px]"
           fallbackClassName="mr-14"
@@ -46,34 +46,36 @@ const BookDetailsPage: FC<BookDetailsPageProps> = async ({ params }) => {
           variant="book"
           fallbackWidth={290}
         />
-        <div>
+        <div className="flex flex-col justify-between">
+          <div>
+            <h1 className="mb-1 text-3xl">{book.title}</h1>
+            <div>{authors}</div>
+            <table className="mt-6 border-separate border-spacing-5">
+              <tbody>
+                {book.publishDate && (
+                  <tr>
+                    <td className="w-24" align="right">
+                      publish date:
+                    </td>
+                    <td>{book.publishDate}</td>
+                  </tr>
+                )}
+                {book.description && (
+                  <tr>
+                    <td align="right">description:</td>
+                    <td>{book.description}</td>
+                  </tr>
+                )}
+                {book.subjects && (
+                  <tr>
+                    <td align="right">tags:</td>
+                    <td>{book.subjects.join(", ")}</td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+          </div>
           <AssociatedShelvesMessage shelves={book.associatedShelves} />
-          <h1 className="mb-1 text-3xl">{book.title}</h1>
-          <div>{authors}</div>
-          <table className="mt-6 border-separate border-spacing-5">
-            <tbody>
-              {book.publishDate && (
-                <tr>
-                  <td className="w-24" align="right">
-                    publish date:
-                  </td>
-                  <td>{book.publishDate}</td>
-                </tr>
-              )}
-              {book.description && (
-                <tr>
-                  <td align="right">description:</td>
-                  <td>{book.description}</td>
-                </tr>
-              )}
-              {book.subjects && (
-                <tr>
-                  <td align="right">tags:</td>
-                  <td>{book.subjects.join(", ")}</td>
-                </tr>
-              )}
-            </tbody>
-          </table>
         </div>
       </div>
       <AddToShelfWidget

@@ -27,7 +27,7 @@ const AddToShelfControls: FC<AddToShelfControlsProps> = ({
   ))
 
   return (
-    <div className="my-5 flex h-28 w-[600px] items-center justify-center bg-theme-beige-400">
+    <div className="my-5 flex h-28 w-[600px] items-center justify-center bg-theme-beige-400 rounded-theme-large">
       <label className="flex items-baseline mr-7">
         <span
           className={classNames({
