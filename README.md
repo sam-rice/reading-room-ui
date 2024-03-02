@@ -4,13 +4,12 @@ API Repository: [Reading Room API](https://github.com/sam-rice/reading-room-api)
 
 <br />
 
-This is the home of the Reading Room UI, which is still being built. The current version of the UI can be ran locally for demoing purposes. See installation instructions below.
+This is the home of the Reading Room UI, which is currently being built. The WIP version of the UI can be ran locally for demoing purposes. See installation instructions below.
 
 The project's Java/Spring Boot API is currently deployed and can be demoed via Postman. Instructions and repository can be found [here](https://github.com/sam-rice/reading-room-api?tab=readme-ov-file#local-setup-instructions).
 
 ### Future Sprints
 
-- Client-Side Error Handling
 - Form Validation
 - Accessibility 
 - Integration Testing (Cypress.io)
