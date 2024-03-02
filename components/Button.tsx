@@ -12,7 +12,7 @@ interface ButtonProps {
   onClick: () => void
 }
 
-export const Button: FC<ButtonProps> = ({
+const Button: FC<ButtonProps> = ({
   className,
   children,
   variant = "dark",
@@ -52,3 +52,5 @@ export const Button: FC<ButtonProps> = ({
     </button>
   )
 }
+
+export default Button

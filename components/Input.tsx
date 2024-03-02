@@ -12,7 +12,7 @@ interface InputProps {
   label: string
 }
 
-export const Input: FC<InputProps> = ({
+const Input: FC<InputProps> = ({
   className,
   value,
   name,
@@ -37,3 +37,5 @@ export const Input: FC<InputProps> = ({
     </label>
   )
 }
+
+export default Input

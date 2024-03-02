@@ -27,10 +27,16 @@ export interface IBookDetails {
   libraryKey: string
   title: string
   description: string | null
-  publishDate: string
+  publishDate: string | null
   authors: IAuthorBasic[]
-  coverUrl: string
+  coverUrl: string | null
   subjects: string[] | null
+  associatedShelves: IAssociatedShelf[]
+}
+
+export interface IAssociatedShelf {
+  shelfId: number
+  title: string
 }
 
 export interface IBookSearchResult {

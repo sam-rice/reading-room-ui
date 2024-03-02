@@ -1,9 +1,11 @@
 "use client"
 
+import { createNewShelf } from "@/actions/persistence"
 import { FC, useState } from "react"
-import { Button } from "../Button"
-import DialogContainer from "../DialogContainer"
-import { Input } from "../Input"
+import Button from "@/components/Button"
+import DialogContainer from "@/components/DialogContainer"
+import Input from "@/components/Input"
+import { useRouter } from "next/navigation"
 
 interface NewShelfDialogProps {
   isOpen: boolean
@@ -11,6 +13,7 @@ interface NewShelfDialogProps {
 }
 
 const NewShelfDialog: FC<NewShelfDialogProps> = ({ isOpen, closeDialog }) => {
+  const router = useRouter()
   const [shelfName, setShelfName] = useState("")
   const [description, setDescription] = useState("")
 
@@ -18,7 +21,21 @@ const NewShelfDialog: FC<NewShelfDialogProps> = ({ isOpen, closeDialog }) => {
     if (key === "Enter") submitShelf()
   }
 
-  const submitShelf = () => console.log("submit")
+  const clearFields = () => {
+    setShelfName("")
+    setDescription("")
+  }
+
+  const submitShelf = async () => {
+    clearFields()
+    try {
+      const newShelf = await createNewShelf(shelfName, description)
+      router.push(`/shelves/${newShelf.shelfId}`)
+      closeDialog()
+    } catch (error) {
+      console.error(error)
+    }
+  }
 
   return (
     <DialogContainer isOpen={isOpen} closeDialog={closeDialog}>

@@ -54,7 +54,10 @@ const PageableList: FC<PageableListProps> = ({
         {firstItemIndex + currentPageItems.length} of {totalItems}
       </div>
       <ul
-        className={twMerge("mb-6 grid grow grid-cols-2 gap-6", listClassName)}
+        className={twMerge(
+          "mb-6 grid grow grid-cols-2 gap-6 content-start",
+          listClassName,
+        )}
       >
         {currentPageItems}
       </ul>

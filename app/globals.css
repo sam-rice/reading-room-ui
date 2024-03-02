@@ -9,8 +9,15 @@
 
 .ReactModal__Overlay--after-open{
   opacity: 1;
+  z-index: 9999;
 }
 
 .ReactModal__Overlay--before-close{
   opacity: 0;
+}
+
+.ReactModalPortal {
+  position: absolute;
+  height: 1px;
+  width: 1px;
 }

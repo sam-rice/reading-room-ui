@@ -1,8 +1,8 @@
+import { getEntityDetails } from "@/actions/browse"
 import BookTile from "@/components/BookTile"
 import PageContainer from "@/components/PageContainer"
 import PageableList from "@/components/PageableList"
-import { IAuthorBook } from "@/interfaces/browseDtos"
-import author from "@/placeholder-data/authorDetails.json"
+import { IAuthorBook, IAuthorDetails } from "@/interfaces/browseDtos"
 import fallbackCover from "@/public/images/fallback-cover.png"
 import Image from "next/image"
 import { FC } from "react"
@@ -13,10 +13,13 @@ interface AuthorDetailsPageProps {
   }
 }
 
-const AuthorDetailsPage: FC<AuthorDetailsPageProps> = ({ params }) => {
+const AuthorDetailsPage: FC<AuthorDetailsPageProps> = async ({ params }) => {
+  const author = await getEntityDetails<IAuthorDetails>(params.libraryKey, "authors")
+
   const bookTiles = author.books.map((b: IAuthorBook) => {
     return (
       <BookTile
+        key={b.libraryKey}
         libraryKey={b.libraryKey}
         title={b.title}
         author={b.primaryAuthor}

@@ -1,6 +1,6 @@
 "use client"
 
-import { Button } from "@/components/Button"
+import Button from "@/components/Button"
 import PageContainer from "@/components/PageContainer"
 import { DM_Serif_Display } from "next/font/google"
 import { useRouter } from "next/navigation"
@@ -11,12 +11,16 @@ const dmSerifDisplay = DM_Serif_Display({ weight: "400", subsets: ["latin"] })
 
 export type SearchCategory = "authors" | "books"
 
-const BrowseLandingPage: FC = () => {
+const SearchFormPage: FC = () => {
   const [query, setQuery] = useState("")
-  const [category, setCategory] = useState<SearchCategory | "">("")
+  const [category, setCategory] = useState<SearchCategory>("books")
   const router = useRouter()
 
   const submit = () => router.push(`?q=${query}&cat=${category}`)
+
+  const handleKeyDown = (key: string) => {
+    if (key === "Enter") submit()
+  }
 
   return (
     <PageContainer className=" items-center justify-center">
@@ -31,6 +35,7 @@ const BrowseLandingPage: FC = () => {
           className="mt-3 h-11 w-1/2 min-w-64 pl-3"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
+          onKeyDown={(e) => handleKeyDown(e.key)}
           aria-labelledby="search-library"
           placeholder="search..."
         />
@@ -41,9 +46,6 @@ const BrowseLandingPage: FC = () => {
             value={category}
             onChange={(e) => setCategory(e.target.value as SearchCategory)}
           >
-            <option value="" disabled>
-              select
-            </option>
             <option value="books">book title</option>
             <option value="authors">author name</option>
           </select>
@@ -54,4 +56,4 @@ const BrowseLandingPage: FC = () => {
   )
 }
 
-export default BrowseLandingPage
+export default SearchFormPage

@@ -1,7 +1,7 @@
 "use client"
 
-import { Button } from "@/components/Button"
-import { Input } from "@/components/Input"
+import Button from "@/components/Button"
+import Input from "@/components/Input"
 import Link from "next/link"
 import { FC, useState } from "react"
 

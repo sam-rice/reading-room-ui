@@ -4,10 +4,10 @@ import Link from "next/link"
 import { FC } from "react"
 import { twMerge } from "tailwind-merge"
 
-type EntityLinkType = "author" | "book"
+type EntityLinkType = "author" | "book" | "shelf"
 
 interface EntityLinkProps {
-  libraryKey: string
+  routeSegmentId: string | number
   title: string
   variant: EntityLinkType
   className?: string
@@ -15,16 +15,19 @@ interface EntityLinkProps {
 }
 
 const EntityLink: FC<EntityLinkProps> = ({
-  libraryKey,
+  routeSegmentId,
   title,
   variant,
   className,
   isSubHeader,
 }) => {
+
+  const routeSegment = variant === "shelf" ? "shelves" : variant
+
   return (
     <Link
       className={twMerge("hover:underline w-fit", className)}
-      href={`/${variant}/${libraryKey}`}
+      href={`/${routeSegment}/${routeSegmentId}`}
     >
       {isSubHeader ? <h2 className="text-xl">{title}</h2> : title}
     </Link>

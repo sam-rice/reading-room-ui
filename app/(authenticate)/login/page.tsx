@@ -1,11 +1,14 @@
 "use client"
 
-import { Button } from "@/components/Button"
-import { Input } from "@/components/Input"
+import { login } from "@/actions/session"
+import Button from "@/components/Button"
+import Input from "@/components/Input"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 import { FC, useState } from "react"
 
 const LoginPage: FC = () => {
+  const router = useRouter()
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
@@ -13,8 +16,13 @@ const LoginPage: FC = () => {
     if (key === "Enter") submit()
   }
 
-  const submit = () => {
-    console.log(`log in with email: ${email} and password: ${password}`)
+  const submit = async () => {
+    try {
+      await login(email, password)
+      router.push("/shelves")
+    } catch (error) {
+      console.error(error)
+    }
   }
 
   return (
@@ -25,7 +33,7 @@ const LoginPage: FC = () => {
           <div className="text-xl">Log in</div>
           <div className="text-sm">
             or{" "}
-            <Link className="underline" href="login/register">
+            <Link className="underline" href="register">
               sign up
             </Link>
           </div>
@@ -44,6 +52,7 @@ const LoginPage: FC = () => {
           value={password}
           name="password-login"
           label="password"
+          type="password"
           onChange={setPassword}
           onKeyDown={onKeyDown}
         />

@@ -1,4 +1,4 @@
-import { Header } from "@/components/single-use/Header"
+import Header from "./_components/Header"
 import type { Metadata } from "next"
 import { Jost } from "next/font/google"
 import Link from "next/link"
