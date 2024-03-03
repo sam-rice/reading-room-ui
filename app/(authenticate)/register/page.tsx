@@ -30,7 +30,7 @@ const RegisterPage: FC = () => {
   const [authError, setAuthError] = useState<string | null>(null)
 
   const onKeyDown = (key: string) => {
-    if (key === "Enter") handleSubmit(onSubmit)
+    if (key === "Enter") handleSubmit(onSubmit)()
   }
 
   const onSubmit: SubmitHandler<IRegisterFields> = async (data) => {
@@ -53,8 +53,8 @@ const RegisterPage: FC = () => {
 
   return (
     <>
-      <div className="flex w-1/3 flex-col items-center justify-evenly mt-6 pb-7 pt-4 bg-white">
-        <div className="relative text-center w-full mb-6">
+      <div className="mt-6 flex w-1/3 flex-col items-center justify-evenly bg-white pb-7 pt-4">
+        <div className="relative mb-6 w-full text-center">
           <div className="text-xl">Sign up</div>
           <div className="text-sm">
             already signed up?{" "}
@@ -63,12 +63,13 @@ const RegisterPage: FC = () => {
             </Link>
           </div>
           {authError && (
-            <div className="absolute -bottom-7 text-red-500 ml-auto mr-auto left-0 right-0">
+            <div className="absolute -bottom-7 left-0 right-0 ml-auto mr-auto text-red-500">
               {authError}
             </div>
           )}
         </div>
         <Input
+          id="first-name"
           className="w-4/5"
           label="first name"
           autoComplete="given-name"
@@ -79,8 +80,10 @@ const RegisterPage: FC = () => {
             maxLength: 30 || "30 characters max",
           }}
           error={errors["first name"]}
+          required
         />
         <Input
+          id="last-name"
           className="w-4/5"
           label="last name"
           autoComplete="family-name"
@@ -91,8 +94,10 @@ const RegisterPage: FC = () => {
             maxLength: 30 || "30 characters max",
           }}
           error={errors["last name"]}
+          required
         />
         <Input
+          id="email"
           className="w-4/5"
           label="email"
           type="email"
@@ -105,8 +110,10 @@ const RegisterPage: FC = () => {
             validate: (value) => value.includes("@") || "Invalid email format.",
           }}
           error={errors.email}
+          required
         />
         <Input
+          id="password"
           className="mb-5 w-4/5"
           label="password"
           type="password"
@@ -115,6 +122,7 @@ const RegisterPage: FC = () => {
           register={register}
           registerOptions={{ required: "required" }}
           error={errors.password}
+          required
         />
       </div>
       <Button className="my-6" onClick={handleSubmit(onSubmit)}>

@@ -36,6 +36,7 @@ const HeaderSearch: FC = () => {
         id="search-books"
         onChange={(e) => setQuery(e.target.value)}
         onKeyDown={handleKeyDown}
+        aria-label="search books"
       />
     </span>
   )

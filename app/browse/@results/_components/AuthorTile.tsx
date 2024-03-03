@@ -25,7 +25,7 @@ const AuthorTile: FC<AuthorTileProps> = ({
       href={`/author/${libraryKey}`}
       className="relative col-span-1 flex h-32 items-center rounded-theme-large bg-theme-beige-400 px-8 py-5 transition-colors hover:cursor-pointer hover:bg-theme-beige-500"
     >
-      <div className="min-w-[25%] mr-4">
+      <div className="mr-4 min-w-[25%]">
         <h2 className="text-2xl">{name}</h2>
         {!!birthDate && (
           <div className="mb-2 text-theme-gray-300">

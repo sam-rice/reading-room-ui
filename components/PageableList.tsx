@@ -10,6 +10,7 @@ interface PageableListProps {
   children: ReactNode
   headingNode?: ReactNode
   itemsPerPage: number
+  noItemsMessage: string
 }
 
 const PageableList: FC<PageableListProps> = ({
@@ -18,6 +19,7 @@ const PageableList: FC<PageableListProps> = ({
   children,
   headingNode,
   itemsPerPage,
+  noItemsMessage,
 }) => {
   const [currentPage, setCurrentPage] = useState(1)
   const sectionRef = useRef<HTMLElement>(null)
@@ -54,7 +56,11 @@ const PageableList: FC<PageableListProps> = ({
           showing {firstItemIndex + 1} -{" "}
           {firstItemIndex + currentPageItems.length} of {totalItems}
         </div>
-      ) : <div className="text-center text-theme-gray-500 text-lg mt-10">No books by author.</div>}
+      ) : (
+        <div className="mt-10 text-center text-lg text-theme-gray-500">
+          {noItemsMessage}
+        </div>
+      )}
       <ul
         className={twMerge(
           "mb-6 grid grow grid-cols-2 content-start gap-6",
@@ -63,13 +69,15 @@ const PageableList: FC<PageableListProps> = ({
       >
         {currentPageItems}
       </ul>
-      <Pager
-        currentPage={currentPage}
-        numberOfPages={numberOfPages}
-        totalItems={totalItems}
-        pageForward={pageForward}
-        pageBackward={pageBackward}
-      />
+      {!!currentPageItems.length && (
+        <Pager
+          currentPage={currentPage}
+          numberOfPages={numberOfPages}
+          totalItems={totalItems}
+          pageForward={pageForward}
+          pageBackward={pageBackward}
+        />
+      )}
     </section>
   )
 }

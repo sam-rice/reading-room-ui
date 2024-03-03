@@ -64,13 +64,10 @@ const ShelfDetailsPage: FC<ShelfDetailsPageProps> = async ({ params }) => {
             />
           </div>
         </div>
-        {bookTiles.length ? (
-          <PageableList itemsPerPage={50}>{bookTiles}</PageableList>
-        ) : (
-          <div className="text-center mt-16 text-theme-gray-500 text-xl">
-            No books added.
-          </div>
-        )}
+
+        <PageableList itemsPerPage={50} noItemsMessage="No books yet.">
+          {bookTiles}
+        </PageableList>
       </PageContainer>
     </>
   )

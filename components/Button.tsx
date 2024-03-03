@@ -9,6 +9,7 @@ interface ButtonProps {
   children: ReactNode
   variant?: ButtonVariant
   disabled?: boolean
+  ariaControls?: string
   onClick: () => void
 }
 
@@ -17,6 +18,7 @@ const Button: FC<ButtonProps> = ({
   children,
   variant = "dark",
   disabled = false,
+  ariaControls,
   onClick,
 }) => {
   const buttonClasses = classNames(
@@ -47,6 +49,7 @@ const Button: FC<ButtonProps> = ({
       )}
       onClick={onClick}
       disabled={disabled}
+      aria-controls={ariaControls}
     >
       {children}
     </button>
