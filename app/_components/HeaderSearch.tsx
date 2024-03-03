@@ -9,8 +9,12 @@ const HeaderSearch: FC = () => {
   const [query, setQuery] = useState("")
 
   const executeSearch = () => {
-    router.push(`/browse?q=${query}&cat=books`)
-    setQuery("")
+    if (!query) {
+      router.push("/browse")
+    } else {
+      router.push(`/browse?q=${query}&cat=books`)
+      setQuery("")
+    }
   }
 
   const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
