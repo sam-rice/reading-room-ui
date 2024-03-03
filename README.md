@@ -12,7 +12,7 @@ The project's Java/Spring Boot API is currently deployed and can be demoed via P
 
 - Deployment
 - Integration Testing (Cypress.io)
-- Aesthetic Enhancements (loading placeholder ("progress") components, various design and UX enghancements)
+- Aesthetic Enhancements (loading placeholder ("progress") components, various design and UX enhancements)
 - Functional Enhancements (back-end pagination, security enhancements, etc.)
 
 #### Front End
