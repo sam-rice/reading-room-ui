@@ -10,7 +10,6 @@ The project's Java/Spring Boot API is currently deployed and can be demoed via P
 
 ### Future Sprints
 
-- Accessibility
 - Integration Testing (Cypress.io)
 - Deployment
 - Aesthetic Enhancements (loading placeholder ("progress") components, various design and UX enghancements)
