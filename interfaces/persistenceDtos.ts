@@ -25,12 +25,13 @@ export interface ISavedBook {
   savedDate: number
 }
 
+export interface IUpdateOrDeleteEntityResponse {
+  success: boolean
+}
+
 export interface ISuccessfulAuthResponse {
   firstName: string
   lastName: string
   email: string
 }
 
-export interface IUpdateOrDeleteEntityResponse {
-  success: boolean
-}

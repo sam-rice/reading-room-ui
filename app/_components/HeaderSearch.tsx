@@ -29,6 +29,7 @@ const HeaderSearch: FC = () => {
         className="rounded-theme-small h-full w-full pl-3"
         value={query}
         placeholder="Search books"
+        id="search-books"
         onChange={(e) => setQuery(e.target.value)}
         onKeyDown={handleKeyDown}
       />

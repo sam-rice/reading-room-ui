@@ -3,6 +3,8 @@ import { NextRequest, NextResponse } from "next/server"
 export function middleware(req: NextRequest) {
   const authToken = req.cookies.get("token")?.value
 
+  console.log("middleware")
+
   if (!authToken) {
     return NextResponse.redirect(new URL("/login", req.url))
   } else if (req.nextUrl.pathname === "/") {

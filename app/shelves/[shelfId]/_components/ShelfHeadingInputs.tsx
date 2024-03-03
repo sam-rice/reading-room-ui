@@ -39,13 +39,12 @@ const ShelfHeadingInputs: FC<ShelfHeadingInputsProps> = ({
             classNames({ "pr-14": titleButtonVisible }),
           )}
           id="shelf-title"
-          name="titleValue"
           value={titleValue}
           onChange={(e) => setTitleValue(e.target.value)}
           onBlur={handleOnBlur}
           maxLength={40}
           role="heading"
-          aria-description="shelf name"
+          aria-description="shelf title"
         />
         {titleButtonVisible && (
           <button
@@ -62,12 +61,12 @@ const ShelfHeadingInputs: FC<ShelfHeadingInputsProps> = ({
             "w-full text-base italic py-1 px-2 hover:bg-theme-gray-50 rounded-theme-small",
             classNames({ "pr-14": descriptionButtonVisible }),
           )}
-          name="descriptionValue"
+          id="shelf-description"
           maxLength={150}
           value={descriptionValue}
           onChange={(e) => setDescriptionValue(e.target.value)}
           onBlur={handleOnBlur}
-          aria-labelledby="shelf-description"
+          aria-labelledby="shelf-title"
         />
         {descriptionButtonVisible && (
           <button

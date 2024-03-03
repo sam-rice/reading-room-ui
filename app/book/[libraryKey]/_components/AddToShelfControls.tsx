@@ -40,6 +40,7 @@ const AddToShelfControls: FC<AddToShelfControlsProps> = ({
           className={classNames("ml-4 h-9 max-w-64 min-w-52 rounded-theme-small px-1", {
             "text-theme-gray-300": !availableShelves.length,
           })}
+          id="add-to-shelf-select"
           value={value}
           onChange={(e) => setValue(parseInt(e.target.value))}
           disabled={!availableShelves.length}

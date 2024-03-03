@@ -1,11 +1,11 @@
 "use client"
 
-import { login } from "@/actions/session"
+import { loginUser } from "@/actions/authorization"
 import Button from "@/components/Button"
 import Input from "@/components/Input"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
-import { FC } from "react"
+import { FC, useState } from "react"
 import { SubmitHandler, useForm } from "react-hook-form"
 
 export interface ILoginInputs {
@@ -25,6 +25,7 @@ const LoginPage: FC = () => {
     },
   })
   const router = useRouter()
+  const [authError, setAuthError] = useState<string | null>(null)
 
   const onKeyDown = (key: string) => {
     if (key === "Enter") handleSubmit(onSubmit)
@@ -32,8 +33,12 @@ const LoginPage: FC = () => {
 
   const onSubmit: SubmitHandler<ILoginInputs> = async (data) => {
     try {
-      await login(data.email, data.password)
-      router.push("/shelves")
+      const response = await loginUser(data.email, data.password)
+      if ("error" in response) {
+        setAuthError("Invalid email or password.")
+      } else {
+        router.push("/shelves")
+      }
     } catch (error) {
       console.error(error)
     }
@@ -41,9 +46,8 @@ const LoginPage: FC = () => {
 
   return (
     <>
-      <br />
-      <div className="flex w-1/3 flex-col items-center justify-evenly bg-white">
-        <div className="my-4 text-center">
+      <div className="flex w-1/3 flex-col items-center space-y-6 mt-6 pb-7 pt-4 justify-evenly bg-white">
+        <div className="relative mt-4 mb-2 text-center w-full">
           <div className="text-xl">Log in</div>
           <div className="text-sm">
             or{" "}
@@ -51,27 +55,33 @@ const LoginPage: FC = () => {
               sign up
             </Link>
           </div>
+          {authError && <div className="absolute -bottom-7 text-red-500 ml-auto mr-auto left-0 right-0">{authError}</div>}
         </div>
         <Input
           className="mb-4 w-4/5"
           label="email"
           type="email"
+          autoComplete="email"
           onKeyDown={onKeyDown}
           register={register}
-          registerOptions={{ required: "required" }}
+          registerOptions={{
+            required: "required",
+            validate: (value) => value.includes("@") || "Invalid email format.",
+          }}
           error={errors.email}
         />
         <Input
           className="mb-5 w-4/5"
           label="password"
           type="password"
+          autoComplete="current-password"
           onKeyDown={onKeyDown}
           register={register}
           registerOptions={{ required: "required" }}
           error={errors.password}
         />
       </div>
-      <Button className="mt-6" onClick={handleSubmit(onSubmit)}>
+      <Button className="my-6" onClick={handleSubmit(onSubmit)}>
         continue
       </Button>
     </>
