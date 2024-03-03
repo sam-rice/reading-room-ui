@@ -10,8 +10,8 @@ The project's Java/Spring Boot API is currently deployed and can be demoed via P
 
 ### Future Sprints
 
-- Integration Testing (Cypress.io)
 - Deployment
+- Integration Testing (Cypress.io)
 - Aesthetic Enhancements (loading placeholder ("progress") components, various design and UX enghancements)
 
 #### Front End
@@ -55,3 +55,8 @@ Notes:
 2. `cd` into the top level of the project repository from the command line and install project dependencies by running `npm i`.
 3. Run `npm run dev` to launch the application's server.
 4. Navigate to [http://localhost:3000](http://localhost:3000) in your browser to view the live page.
+5. When prompted, log in with demo user credentials to begin using the app:\
+  email: `jimmy@mail.com`\
+  password: `guitar`
+
+
