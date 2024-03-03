@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation"
 import { FC, useState } from "react"
 import { SubmitHandler, useForm } from "react-hook-form"
 
-export interface ILoginInputs {
+export interface ILoginFields {
   email: string
   password: string
 }
@@ -18,7 +18,7 @@ const LoginPage: FC = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<ILoginInputs>({
+  } = useForm<ILoginFields>({
     defaultValues: {
       email: "",
       password: "",
@@ -31,7 +31,7 @@ const LoginPage: FC = () => {
     if (key === "Enter") handleSubmit(onSubmit)
   }
 
-  const onSubmit: SubmitHandler<ILoginInputs> = async (data) => {
+  const onSubmit: SubmitHandler<ILoginFields> = async (data) => {
     try {
       const response = await loginUser(data.email, data.password)
       if ("error" in response) {
@@ -46,7 +46,7 @@ const LoginPage: FC = () => {
 
   return (
     <>
-      <div className="flex w-1/3 flex-col items-center space-y-6 mt-6 pb-7 pt-4 justify-evenly bg-white">
+      <div className="flex w-1/3 flex-col items-center mt-6 pt-4 pb-3 justify-evenly bg-white">
         <div className="relative mt-4 mb-2 text-center w-full">
           <div className="text-xl">Log in</div>
           <div className="text-sm">
@@ -58,7 +58,7 @@ const LoginPage: FC = () => {
           {authError && <div className="absolute -bottom-7 text-red-500 ml-auto mr-auto left-0 right-0">{authError}</div>}
         </div>
         <Input
-          className="mb-4 w-4/5"
+          className="w-4/5"
           label="email"
           type="email"
           autoComplete="email"
@@ -66,12 +66,13 @@ const LoginPage: FC = () => {
           register={register}
           registerOptions={{
             required: "required",
+            maxLength: 40 || "40 characters max",
             validate: (value) => value.includes("@") || "Invalid email format.",
           }}
           error={errors.email}
         />
         <Input
-          className="mb-5 w-4/5"
+          className="w-4/5"
           label="password"
           type="password"
           autoComplete="current-password"

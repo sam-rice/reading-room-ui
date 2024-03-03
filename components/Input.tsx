@@ -32,7 +32,7 @@ function Input<T extends FieldValues>({
   error,
 }: InputProps<T>) {
   return (
-    <label className={twMerge("w-full flex flex-col relative", className)}>
+    <label className={twMerge("w-full flex flex-col relative mb-6", className)}>
       <span>{label}: </span>
       <input
         className="rounded-theme-small border h-9 mt-1 pl-2 border-theme-gray-400"

@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation"
 import { FC, useState } from "react"
 import { SubmitHandler, useForm } from "react-hook-form"
 
-interface IRegisterInputs {
+interface IRegisterFields {
   "first name": string
   "last name": string
   email: string
@@ -21,7 +21,7 @@ const RegisterPage: FC = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<IRegisterInputs>({
+  } = useForm<IRegisterFields>({
     defaultValues: {
       email: "",
       password: "",
@@ -33,7 +33,7 @@ const RegisterPage: FC = () => {
     if (key === "Enter") handleSubmit(onSubmit)
   }
 
-  const onSubmit: SubmitHandler<IRegisterInputs> = async (data) => {
+  const onSubmit: SubmitHandler<IRegisterFields> = async (data) => {
     try {
       const response = await registerUser(
         data["first name"],
@@ -53,8 +53,8 @@ const RegisterPage: FC = () => {
 
   return (
     <>
-      <div className="flex w-1/3 flex-col items-center justify-evenly mt-6 space-y-6 pb-7 pt-4 bg-white">
-        <div className="relative text-center w-full">
+      <div className="flex w-1/3 flex-col items-center justify-evenly mt-6 pb-7 pt-4 bg-white">
+        <div className="relative text-center w-full mb-6">
           <div className="text-xl">Sign up</div>
           <div className="text-sm">
             already signed up?{" "}
@@ -71,7 +71,8 @@ const RegisterPage: FC = () => {
           onKeyDown={onKeyDown}
           register={register}
           registerOptions={{
-            required: "required"
+            required: "required",
+            maxLength: 30 || "30 characters max",
           }}
           error={errors["first name"]}
         />
@@ -82,7 +83,8 @@ const RegisterPage: FC = () => {
           onKeyDown={onKeyDown}
           register={register}
           registerOptions={{
-            required: "required"
+            required: "required",
+            maxLength: 30 || "30 characters max",
           }}
           error={errors["last name"]}
         />
@@ -95,6 +97,7 @@ const RegisterPage: FC = () => {
           register={register}
           registerOptions={{
             required: "required",
+            maxLength: 40 || "40 characters max",
             validate: (value) => value.includes("@") || "Invalid email format.",
           }}
           error={errors.email}
