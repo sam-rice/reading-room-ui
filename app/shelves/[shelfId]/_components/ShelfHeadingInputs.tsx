@@ -1,8 +1,14 @@
 "use client"
 
 import classNames from "classnames"
-import { FC, useState } from "react"
+import { FC } from "react"
+import { SubmitHandler, useForm } from "react-hook-form"
 import { twMerge } from "tailwind-merge"
+
+interface IShelfHeadingFields {
+  title: string
+  description: string
+}
 
 interface ShelfHeadingInputsProps {
   title: string
@@ -15,19 +21,29 @@ const ShelfHeadingInputs: FC<ShelfHeadingInputsProps> = ({
   description,
   updateShelf,
 }) => {
-  const [titleValue, setTitleValue] = useState(title)
-  const [descriptionValue, setDescriptionValue] = useState(description)
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm<IShelfHeadingFields>({
+    defaultValues: {
+      title: title,
+      description: description,
+    },
+  })
+  const watchTitleValue = watch("title")
+  const watchDescriptionValue = watch("description")
 
-  const titleButtonVisible = titleValue !== title
-  const descriptionButtonVisible = descriptionValue !== description
+  const titleButtonVisible = watchTitleValue !== title
+  const descriptionButtonVisible = watchDescriptionValue !== description
 
-  const handleClick = () => {
-    if (titleValue && descriptionValue) updateShelf(titleValue, descriptionValue)
+  const onTitleUpdate: SubmitHandler<IShelfHeadingFields> = (data) => {
+    updateShelf(data.title, description)
   }
 
-  const handleOnBlur = () => {
-    if (titleValue === "") setTitleValue(title)
-    if (descriptionValue === "") setDescriptionValue(description)
+  const onDescriptionUpdate: SubmitHandler<IShelfHeadingFields> = (data) => {
+    updateShelf(title, data.description)
   }
 
   return (
@@ -39,21 +55,26 @@ const ShelfHeadingInputs: FC<ShelfHeadingInputsProps> = ({
             classNames({ "pr-14": titleButtonVisible }),
           )}
           id="shelf-title"
-          value={titleValue}
-          onChange={(e) => setTitleValue(e.target.value)}
-          onBlur={handleOnBlur}
-          maxLength={40}
+          {...register("title", {
+            required: true,
+            maxLength: 40,
+          })}
           role="heading"
           aria-description="shelf title"
         />
         {titleButtonVisible && (
           <button
-            className="hover:underline absolute text-black right-[2px] bottom-[3px] h-[43px] w-12 rounded-theme-small"
-            onClick={handleClick}
+            className="hover:underline absolute text-black right-[2px] top-[2px] h-[43px] w-12 rounded-theme-small"
+            onClick={handleSubmit(onTitleUpdate)}
           >
             save
           </button>
         )}
+        <div className="text-red-500">
+          {errors.title?.type === "maxLength" &&
+            "* name cannot exceed 40 characters"}
+          {errors.title?.type === "required" && "* shelf must be have a name"}
+        </div>
       </div>
       <div className="text-sm italic text-theme-gray-400 block relative w-full">
         <input
@@ -62,20 +83,24 @@ const ShelfHeadingInputs: FC<ShelfHeadingInputsProps> = ({
             classNames({ "pr-14": descriptionButtonVisible }),
           )}
           id="shelf-description"
-          maxLength={150}
-          value={descriptionValue}
-          onChange={(e) => setDescriptionValue(e.target.value)}
-          onBlur={handleOnBlur}
+          {...register("description", {
+            maxLength: 150,
+          })}
+          placeholder={!description ? "shelf description..." : undefined}
           aria-labelledby="shelf-title"
         />
         {descriptionButtonVisible && (
           <button
-            className="hover:underline absolute text-black right-[2px] bottom-[2px] h-[30px] w-12 rounded-theme-small"
-            onClick={handleClick}
+            className="hover:underline absolute text-black right-[2px] top-[2px] h-[30px] w-12 rounded-theme-small"
+            onClick={handleSubmit(onDescriptionUpdate)}
           >
             save
           </button>
         )}
+        <div className="text-red-500">
+          {errors.description?.type === "maxLength" &&
+            "* description cannot exceed 150 characters"}
+        </div>
       </div>
     </div>
   )
