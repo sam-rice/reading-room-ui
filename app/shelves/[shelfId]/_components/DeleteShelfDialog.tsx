@@ -45,11 +45,7 @@ const DeleteShelfDialog: FC<DeleteShelfDialogProps> = ({
         <Button className="mr-2" onClick={handleDelete}>
           Delete
         </Button>
-        <Button
-          onClick={closeDialog}
-          variant="light"
-          aria-label="close modal"
-        >
+        <Button onClick={closeDialog} variant="light" aria-label="close modal">
           Cancel
         </Button>
       </div>

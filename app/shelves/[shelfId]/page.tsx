@@ -48,7 +48,11 @@ const ShelfDetailsPage: FC<ShelfDetailsPageProps> = async ({ params }) => {
   return (
     <>
       <PageContainer>
-        <Link className="my-6 w-fit" href={"/shelves"} aria-label="go back to all shelves page">
+        <Link
+          className="my-6 w-fit"
+          href={"/shelves"}
+          aria-label="go back to all shelves page"
+        >
           <ArrowBackIcon className="text-4xl" />
         </Link>
         <div className="mb-8 w-full">
