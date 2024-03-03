@@ -70,6 +70,7 @@ const ShelfHeadingInputs: FC<ShelfHeadingInputsProps> = ({
           })}
           onKeyDown={handleKeyDown}
           role="heading"
+          aria-level={1}
           aria-label="shelf title"
         />
         {titleButtonVisible && (

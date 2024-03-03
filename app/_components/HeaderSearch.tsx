@@ -8,7 +8,7 @@ const HeaderSearch: FC = () => {
   const router = useRouter()
   const [query, setQuery] = useState("")
 
-  const executeSearch = () => {
+  const submitSearch = () => {
     if (!query) {
       router.push("/browse")
     } else {
@@ -18,14 +18,15 @@ const HeaderSearch: FC = () => {
   }
 
   const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter") executeSearch()
+    if (e.key === "Enter") submitSearch()
   }
 
   return (
     <span className="relative h-1/2 w-4/5">
       <button
         className="absolute right-[7px] top-[9px]"
-        onClick={() => executeSearch()}
+        onClick={() => submitSearch()}
+        aria-label="submit search"
       >
         <Search className="text-theme-gray-400 transition-colors hover:text-theme-gray-500" />
       </button>

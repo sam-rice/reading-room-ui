@@ -22,7 +22,7 @@ const ShelfTile: FC<ShelfTileProps> = ({
       href={`/shelves/${shelfId}`}
       role="listitem"
     >
-      {coverUrl && <img className="mr-6 h-full" src={coverUrl} />}
+      {coverUrl && <img className="mr-6 h-full" src={coverUrl} alt={`sample cover for ${title}`}/>}
       <div className="flex-1">
         <h2 className="mb-2 text-2xl">{title}</h2>
         <p className="text-theme-gray-300">{description}</p>

@@ -48,7 +48,7 @@ const DeleteShelfDialog: FC<DeleteShelfDialogProps> = ({
         <Button
           onClick={closeDialog}
           variant="light"
-          ariaControls="delete-shelf-dialog"
+          aria-label="close modal"
         >
           Cancel
         </Button>

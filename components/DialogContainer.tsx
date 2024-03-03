@@ -52,7 +52,7 @@ const DialogContainer: FC<DialogContainerProps> = ({
       <button
         className="absolute right-2 top-2"
         onClick={closeDialog}
-        aria-controls={id}
+        aria-label="close modal"
       >
         close
       </button>

@@ -94,7 +94,7 @@ const NewShelfDialog: FC<NewShelfDialogProps> = ({ isOpen, closeDialog }) => {
       <button
         className="underline"
         onClick={closeDialog}
-        aria-controls="new-shelf-dialog"
+        aria-label="close modal"
       >
         cancel
       </button>
