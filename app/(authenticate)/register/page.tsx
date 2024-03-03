@@ -62,7 +62,11 @@ const RegisterPage: FC = () => {
               log in
             </Link>
           </div>
-          {authError && <div className="absolute -bottom-7 text-red-500 ml-auto mr-auto left-0 right-0">{authError}</div>}
+          {authError && (
+            <div className="absolute -bottom-7 text-red-500 ml-auto mr-auto left-0 right-0">
+              {authError}
+            </div>
+          )}
         </div>
         <Input
           className="w-4/5"

@@ -1,8 +1,8 @@
-import Header from "./_components/Header"
 import type { Metadata } from "next"
 import { Jost } from "next/font/google"
 import Link from "next/link"
 import { twMerge } from "tailwind-merge"
+import Header from "./_components/Header"
 import "./globals.css"
 
 const jost = Jost({ subsets: ["latin"] })

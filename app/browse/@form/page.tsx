@@ -62,7 +62,9 @@ const SearchFormPage: FC = () => {
           </select>
         </label>
         <Button onClick={submit}>search</Button>
-        {error && <span className="text-red-500 absolute bottom-2">* {error}</span>}
+        {error && (
+          <span className="text-red-500 absolute bottom-2">* {error}</span>
+        )}
       </div>
     </PageContainer>
   )

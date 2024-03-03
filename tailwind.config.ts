@@ -1,4 +1,4 @@
-import type { Config } from "tailwindcss";
+import type { Config } from "tailwindcss"
 
 const config: Config = {
   content: [
@@ -18,23 +18,23 @@ const config: Config = {
         "theme-gray-300": "#C9C9C9",
         "theme-gray-200": "#D9D9D9",
         "theme-gray-100": "#EDEDED",
-        "theme-gray-50": "#F2F2F2"
+        "theme-gray-50": "#F2F2F2",
       },
       borderRadius: {
         "theme-small": "4px",
-        "theme-large": "8px"
+        "theme-large": "8px",
       },
       borderColor: {
         "theme-gray-400": "#9E9E9E",
-        "theme-gray-200": "#D9D9D9"
+        "theme-gray-200": "#D9D9D9",
       },
       textColor: {
         "theme-gray-500": "#808080",
         "theme-gray-400": "#9E9E9E",
-        "theme-gray-300": "#959595"
-      }
+        "theme-gray-300": "#959595",
+      },
     },
   },
   plugins: [],
-};
-export default config;
+}
+export default config

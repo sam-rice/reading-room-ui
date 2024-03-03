@@ -13,10 +13,11 @@ interface SavedBookUserNoteProps {
 const SavedBookUserNote: FC<SavedBookUserNoteProps> = ({
   userNoteDefaultValue,
   submitUpdate,
-  libraryKey
+  libraryKey,
 }) => {
   const [userNoteValue, setUserNoteValue] = useState(userNoteDefaultValue || "")
-  const buttonVisible = userNoteValue !== userNoteDefaultValue && userNoteValue !== ""
+  const buttonVisible =
+    userNoteValue !== userNoteDefaultValue && userNoteValue !== ""
 
   const handleOnBlur = () => {
     if (userNoteValue === "") setUserNoteValue(userNoteDefaultValue || "")

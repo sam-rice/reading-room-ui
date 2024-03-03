@@ -34,4 +34,3 @@ export interface ISuccessfulAuthResponse {
   lastName: string
   email: string
 }
-

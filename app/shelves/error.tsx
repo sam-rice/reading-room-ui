@@ -7,9 +7,9 @@ import { useEffect } from "react"
 
 export default function Error({
   error,
-  reset
+  reset,
 }: {
-  error: Error & { digest?: string },
+  error: Error & { digest?: string }
   reset: () => void
 }) {
   useEffect(() => {
@@ -18,8 +18,12 @@ export default function Error({
 
   return (
     <PageContainer className=" justify-center items-center">
-      <h1 className="mb-16 text-xl">Something went wrong! Could not retrieve shelves.</h1>
-      <Button className="mb-4" onClick={reset} variant="dark">Try Again</Button>
+      <h1 className="mb-16 text-xl">
+        Something went wrong! Could not retrieve shelves.
+      </h1>
+      <Button className="mb-4" onClick={reset} variant="dark">
+        Try Again
+      </Button>
       <div>or please check back with us later.</div>
     </PageContainer>
   )

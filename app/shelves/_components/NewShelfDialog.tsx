@@ -1,11 +1,11 @@
 "use client"
 
 import { createNewShelf } from "@/actions/persistence"
-import { FC, useState } from "react"
 import Button from "@/components/Button"
 import DialogContainer from "@/components/DialogContainer"
 import Input from "@/components/Input"
 import { useRouter } from "next/navigation"
+import { FC, useState } from "react"
 import { SubmitHandler, useForm } from "react-hook-form"
 
 interface INewShelfFields {
@@ -43,7 +43,10 @@ const NewShelfDialog: FC<NewShelfDialogProps> = ({ isOpen, closeDialog }) => {
   const submitShelf: SubmitHandler<INewShelfFields> = async (data) => {
     // clearFields()
     try {
-      const newShelf = await createNewShelf(data["shelf name"], data.description)
+      const newShelf = await createNewShelf(
+        data["shelf name"],
+        data.description,
+      )
       router.push(`/shelves/${newShelf.shelfId}`)
       closeDialog()
     } catch (error) {
@@ -61,7 +64,7 @@ const NewShelfDialog: FC<NewShelfDialogProps> = ({ isOpen, closeDialog }) => {
           register={register}
           registerOptions={{
             required: "required",
-            maxLength: 40 || "40 characters max"
+            maxLength: 40 || "40 characters max",
           }}
           error={errors["shelf name"]}
         />
@@ -71,7 +74,7 @@ const NewShelfDialog: FC<NewShelfDialogProps> = ({ isOpen, closeDialog }) => {
           register={register}
           registerOptions={{
             required: "required",
-            maxLength: 150 || "150 characters max"
+            maxLength: 150 || "150 characters max",
           }}
           error={errors.description}
         />

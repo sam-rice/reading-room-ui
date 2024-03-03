@@ -10,15 +10,32 @@ export const logout = async () => {
 
 export const loginUser = async (email: string, password: string) => {
   const endpoint = `${API_BASE_URL}/users/login`
-  return authorizationFetchWrapper(endpoint, { email, password }, "Failed to log in user.")
+  return authorizationFetchWrapper(
+    endpoint,
+    { email, password },
+    "Failed to log in user.",
+  )
 }
 
-export const registerUser = async (firstName: string, lastName: string, email: string, password: string) => {
+export const registerUser = async (
+  firstName: string,
+  lastName: string,
+  email: string,
+  password: string,
+) => {
   const endpoint = `${API_BASE_URL}/users/register`
-  return authorizationFetchWrapper(endpoint, { firstName, lastName, email, password }, "Failed to register new user.")
+  return authorizationFetchWrapper(
+    endpoint,
+    { firstName, lastName, email, password },
+    "Failed to register new user.",
+  )
 }
 
-const authorizationFetchWrapper = async (endpoint: string, body: Object, errorMessage: string): Promise<ISuccessfulAuthResponse | { error: string }> => {
+const authorizationFetchWrapper = async (
+  endpoint: string,
+  body: Object,
+  errorMessage: string,
+): Promise<ISuccessfulAuthResponse | { error: string }> => {
   try {
     const response = await fetch(endpoint, {
       method: "POST",
@@ -29,7 +46,7 @@ const authorizationFetchWrapper = async (endpoint: string, body: Object, errorMe
       body: JSON.stringify(body),
     })
     if (response.status === 401) {
-      return { error: "Invalid details."}
+      return { error: "Invalid details." }
     } else if (response.status !== 200) {
       throw new Error()
     }
@@ -44,4 +61,4 @@ const authorizationFetchWrapper = async (endpoint: string, body: Object, errorMe
   } catch (error) {
     throw new Error(errorMessage)
   }
-} 
+}

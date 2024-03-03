@@ -18,10 +18,7 @@ export const getEntityDetails = async <T>(
   )
 }
 
-export const getSearchResults = async <T>(
-  query: string,
-  type: EntityType,
-) => {
+export const getSearchResults = async <T>(query: string, type: EntityType) => {
   const endpoint = `${API_BASE_URL}/search/${type}?q=${query}`
   return fetchWrapper<T[]>(
     "GET",

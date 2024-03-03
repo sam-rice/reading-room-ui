@@ -43,7 +43,11 @@ function Input<T extends FieldValues>({
         aria-invalid={!!error}
         autoComplete={autoComplete}
       />
-      {error && <span className="text-red-500 absolute -bottom-6">* {error.message}</span>}
+      {error && (
+        <span className="text-red-500 absolute -bottom-6">
+          * {error.message}
+        </span>
+      )}
     </label>
   )
 }

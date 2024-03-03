@@ -14,7 +14,10 @@ interface AuthorDetailsPageProps {
 }
 
 const AuthorDetailsPage: FC<AuthorDetailsPageProps> = async ({ params }) => {
-  const author = await getEntityDetails<IAuthorDetails>(params.libraryKey, "authors")
+  const author = await getEntityDetails<IAuthorDetails>(
+    params.libraryKey,
+    "authors",
+  )
 
   const bookTiles = author.books.map((b: IAuthorBook) => {
     return (

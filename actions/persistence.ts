@@ -29,10 +29,7 @@ export const getAllShelves = async () => {
   )
 }
 
-export const createNewShelf = async (
-  title: string,
-  description: string,
-) => {
+export const createNewShelf = async (title: string, description: string) => {
   const endpoint = `${API_BASE_URL}/shelves`
   return fetchWrapper<IShelfBasic>(
     "POST",
@@ -44,9 +41,7 @@ export const createNewShelf = async (
   )
 }
 
-export const deleteShelf = async (
-  shelfId: number,
-) => {
+export const deleteShelf = async (shelfId: number) => {
   const endpoint = `${API_BASE_URL}/shelves/${shelfId}`
   return fetchWrapper<IUpdateOrDeleteEntityResponse>(
     "DELETE",
@@ -89,10 +84,7 @@ export const updateBook = async (
   )
 }
 
-export const deleteBookFromShelf = async (
-  shelfId: number,
-  bookId: number,
-) => {
+export const deleteBookFromShelf = async (shelfId: number, bookId: number) => {
   const endpoint = `${API_BASE_URL}/shelves/${shelfId}/books/${bookId}`
   return fetchWrapper<IUpdateOrDeleteEntityResponse>(
     "DELETE",
@@ -103,10 +95,7 @@ export const deleteBookFromShelf = async (
   )
 }
 
-export const addBookToShelf = async (
-  shelfId: number,
-  libraryKey: string,
-) => {
+export const addBookToShelf = async (shelfId: number, libraryKey: string) => {
   const endpoint = `${API_BASE_URL}/shelves/${shelfId}/books`
   return fetchWrapper<ISavedBook>(
     "POST",

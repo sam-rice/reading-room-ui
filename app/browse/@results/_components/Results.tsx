@@ -1,6 +1,6 @@
 import { getSearchResults } from "@/actions/browse"
-import PageableList from "@/components/PageableList"
 import { EntityType } from "@/actions/browse"
+import PageableList from "@/components/PageableList"
 import { ReactNode } from "react"
 
 interface ResultsProps<T> {
