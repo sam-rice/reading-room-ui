@@ -1,11 +1,17 @@
 "use client"
 
 import { createNewShelf } from "@/actions/persistence"
-import { FC, useState } from "react"
 import Button from "@/components/Button"
 import DialogContainer from "@/components/DialogContainer"
 import Input from "@/components/Input"
 import { useRouter } from "next/navigation"
+import { FC, useState } from "react"
+import { SubmitHandler, useForm } from "react-hook-form"
+
+interface INewShelfFields {
+  "shelf name": string
+  description: string
+}
 
 interface NewShelfDialogProps {
   isOpen: boolean
@@ -13,23 +19,34 @@ interface NewShelfDialogProps {
 }
 
 const NewShelfDialog: FC<NewShelfDialogProps> = ({ isOpen, closeDialog }) => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<INewShelfFields>({
+    defaultValues: {
+      "shelf name": "",
+      description: "",
+    },
+  })
   const router = useRouter()
-  const [shelfName, setShelfName] = useState("")
-  const [description, setDescription] = useState("")
 
   const onKeyDown = (key: string) => {
-    if (key === "Enter") submitShelf()
+    if (key === "Enter") handleSubmit(submitShelf)
   }
 
-  const clearFields = () => {
-    setShelfName("")
-    setDescription("")
-  }
+  // const clearFields = () => {
+  //   setShelfName("")
+  //   setDescription("")
+  // }
 
-  const submitShelf = async () => {
-    clearFields()
+  const submitShelf: SubmitHandler<INewShelfFields> = async (data) => {
+    // clearFields()
     try {
-      const newShelf = await createNewShelf(shelfName, description)
+      const newShelf = await createNewShelf(
+        data["shelf name"],
+        data.description,
+      )
       router.push(`/shelves/${newShelf.shelfId}`)
       closeDialog()
     } catch (error) {
@@ -40,24 +57,29 @@ const NewShelfDialog: FC<NewShelfDialogProps> = ({ isOpen, closeDialog }) => {
   return (
     <DialogContainer isOpen={isOpen} closeDialog={closeDialog}>
       <h1 className="text-2xl mt-5 mb-7">Add New Shelf</h1>
-      <div className="mb-9 w-2/3">
+      <div className="mb-4 w-2/3">
         <Input
-          className="mb-3"
-          value={shelfName}
-          name="shelf-name"
-          label="Shelf name"
-          onChange={setShelfName}
+          label="shelf name"
           onKeyDown={onKeyDown}
+          register={register}
+          registerOptions={{
+            required: "required",
+            maxLength: 40 || "40 characters max",
+          }}
+          error={errors["shelf name"]}
         />
         <Input
-          value={description}
-          name="description"
-          label="Description"
-          onChange={setDescription}
+          label="description"
           onKeyDown={onKeyDown}
+          register={register}
+          registerOptions={{
+            required: "required",
+            maxLength: 150 || "150 characters max",
+          }}
+          error={errors.description}
         />
       </div>
-      <Button className="mb-2" onClick={submitShelf}>
+      <Button className="mb-2" onClick={handleSubmit(submitShelf)}>
         create
       </Button>
       <button className="underline" onClick={closeDialog}>

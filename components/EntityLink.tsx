@@ -21,7 +21,6 @@ const EntityLink: FC<EntityLinkProps> = ({
   className,
   isSubHeader,
 }) => {
-
   const routeSegment = variant === "shelf" ? "shelves" : variant
 
   return (

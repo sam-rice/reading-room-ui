@@ -9,8 +9,8 @@ interface EntityImageProps {
   className?: string
   fallbackClassName?: string
   alt: string
-  src: string | null,
-  fallbackWidth: number,
+  src: string | null
+  fallbackWidth: number
   variant: IEntityImage
 }
 

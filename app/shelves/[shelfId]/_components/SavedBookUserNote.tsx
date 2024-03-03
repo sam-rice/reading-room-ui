@@ -7,14 +7,17 @@ import { twMerge } from "tailwind-merge"
 interface SavedBookUserNoteProps {
   userNoteDefaultValue: string | null
   submitUpdate: (updatedNote: string) => void
+  libraryKey: string
 }
 
 const SavedBookUserNote: FC<SavedBookUserNoteProps> = ({
   userNoteDefaultValue,
   submitUpdate,
+  libraryKey,
 }) => {
   const [userNoteValue, setUserNoteValue] = useState(userNoteDefaultValue || "")
-  const buttonVisible = userNoteValue !== userNoteDefaultValue && userNoteValue !== ""
+  const buttonVisible =
+    userNoteValue !== userNoteDefaultValue && userNoteValue !== ""
 
   const handleOnBlur = () => {
     if (userNoteValue === "") setUserNoteValue(userNoteDefaultValue || "")
@@ -32,6 +35,7 @@ const SavedBookUserNote: FC<SavedBookUserNoteProps> = ({
           "w-full bg-theme-beige-400 py-1 px-2 border border-theme-gray-200 hover:bg-theme-beige-200 transition-all duration-100 resize-none",
           classNames({ "pr-16": buttonVisible }),
         )}
+        id={`user-note-${libraryKey}`}
         maxLength={115}
         value={userNoteValue}
         onChange={(e) => setUserNoteValue(e.target.value)}

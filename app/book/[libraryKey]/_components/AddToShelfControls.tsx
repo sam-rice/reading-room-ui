@@ -37,9 +37,13 @@ const AddToShelfControls: FC<AddToShelfControlsProps> = ({
           Add to shelf:
         </span>
         <select
-          className={classNames("ml-4 h-9 max-w-64 min-w-52 rounded-theme-small px-1", {
-            "text-theme-gray-300": !availableShelves.length,
-          })}
+          className={classNames(
+            "ml-4 h-9 max-w-64 min-w-52 rounded-theme-small px-1",
+            {
+              "text-theme-gray-300": !availableShelves.length,
+            },
+          )}
+          id="add-to-shelf-select"
           value={value}
           onChange={(e) => setValue(parseInt(e.target.value))}
           disabled={!availableShelves.length}
@@ -50,7 +54,11 @@ const AddToShelfControls: FC<AddToShelfControlsProps> = ({
           {shelfOptions}
         </select>
       </label>
-      <Button className="w-24" onClick={handleClick} disabled={!value || !availableShelves.length}>
+      <Button
+        className="w-24"
+        onClick={handleClick}
+        disabled={!value || !availableShelves.length}
+      >
         add
       </Button>
     </div>

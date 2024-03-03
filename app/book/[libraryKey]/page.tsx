@@ -21,7 +21,6 @@ const BookDetailsPage: FC<BookDetailsPageProps> = async ({ params }) => {
       book.authors.length > 1 && book.authors.length !== idx + 1
         ? a.name + ", "
         : a.name
-    
 
     return (
       <EntityLink

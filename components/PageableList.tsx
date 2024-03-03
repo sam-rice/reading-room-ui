@@ -49,13 +49,15 @@ const PageableList: FC<PageableListProps> = ({
       ref={sectionRef}
     >
       {headingNode}
-      <div className="text-right mb-3">
-        showing {firstItemIndex + 1} -{" "}
-        {firstItemIndex + currentPageItems.length} of {totalItems}
-      </div>
+      {!!currentPageItems.length ? (
+        <div className="mb-3 text-right">
+          showing {firstItemIndex + 1} -{" "}
+          {firstItemIndex + currentPageItems.length} of {totalItems}
+        </div>
+      ) : <div className="text-center text-theme-gray-500 text-lg mt-10">No books by author.</div>}
       <ul
         className={twMerge(
-          "mb-6 grid grow grid-cols-2 gap-6 content-start",
+          "mb-6 grid grow grid-cols-2 content-start gap-6",
           listClassName,
         )}
       >

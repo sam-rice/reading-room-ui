@@ -87,6 +87,7 @@ const SavedBookTile: FC<SavedBookTileProps> = ({
         <SavedBookUserNote
           userNoteDefaultValue={userNote}
           submitUpdate={submitUserNoteUpdate}
+          libraryKey={libraryKey}
         />
       </div>
       <SavedBookDeleteButton deleteBook={deleteBook} />

@@ -1,11 +1,11 @@
 import { getAllShelves } from "@/actions/persistence"
 import PageContainer from "@/components/PageContainer"
 import PageableList from "@/components/PageableList"
-import ShelfTile from "./_components/ShelfTile"
-import NewShelfDialogButton from "./_components/NewShelfDialogButton"
 import { IShelfBasic } from "@/interfaces/persistenceDtos"
 import { DM_Serif_Display } from "next/font/google"
 import { FC } from "react"
+import NewShelfDialogButton from "./_components/NewShelfDialogButton"
+import ShelfTile from "./_components/ShelfTile"
 
 export const dmSerifDisplay = DM_Serif_Display({
   weight: "400",

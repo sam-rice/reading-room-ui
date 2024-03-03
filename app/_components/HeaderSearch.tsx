@@ -9,8 +9,12 @@ const HeaderSearch: FC = () => {
   const [query, setQuery] = useState("")
 
   const executeSearch = () => {
-    router.push(`/browse?q=${query}&cat=books`)
-    setQuery("")
+    if (!query) {
+      router.push("/browse")
+    } else {
+      router.push(`/browse?q=${query}&cat=books`)
+      setQuery("")
+    }
   }
 
   const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
@@ -23,12 +27,13 @@ const HeaderSearch: FC = () => {
         className="absolute right-[7px] top-[9px]"
         onClick={() => executeSearch()}
       >
-        <Search className="text-theme-gray-400 hover:text-theme-gray-500 transition-colors" />
+        <Search className="text-theme-gray-400 transition-colors hover:text-theme-gray-500" />
       </button>
       <input
-        className="rounded-theme-small h-full w-full pl-3"
+        className="h-full w-full rounded-theme-small pl-3"
         value={query}
         placeholder="Search books"
+        id="search-books"
         onChange={(e) => setQuery(e.target.value)}
         onKeyDown={handleKeyDown}
       />
