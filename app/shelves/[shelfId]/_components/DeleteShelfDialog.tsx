@@ -33,15 +33,19 @@ const DeleteShelfDialog: FC<DeleteShelfDialogProps> = ({
   }
 
   return (
-    <DialogContainer isOpen={isOpen} closeDialog={closeDialog}>
-      <h1 className="my-9 text-2xl text-center">
+    <DialogContainer
+      id="delete-shelf-dialog"
+      isOpen={isOpen}
+      closeDialog={closeDialog}
+    >
+      <h1 className="my-9 text-center text-2xl">
         Are you sure you want to delete your shelf, {shelfTitle}?
       </h1>
       <div className="my-2">
         <Button className="mr-2" onClick={handleDelete}>
           Delete
         </Button>
-        <Button onClick={closeDialog} variant="light">
+        <Button onClick={closeDialog} variant="light" aria-label="close modal">
           Cancel
         </Button>
       </div>

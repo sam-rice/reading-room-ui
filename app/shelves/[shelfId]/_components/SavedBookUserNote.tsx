@@ -28,11 +28,11 @@ const SavedBookUserNote: FC<SavedBookUserNoteProps> = ({
   }
 
   return (
-    <label className="text-sm italic text-theme-gray-400 block relative">
+    <label className="relative block text-sm italic text-theme-gray-400">
       <div>note:</div>
       <textarea
         className={twMerge(
-          "w-full bg-theme-beige-400 py-1 px-2 border border-theme-gray-200 hover:bg-theme-beige-200 transition-all duration-100 resize-none",
+          "w-full resize-none border border-theme-gray-200 bg-theme-beige-400 px-2 py-1 transition-all duration-100 hover:bg-theme-beige-200",
           classNames({ "pr-16": buttonVisible }),
         )}
         id={`user-note-${libraryKey}`}
@@ -43,7 +43,7 @@ const SavedBookUserNote: FC<SavedBookUserNoteProps> = ({
       />
       {buttonVisible && (
         <button
-          className="hover:underline absolute text-black right-5 bottom-[17px] bg-theme-beige-400 h-[26px] w-12 rounded-theme-small"
+          className="absolute bottom-[17px] right-5 h-[26px] w-12 rounded-theme-small bg-theme-beige-400 text-black hover:underline"
           onClick={handleClick}
         >
           save

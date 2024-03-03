@@ -40,15 +40,15 @@ const AuthorDetailsPage: FC<AuthorDetailsPageProps> = async ({ params }) => {
   return (
     <PageContainer className="max-w-5xl">
       <div className="mt-20 flex">
-        <EntityImage
-          className="mr-14 h-[450px]"
-          fallbackClassName="mr-14"
-          alt={`photo of ${author.name}`}
-          src={author.photoUrl}
-          fallbackWidth={295}
-          variant="author"
-        />
-        <div>
+        <div className="mr-14 flex w-1/2 justify-center">
+          <EntityImage
+            alt={`photo of ${author.name}`}
+            src={author.photoUrl}
+            fallbackWidth={295}
+            variant="author"
+          />
+        </div>
+        <div className="w-1/2">
           <h1 className="mb-1 text-3xl">{author.name}</h1>
           <div className="italic text-theme-gray-400">
             {!!author.birthDate && `${author.birthDate} —`} {author.deathDate}
@@ -60,6 +60,7 @@ const AuthorDetailsPage: FC<AuthorDetailsPageProps> = async ({ params }) => {
         outerClassName="mt-8"
         headingNode={listHeadingNode}
         itemsPerPage={30}
+        noItemsMessage="No books by author."
       >
         {bookTiles}
       </PageableList>

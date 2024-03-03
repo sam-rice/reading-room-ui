@@ -17,7 +17,7 @@ export default function Error({
   }, [error])
 
   return (
-    <PageContainer className=" justify-center items-center">
+    <PageContainer className=" items-center justify-center">
       <h1 className="mb-10 text-xl">
         Something went wrong! Could not find info for book.
       </h1>

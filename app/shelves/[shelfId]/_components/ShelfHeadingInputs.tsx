@@ -1,7 +1,7 @@
 "use client"
 
 import classNames from "classnames"
-import { FC } from "react"
+import { FC, KeyboardEvent } from "react"
 import { SubmitHandler, useForm } from "react-hook-form"
 import { twMerge } from "tailwind-merge"
 
@@ -46,12 +46,21 @@ const ShelfHeadingInputs: FC<ShelfHeadingInputsProps> = ({
     updateShelf(title, data.description)
   }
 
+  const handleKeyDown = (e: KeyboardEvent) => {
+    if (!(e.target instanceof Element)) return
+    const targetId = e.target.getAttribute("id")
+    const isEnterKey = e.key === "Enter"
+    if (targetId === "shelf-title" && isEnterKey) handleSubmit(onTitleUpdate)()
+    if (targetId === "shelf-description" && isEnterKey)
+      handleSubmit(onDescriptionUpdate)()
+  }
+
   return (
     <div className="w-1/2">
-      <div className="mb-1 relative w-full">
+      <div className="relative mb-1 w-full">
         <input
           className={twMerge(
-            "mr-4 w-full text-2xl rounded-theme-small hover:bg-theme-gray-50 px-2 py-2",
+            "mr-4 w-full rounded-theme-small px-2 py-2 text-2xl hover:bg-theme-gray-50",
             classNames({ "pr-14": titleButtonVisible }),
           )}
           id="shelf-title"
@@ -59,12 +68,14 @@ const ShelfHeadingInputs: FC<ShelfHeadingInputsProps> = ({
             required: true,
             maxLength: 40,
           })}
+          onKeyDown={handleKeyDown}
           role="heading"
-          aria-description="shelf title"
+          aria-level={1}
+          aria-label="shelf title"
         />
         {titleButtonVisible && (
           <button
-            className="hover:underline absolute text-black right-[2px] top-[2px] h-[43px] w-12 rounded-theme-small"
+            className="absolute right-[2px] top-[2px] h-[43px] w-12 rounded-theme-small text-black hover:underline"
             onClick={handleSubmit(onTitleUpdate)}
           >
             save
@@ -76,22 +87,23 @@ const ShelfHeadingInputs: FC<ShelfHeadingInputsProps> = ({
           {errors.title?.type === "required" && "* shelf must be have a name"}
         </div>
       </div>
-      <div className="text-sm italic text-theme-gray-400 block relative w-full">
+      <div className="relative block w-full text-sm italic text-theme-gray-400">
         <input
           className={twMerge(
-            "w-full text-base italic py-1 px-2 hover:bg-theme-gray-50 rounded-theme-small",
+            "w-full rounded-theme-small px-2 py-1 text-base italic hover:bg-theme-gray-50",
             classNames({ "pr-14": descriptionButtonVisible }),
           )}
+          onKeyDown={handleKeyDown}
           id="shelf-description"
           {...register("description", {
             maxLength: 150,
           })}
           placeholder={!description ? "shelf description..." : undefined}
-          aria-labelledby="shelf-title"
+          aria-label="shelf description"
         />
         {descriptionButtonVisible && (
           <button
-            className="hover:underline absolute text-black right-[2px] top-[2px] h-[30px] w-12 rounded-theme-small"
+            className="absolute right-[2px] top-[2px] h-[30px] w-12 rounded-theme-small text-black hover:underline"
             onClick={handleSubmit(onDescriptionUpdate)}
           >
             save

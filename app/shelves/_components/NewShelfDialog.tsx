@@ -5,7 +5,7 @@ import Button from "@/components/Button"
 import DialogContainer from "@/components/DialogContainer"
 import Input from "@/components/Input"
 import { useRouter } from "next/navigation"
-import { FC, useState } from "react"
+import { FC } from "react"
 import { SubmitHandler, useForm } from "react-hook-form"
 
 interface INewShelfFields {
@@ -21,8 +21,10 @@ interface NewShelfDialogProps {
 const NewShelfDialog: FC<NewShelfDialogProps> = ({ isOpen, closeDialog }) => {
   const {
     register,
+    reset,
     handleSubmit,
     formState: { errors },
+    clearErrors,
   } = useForm<INewShelfFields>({
     defaultValues: {
       "shelf name": "",
@@ -32,16 +34,15 @@ const NewShelfDialog: FC<NewShelfDialogProps> = ({ isOpen, closeDialog }) => {
   const router = useRouter()
 
   const onKeyDown = (key: string) => {
-    if (key === "Enter") handleSubmit(submitShelf)
+    if (key === "Enter") handleSubmit(submitShelf)()
   }
 
-  // const clearFields = () => {
-  //   setShelfName("")
-  //   setDescription("")
-  // }
+  const resetFields = () => {
+    reset()
+    clearErrors()
+  }
 
   const submitShelf: SubmitHandler<INewShelfFields> = async (data) => {
-    // clearFields()
     try {
       const newShelf = await createNewShelf(
         data["shelf name"],
@@ -55,10 +56,16 @@ const NewShelfDialog: FC<NewShelfDialogProps> = ({ isOpen, closeDialog }) => {
   }
 
   return (
-    <DialogContainer isOpen={isOpen} closeDialog={closeDialog}>
-      <h1 className="text-2xl mt-5 mb-7">Add New Shelf</h1>
+    <DialogContainer
+      id="new-shelf-dialog"
+      isOpen={isOpen}
+      closeDialog={closeDialog}
+      onAfterClose={resetFields}
+    >
+      <h1 className="mb-7 mt-5 text-2xl">Add New Shelf</h1>
       <div className="mb-4 w-2/3">
         <Input
+          id="shelf-name"
           label="shelf name"
           onKeyDown={onKeyDown}
           register={register}
@@ -67,8 +74,10 @@ const NewShelfDialog: FC<NewShelfDialogProps> = ({ isOpen, closeDialog }) => {
             maxLength: 40 || "40 characters max",
           }}
           error={errors["shelf name"]}
+          required
         />
         <Input
+          id="shelf-description"
           label="description"
           onKeyDown={onKeyDown}
           register={register}
@@ -82,7 +91,11 @@ const NewShelfDialog: FC<NewShelfDialogProps> = ({ isOpen, closeDialog }) => {
       <Button className="mb-2" onClick={handleSubmit(submitShelf)}>
         create
       </Button>
-      <button className="underline" onClick={closeDialog}>
+      <button
+        className="underline"
+        onClick={closeDialog}
+        aria-label="close modal"
+      >
         cancel
       </button>
     </DialogContainer>

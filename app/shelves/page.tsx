@@ -32,11 +32,15 @@ const ShelvesPage: FC = async () => {
         <div className="mb-7 flex h-24 w-full items-end justify-between">
           <div>
             <h1 className="mr-4 text-2xl">My Shelves</h1>
-            <span className="text-sm italic text-theme-gray-300">{`(${shelves.length} total shelves)`}</span>
+            <span className="text-sm italic text-theme-gray-300">{`(${shelves.length} ${shelves.length === 1 ? "shelf" : "shelves"} total)`}</span>
           </div>
           <NewShelfDialogButton />
         </div>
-        <PageableList listClassName="grid-cols-1" itemsPerPage={20}>
+        <PageableList
+          listClassName="grid-cols-1"
+          itemsPerPage={20}
+          noItemsMessage="No shelves yet."
+        >
           {shelfTiles}
         </PageableList>
       </PageContainer>

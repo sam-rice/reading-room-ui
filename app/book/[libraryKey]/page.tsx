@@ -36,16 +36,17 @@ const BookDetailsPage: FC<BookDetailsPageProps> = async ({ params }) => {
 
   return (
     <PageContainer className="max-w-5xl">
-      <div className="mt-20 mb-8 flex">
-        <EntityImage
-          className="mr-14 h-[450px]"
-          fallbackClassName="mr-14"
-          alt={`cover for ${book.title}`}
-          src={book.coverUrl}
-          variant="book"
-          fallbackWidth={290}
-        />
-        <div className="flex flex-col justify-between">
+      <div className="mb-8 mt-20 flex">
+        <div className="mr-14 flex w-1/2 justify-center">
+          <EntityImage
+            className="h-[450px]"
+            alt={`cover for ${book.title}`}
+            src={book.coverUrl}
+            variant="book"
+            fallbackWidth={290}
+          />
+        </div>
+        <div className="flex w-1/2 flex-col justify-between">
           <div>
             <h1 className="mb-1 text-3xl">{book.title}</h1>
             <div>{authors}</div>

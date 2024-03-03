@@ -25,7 +25,7 @@ const EntityLink: FC<EntityLinkProps> = ({
 
   return (
     <Link
-      className={twMerge("hover:underline w-fit", className)}
+      className={twMerge("w-fit hover:underline", className)}
       href={`/${routeSegment}/${routeSegmentId}`}
     >
       {isSubHeader ? <h2 className="text-xl">{title}</h2> : title}

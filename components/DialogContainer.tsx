@@ -4,20 +4,25 @@ import { FC, ReactNode } from "react"
 import Modal from "react-modal"
 
 interface DialogContainerProps {
+  id: string
   isOpen: boolean
   children: ReactNode
   closeDialog: () => void
+  onAfterClose?: () => void
 }
 
 const DialogContainer: FC<DialogContainerProps> = ({
+  id,
   isOpen,
   children,
   closeDialog,
+  onAfterClose,
 }) => {
   Modal.setAppElement("body")
 
   return (
     <Modal
+      id={id}
       style={{
         overlay: {
           display: "flex",
@@ -42,8 +47,13 @@ const DialogContainer: FC<DialogContainerProps> = ({
       shouldCloseOnOverlayClick
       shouldCloseOnEsc
       onRequestClose={closeDialog}
+      onAfterClose={onAfterClose}
     >
-      <button className="absolute right-2 top-2" onClick={closeDialog}>
+      <button
+        className="absolute right-2 top-2"
+        onClick={closeDialog}
+        aria-label="close modal"
+      >
         close
       </button>
       {children}

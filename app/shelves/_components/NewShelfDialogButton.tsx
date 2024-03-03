@@ -11,9 +11,13 @@ const NewShelfDialogButton: FC = () => {
 
   return (
     <>
-      <button className="flex items-center" onClick={toggleDialogOpen}>
+      <button
+        className="flex items-center"
+        onClick={toggleDialogOpen}
+        aria-haspopup="dialog"
+      >
         new shelf{" "}
-        <span className="bg-theme-gray-200 ml-2 flex aspect-square w-8 items-center justify-center rounded-full text-white transition-colors hover:bg-theme-gray-300">
+        <span className="ml-2 flex aspect-square w-8 items-center justify-center rounded-full bg-theme-gray-200 text-white transition-colors hover:bg-theme-gray-300">
           <AddIcon />
         </span>
       </button>

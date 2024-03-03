@@ -9,6 +9,7 @@ import {
 import { twMerge } from "tailwind-merge"
 
 interface InputProps<T extends FieldValues> {
+  id: string
   className?: string
   type?: HTMLInputTypeAttribute
   placeholder?: string
@@ -18,9 +19,11 @@ interface InputProps<T extends FieldValues> {
   register: UseFormRegister<T>
   registerOptions?: RegisterOptions<T, Path<T>>
   error?: FieldError
+  required?: boolean
 }
 
 function Input<T extends FieldValues>({
+  id,
   className,
   type = "text",
   placeholder,
@@ -30,21 +33,25 @@ function Input<T extends FieldValues>({
   register,
   registerOptions,
   error,
+  required,
 }: InputProps<T>) {
   return (
-    <label className={twMerge("w-full flex flex-col relative mb-6", className)}>
+    <label className={twMerge("relative mb-6 flex w-full flex-col", className)}>
       <span>{label}: </span>
       <input
-        className="rounded-theme-small border h-9 mt-1 pl-2 border-theme-gray-400"
+        id={id}
+        className="mt-1 h-9 rounded-theme-small border border-theme-gray-400 pl-2"
         onKeyDown={onKeyDown && ((e) => onKeyDown(e.key))}
         placeholder={placeholder}
         type={type}
         {...register(label, registerOptions)}
         aria-invalid={!!error}
+        aria-errormessage={`${id}-error`}
         autoComplete={autoComplete}
+        required={required}
       />
       {error && (
-        <span className="text-red-500 absolute -bottom-6">
+        <span id={`${id}-error`} className="absolute -bottom-6 text-red-500">
           * {error.message}
         </span>
       )}

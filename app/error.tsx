@@ -14,7 +14,7 @@ export default function Error({
   }, [error])
 
   return (
-    <PageContainer className="justify-center items-center">
+    <PageContainer className="items-center justify-center">
       <h1 className="mb-8 text-xl">Something went wrong!</h1>
       <LinkButton href="/" variant="dark">
         Back to Home

@@ -24,7 +24,7 @@ const AssociatedShelvesMessage: FC<AssociatedShelvesMessageProps> = ({
   return (
     <>
       {shelves.length ? (
-        <div className="h-fit w-full bg-theme-beige-400 px-3 py-2 italic rounded-theme-small">
+        <div className="h-fit w-full rounded-theme-small bg-theme-beige-400 px-3 py-2 italic">
           <div className="mr-1 text-theme-gray-500">This book is saved in:</div>
           <span>
             {shelfLinks[0]}

@@ -35,7 +35,7 @@ const BookTile: FC<BookTileProps> = ({
         />
       ) : (
         <Image
-          className="border-theme-gray-400 mr-6 border"
+          className="mr-6 border border-theme-gray-400"
           alt={`cover for ${title}`}
           src={fallbackCover}
           width={110}

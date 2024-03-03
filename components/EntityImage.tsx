@@ -25,10 +25,10 @@ const EntityImage: FC<EntityImageProps> = ({
   return (
     <>
       {src ? (
-        <img className={className} alt={alt} src={src} />
+        <img className={twMerge("h-fit", className)} alt={alt} src={src} />
       ) : (
         <Image
-          className={twMerge("w-auto", fallbackClassName)}
+          className={twMerge("h-auto", fallbackClassName)}
           alt={`${variant === "book" ? "book cover" : "author photo"} not available.`}
           src={fallbackCover}
           width={fallbackWidth}

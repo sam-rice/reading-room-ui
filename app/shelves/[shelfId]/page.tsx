@@ -48,7 +48,11 @@ const ShelfDetailsPage: FC<ShelfDetailsPageProps> = async ({ params }) => {
   return (
     <>
       <PageContainer>
-        <Link className="my-6 w-fit" href={"/shelves"}>
+        <Link
+          className="my-6 w-fit"
+          href={"/shelves"}
+          aria-label="go back to all shelves page"
+        >
           <ArrowBackIcon className="text-4xl" />
         </Link>
         <div className="mb-8 w-full">
@@ -64,13 +68,10 @@ const ShelfDetailsPage: FC<ShelfDetailsPageProps> = async ({ params }) => {
             />
           </div>
         </div>
-        {bookTiles.length ? (
-          <PageableList itemsPerPage={50}>{bookTiles}</PageableList>
-        ) : (
-          <div className="text-center mt-16 text-theme-gray-500 text-xl">
-            No books added.
-          </div>
-        )}
+
+        <PageableList itemsPerPage={50} noItemsMessage="No books yet.">
+          {bookTiles}
+        </PageableList>
       </PageContainer>
     </>
   )
