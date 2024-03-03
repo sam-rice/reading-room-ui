@@ -1,10 +1,9 @@
 import { getEntityDetails } from "@/actions/browse"
 import BookTile from "@/components/BookTile"
+import EntityImage from "@/components/EntityImage"
 import PageContainer from "@/components/PageContainer"
 import PageableList from "@/components/PageableList"
 import { IAuthorBook, IAuthorDetails } from "@/interfaces/browseDtos"
-import fallbackCover from "@/public/images/fallback-cover.png"
-import Image from "next/image"
 import { FC } from "react"
 
 interface AuthorDetailsPageProps {
@@ -41,24 +40,18 @@ const AuthorDetailsPage: FC<AuthorDetailsPageProps> = async ({ params }) => {
   return (
     <PageContainer className="max-w-5xl">
       <div className="mt-20 flex">
-        {author.photoUrl ? (
-          <img
-            className="mr-14 h-[450px]"
-            alt={`photo of ${author.name}`}
-            src={author.photoUrl}
-          />
-        ) : (
-          <Image
-            className="mr-14"
-            alt="author image not available"
-            src={fallbackCover}
-            width={295}
-          />
-        )}
+        <EntityImage
+          className="mr-14 h-[450px]"
+          fallbackClassName="mr-14"
+          alt={`photo of ${author.name}`}
+          src={author.photoUrl}
+          fallbackWidth={295}
+          variant="author"
+        />
         <div>
           <h1 className="mb-1 text-3xl">{author.name}</h1>
           <div className="italic text-theme-gray-400">
-            {author.birthDate} — {author.deathDate}
+            {!!author.birthDate && `${author.birthDate} —`} {author.deathDate}
           </div>
           {author.bio && <p className="mt-10">{author.bio}</p>}
         </div>
