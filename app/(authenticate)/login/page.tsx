@@ -5,20 +5,34 @@ import Button from "@/components/Button"
 import Input from "@/components/Input"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
-import { FC, useState } from "react"
+import { FC } from "react"
+import { SubmitHandler, useForm } from "react-hook-form"
+
+export interface ILoginInputs {
+  email: string
+  password: string
+}
 
 const LoginPage: FC = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<ILoginInputs>({
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+  })
   const router = useRouter()
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
 
   const onKeyDown = (key: string) => {
-    if (key === "Enter") submit()
+    if (key === "Enter") handleSubmit(onSubmit)
   }
 
-  const submit = async () => {
+  const onSubmit: SubmitHandler<ILoginInputs> = async (data) => {
     try {
-      await login(email, password)
+      await login(data.email, data.password)
       router.push("/shelves")
     } catch (error) {
       console.error(error)
@@ -40,24 +54,24 @@ const LoginPage: FC = () => {
         </div>
         <Input
           className="mb-4 w-4/5"
-          value={email}
-          name="email-login"
-          type="email"
           label="email"
-          onChange={setEmail}
+          type="email"
           onKeyDown={onKeyDown}
+          register={register}
+          registerOptions={{ required: "required" }}
+          error={errors.email}
         />
         <Input
           className="mb-5 w-4/5"
-          value={password}
-          name="password-login"
           label="password"
           type="password"
-          onChange={setPassword}
           onKeyDown={onKeyDown}
+          register={register}
+          registerOptions={{ required: "required" }}
+          error={errors.password}
         />
       </div>
-      <Button className="mt-6" onClick={submit}>
+      <Button className="mt-6" onClick={handleSubmit(onSubmit)}>
         continue
       </Button>
     </>

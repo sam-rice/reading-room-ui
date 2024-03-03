@@ -1,39 +1,46 @@
-import { Dispatch, FC, HTMLInputTypeAttribute, SetStateAction } from "react"
+import { HTMLInputTypeAttribute } from "react"
+import {
+  FieldError,
+  FieldValues,
+  Path,
+  RegisterOptions,
+  UseFormRegister,
+} from "react-hook-form"
 import { twMerge } from "tailwind-merge"
 
-interface InputProps {
+interface InputProps<T extends FieldValues> {
   className?: string
-  value: string
-  name: string
   type?: HTMLInputTypeAttribute
   placeholder?: string
-  onChange: Dispatch<SetStateAction<string>>
   onKeyDown?: (key: string) => void
-  label: string
+  label: Path<T>
+  register: UseFormRegister<T>
+  registerOptions?: RegisterOptions<T, Path<T>>
+  error?: FieldError
 }
 
-const Input: FC<InputProps> = ({
+function Input<T extends FieldValues>({
   className,
-  value,
-  name,
   type = "text",
   placeholder,
-  onChange,
   onKeyDown,
   label,
-}) => {
+  register,
+  registerOptions,
+  error,
+}: InputProps<T>) {
   return (
     <label className={twMerge("w-full flex flex-col", className)}>
       <span>{label}: </span>
       <input
         className="rounded-theme-small border h-9 mt-1 pl-2 border-theme-gray-400"
-        value={value}
-        name={name}
-        onChange={(e) => onChange(e.target.value)}
-        onKeyDown={onKeyDown ? (e) => onKeyDown(e.key) : () => undefined}
+        onKeyDown={onKeyDown && ((e) => onKeyDown(e.key))}
         placeholder={placeholder}
         type={type}
+        {...register(label, registerOptions)}
+        aria-invalid={!!error}
       />
+      {error && <span className="text-red-500">* {error.message}</span>}
     </label>
   )
 }
