@@ -19,7 +19,7 @@ const SearchFormPage: FC = () => {
 
   const submit = () => {
     if (query) {
-      router.push(`?q=${query}&cat=${category}`)
+      router.push(`?q=${query}&cat=${category}&page=1`)
     } else {
       setError("search term required")
     }
@@ -30,7 +30,7 @@ const SearchFormPage: FC = () => {
   }
 
   return (
-    <PageContainer className=" items-center justify-center">
+    <PageContainer className="items-center justify-center">
       <h1 className={twMerge(dmSerifDisplay.className, "mb-10 text-4xl")}>
         BROWSE LIBRARY
       </h1>

@@ -4,7 +4,7 @@ import { Children, FC, ReactNode, useRef, useState } from "react"
 import { twMerge } from "tailwind-merge"
 import Pager from "./Pager"
 
-interface PageableListProps {
+interface PageableUncontrolledListProps {
   outerClassName?: string
   listClassName?: string
   children: ReactNode
@@ -13,7 +13,7 @@ interface PageableListProps {
   noItemsMessage: string
 }
 
-const PageableList: FC<PageableListProps> = ({
+const PageableUncontrolledList: FC<PageableUncontrolledListProps> = ({
   outerClassName,
   listClassName,
   children,
@@ -82,4 +82,4 @@ const PageableList: FC<PageableListProps> = ({
   )
 }
 
-export default PageableList
+export default PageableUncontrolledList

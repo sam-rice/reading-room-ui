@@ -2,9 +2,9 @@ import { getEntityDetails } from "@/actions/browse"
 import BookTile from "@/components/BookTile"
 import EntityImage from "@/components/EntityImage"
 import PageContainer from "@/components/PageContainer"
-import PageableList from "@/components/PageableList"
+import PageableUncontrolledList from "@/components/PageableUncontrolledList"
 import { IAuthorBook, IAuthorDetails } from "@/interfaces/browseDtos"
-import { FC } from "react"
+import { FC, Suspense } from "react"
 
 interface AuthorDetailsPageProps {
   params: {
@@ -24,7 +24,7 @@ const AuthorDetailsPage: FC<AuthorDetailsPageProps> = async ({ params }) => {
         key={b.libraryKey}
         libraryKey={b.libraryKey}
         title={b.title}
-        author={b.primaryAuthor}
+        authors={[b.primaryAuthor]}
         hasMultipleAuthors={b.byMultipleAuthors}
         subjects={b.subjects}
         publishDate={b.publishDate}
@@ -56,14 +56,14 @@ const AuthorDetailsPage: FC<AuthorDetailsPageProps> = async ({ params }) => {
           {author.bio && <p className="mt-10">{author.bio}</p>}
         </div>
       </div>
-      <PageableList
+      <PageableUncontrolledList
         outerClassName="mt-8"
         headingNode={listHeadingNode}
         itemsPerPage={30}
         noItemsMessage="No books by author."
       >
         {bookTiles}
-      </PageableList>
+      </PageableUncontrolledList>
     </PageContainer>
   )
 }

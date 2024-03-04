@@ -1,32 +1,34 @@
 import { getSearchResults } from "@/actions/browse"
 import { EntityType } from "@/actions/browse"
-import PageableList from "@/components/PageableList"
+import PageableControlledList from "@/components/PageableControlledList"
+import { ISearchResultsPage } from "@/interfaces/browseDtos"
 import { ReactNode } from "react"
 
 interface ResultsProps<T> {
   query: string
   category: EntityType
+  pageNum: number
   resultsMapper: (results: T[]) => ReactNode[]
 }
 
-async function Results<T>({ query, category, resultsMapper }: ResultsProps<T>) {
-  const results = await getSearchResults<T>(query, category)
+async function Results<T>({ query, category, pageNum, resultsMapper }: ResultsProps<T>) {
+  const data = await getSearchResults<ISearchResultsPage<T>>(query, category, pageNum)
 
   const searchSummary = (
     <div className="text-theme-gray-400">
-      {`${results.length} ${category === "authors" ? "author" : "book"} ${results.length === 1 ? "result" : "results"} for "${query}"`}
+      {`${data.totalResults} ${category === "authors" ? "author" : "book"} ${data.totalResults === 1 ? "result" : "results"} for "${query}"`}
     </div>
   )
 
   return (
-    <PageableList
+    <PageableControlledList
       noItemsMessage="No results."
       listClassName="grid-cols-1"
       headingNode={searchSummary}
-      itemsPerPage={50}
+      totalItems={data.totalResults}
     >
-      {resultsMapper(results)}
-    </PageableList>
+      {resultsMapper(data.results)}
+    </PageableControlledList>
   )
 }
 

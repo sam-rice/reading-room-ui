@@ -1,19 +1,15 @@
 import { EntityType } from "@/actions/browse"
 import BookTile from "@/components/BookTile"
-import PageContainer from "@/components/PageContainer"
 import { IAuthorSearchResult, IBookSearchResult } from "@/interfaces/browseDtos"
-import { DM_Serif_Display } from "next/font/google"
 import { FC, ReactNode } from "react"
-import { twMerge } from "tailwind-merge"
 import AuthorTile from "./_components/AuthorTile"
 import Results from "./_components/Results"
-
-const dmSerifDisplay = DM_Serif_Display({ weight: "400", subsets: ["latin"] })
 
 interface ResultsPageProps {
   searchParams: {
     q: string
     cat: EntityType
+    page: number
   }
 }
 
@@ -30,8 +26,7 @@ const ResultsPage: FC<ResultsPageProps> = ({ searchParams }) => {
         key={b.libraryKey}
         libraryKey={b.libraryKey}
         title={b.title}
-        author={b.authors[0]}
-        hasMultipleAuthors={b.authors.length > 1}
+        authors={b.authors}
         subjects={b.subjects}
         publishDate={b.publishYear}
         coverUrl={b.coverUrl}
@@ -40,24 +35,20 @@ const ResultsPage: FC<ResultsPageProps> = ({ searchParams }) => {
   }
 
   return (
-    <PageContainer className="max-w-5xl">
-      <h1 className={twMerge(dmSerifDisplay.className, "mb-1 mt-16 text-3xl")}>
-        BROWSE LIBRARY
-      </h1>
-      <Results
-        query={searchParams.q}
-        category={searchParams.cat}
-        resultsMapper={
-          searchParams.cat === "authors"
-            ? (mapToAuthorTiles as (
-                results: IAuthorSearchResult[],
-              ) => ReactNode[])
-            : (mapToBookTiles as (
-                results: (IAuthorSearchResult | IBookSearchResult)[],
-              ) => ReactNode[])
-        }
-      />
-    </PageContainer>
+    <Results
+      query={searchParams.q}
+      category={searchParams.cat}
+      pageNum={searchParams.page}
+      resultsMapper={
+        searchParams.cat === "authors"
+          ? (mapToAuthorTiles as (
+              results: IAuthorSearchResult[],
+            ) => ReactNode[])
+          : (mapToBookTiles as (
+              results: (IAuthorSearchResult | IBookSearchResult)[],
+            ) => ReactNode[])
+      }
+    />
   )
 }
 

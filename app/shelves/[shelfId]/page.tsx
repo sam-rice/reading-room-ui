@@ -1,6 +1,6 @@
 import { getShelf, updateShelf } from "@/actions/persistence"
 import PageContainer from "@/components/PageContainer"
-import PageableList from "@/components/PageableList"
+import PageableUncontrolledList from "@/components/PageableUncontrolledList"
 import { ISavedBook, IShelfDetails } from "@/interfaces/persistenceDtos"
 import ArrowBackIcon from "@mui/icons-material/ArrowBack"
 import Link from "next/link"
@@ -69,9 +69,9 @@ const ShelfDetailsPage: FC<ShelfDetailsPageProps> = async ({ params }) => {
           </div>
         </div>
 
-        <PageableList itemsPerPage={50} noItemsMessage="No books yet.">
+        <PageableUncontrolledList itemsPerPage={50} noItemsMessage="No books yet.">
           {bookTiles}
-        </PageableList>
+        </PageableUncontrolledList>
       </PageContainer>
     </>
   )

@@ -8,6 +8,10 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      animation: {
+        "theme-text": "text 5s ease infinite",
+        "theme-slow-spin": "spin 35s linear infinite"
+      },
       backgroundColor: {
         "theme-beige-500": "#E4DABB",
         "theme-beige-400": "#F0EAD7",
@@ -27,6 +31,18 @@ const config: Config = {
       borderColor: {
         "theme-gray-400": "#9E9E9E",
         "theme-gray-200": "#D9D9D9",
+      },
+      keyframes: {
+        text: {
+          "0%, 100%": {
+            "background-size": "200% 200%",
+            "background-position": "left center",
+          },
+          "50%": {
+            "background-size": "200% 200%",
+            "background-position": "right center",
+          },
+        },
       },
       textColor: {
         "theme-gray-500": "#808080",
