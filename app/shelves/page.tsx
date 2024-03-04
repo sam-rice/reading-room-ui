@@ -1,6 +1,6 @@
 import { getAllShelves } from "@/actions/persistence"
 import PageContainer from "@/components/PageContainer"
-import PageableList from "@/components/PageableList"
+import PageableUncontrolledList from "@/components/PageableUncontrolledList"
 import { IShelfBasic } from "@/interfaces/persistenceDtos"
 import { DM_Serif_Display } from "next/font/google"
 import { FC } from "react"
@@ -36,13 +36,13 @@ const ShelvesPage: FC = async () => {
           </div>
           <NewShelfDialogButton />
         </div>
-        <PageableList
+        <PageableUncontrolledList
           listClassName="grid-cols-1"
           itemsPerPage={20}
           noItemsMessage="No shelves yet."
         >
           {shelfTiles}
-        </PageableList>
+        </PageableUncontrolledList>
       </PageContainer>
     </>
   )

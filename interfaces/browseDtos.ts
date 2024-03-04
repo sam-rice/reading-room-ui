@@ -42,9 +42,9 @@ export interface IAssociatedShelf {
 export interface IBookSearchResult {
   libraryKey: string
   title: string
-  publishYear: number
+  publishYear: number | null
   editionCount: number
-  authors: IAuthorBasic[]
+  authors: IAuthorBasic[] | null
   coverUrl: string | null
   subjects: string[] | null
 }
@@ -56,4 +56,11 @@ export interface IAuthorSearchResult {
   deathDate: string | null
   topBook: string
   topSubjects: string[] | null
+}
+
+export interface ISearchResultsPage<T> {
+  totalResults: number
+  pageSize: number
+  pageNum: number
+  results: T[]
 }

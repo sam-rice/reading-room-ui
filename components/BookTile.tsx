@@ -7,10 +7,10 @@ import EntityLink from "./EntityLink"
 interface BookTileProps {
   libraryKey: string
   title: string
-  author: IAuthorBasic
-  hasMultipleAuthors: boolean
+  authors: IAuthorBasic[] | null
+  hasMultipleAuthors?: boolean
   subjects: string[] | null
-  publishDate: string | number
+  publishDate: string | number | null
   coverUrl: string | null
   editionCount?: number
 }
@@ -18,7 +18,7 @@ interface BookTileProps {
 const BookTile: FC<BookTileProps> = ({
   libraryKey,
   title,
-  author,
+  authors,
   hasMultipleAuthors,
   subjects,
   publishDate,
@@ -49,14 +49,17 @@ const BookTile: FC<BookTileProps> = ({
           variant="book"
         />
         <div className="mb-2 text-theme-gray-300">
-          <EntityLink
-            routeSegmentId={author.libraryKey}
-            title={author.name}
-            variant="author"
-          />
-          {hasMultipleAuthors && " and others"}
+          {authors && (
+            <EntityLink
+              routeSegmentId={authors[0].libraryKey}
+              title={authors[0].name}
+              variant="author"
+            />
+          )}
+          {(authors && authors.length > 1) ||
+            (hasMultipleAuthors && " and others")}
         </div>
-        <div className="mb-2 text-base">{publishDate}</div>
+        {!!publishDate && <div className="mb-2 text-base">{publishDate}</div>}
         {!!editionCount && <div>{editionCount} editions</div>}
         {subjects && title.length < 40 && (
           <div className="text-sm italic text-theme-gray-300">

@@ -12,7 +12,7 @@ const HeaderSearch: FC = () => {
     if (!query) {
       router.push("/browse")
     } else {
-      router.push(`/browse?q=${query}&cat=books`)
+      router.push(`/browse?q=${query}&cat=books&page=1`)
       setQuery("")
     }
   }

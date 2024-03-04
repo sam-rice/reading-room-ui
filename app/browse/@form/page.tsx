@@ -19,7 +19,7 @@ const SearchFormPage: FC = () => {
 
   const submit = () => {
     if (query) {
-      router.push(`?q=${query}&cat=${category}`)
+      router.push(`?q=${query}&cat=${category}&page=1`)
     } else {
       setError("search term required")
     }
