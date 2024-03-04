@@ -1,6 +1,5 @@
-export default function Loading() {
+import LoadingSkeleton from "@/components/LoadingSkeleton"
 
-  return (
-    <div className="flex items-center justify-center h-full">Loading...</div>
-  )
+export default function Loading() {
+  return <LoadingSkeleton />
 }
