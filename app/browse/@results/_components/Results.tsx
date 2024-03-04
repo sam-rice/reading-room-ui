@@ -12,6 +12,7 @@ interface ResultsProps<T> {
 }
 
 async function Results<T>({ query, category, pageNum, resultsMapper }: ResultsProps<T>) {
+  console.log("this is rendering")
   const data = await getSearchResults<ISearchResultsPage<T>>(query, category, pageNum)
 
   const searchSummary = (

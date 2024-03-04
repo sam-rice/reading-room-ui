@@ -12,7 +12,10 @@ export default function Layout({
 }) {
   const searchParams = useSearchParams()
 
-  return (
-    <>{searchParams.has("q") && searchParams.has("cat") ? results : form}</>
-  )
+  if (searchParams.has("q") && searchParams.has("cat")) return results
+  else return form
+
+  // return (
+  //   <>{searchParams.has("q") && searchParams.has("cat") ? results : form}</>
+  // )
 }

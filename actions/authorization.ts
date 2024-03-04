@@ -2,10 +2,12 @@
 
 import { ISuccessfulAuthResponse } from "@/interfaces/persistenceDtos"
 import { API_BASE_URL } from "@/utilities/constants"
+import { redirect } from "next/navigation"
 import { cookies } from "next/headers"
 
 export const logout = async () => {
   cookies().delete("token")
+  redirect("/login")
 }
 
 export const loginUser = async (email: string, password: string) => {

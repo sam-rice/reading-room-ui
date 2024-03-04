@@ -2,15 +2,9 @@ import { getAllShelves } from "@/actions/persistence"
 import PageContainer from "@/components/PageContainer"
 import PageableUncontrolledList from "@/components/PageableUncontrolledList"
 import { IShelfBasic } from "@/interfaces/persistenceDtos"
-import { DM_Serif_Display } from "next/font/google"
 import { FC } from "react"
 import NewShelfDialogButton from "./_components/NewShelfDialogButton"
 import ShelfTile from "./_components/ShelfTile"
-
-export const dmSerifDisplay = DM_Serif_Display({
-  weight: "400",
-  subsets: ["latin"],
-})
 
 const ShelvesPage: FC = async () => {
   const shelves = await getAllShelves()

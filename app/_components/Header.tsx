@@ -5,7 +5,7 @@ import logo from "@/public/images/logo.png"
 import { DM_Serif_Display } from "next/font/google"
 import Image from "next/image"
 import Link from "next/link"
-import { usePathname, useRouter } from "next/navigation"
+import { usePathname } from "next/navigation"
 import { FC } from "react"
 import { twMerge } from "tailwind-merge"
 import HeaderSearch from "./HeaderSearch"
@@ -14,15 +14,11 @@ const dmSerifDisplay = DM_Serif_Display({ weight: "400", subsets: ["latin"] })
 
 const Header: FC = () => {
   const pathname = usePathname()
-  const router = useRouter()
 
   const isOnAuthPage =
     pathname.includes("login") || pathname.includes("register")
 
-  const handleLogout = async () => {
-    await logout()
-    router.push("/login")
-  }
+  const handleLogout = () => logout()
 
   return (
     <header className="mt-4 flex h-20 w-full justify-center bg-theme-beige-500">
