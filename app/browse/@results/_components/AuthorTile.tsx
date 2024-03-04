@@ -8,7 +8,7 @@ interface AuthorTileProps {
   name: string
   birthDate: string | null
   deathDate: string | null
-  topBook: string
+  topBook: string | null
   topSubjects: string[] | null
 }
 
@@ -35,10 +35,12 @@ const AuthorTile: FC<AuthorTileProps> = ({
       </div>
       <table>
         <tbody>
-          <tr>
-            <td className="w-24 font-semibold">top work:</td>
-            <td>{topBook}</td>
-          </tr>
+          {topBook && (
+            <tr>
+              <td className="w-24 font-semibold">top work:</td>
+              <td>{topBook}</td>
+            </tr>
+          )}
           {topSubjects && (
             <tr>
               <td className="font-semibold">subjects:</td>

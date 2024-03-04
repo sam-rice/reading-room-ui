@@ -54,7 +54,7 @@ export interface IAuthorSearchResult {
   name: string
   birthDate: string | null
   deathDate: string | null
-  topBook: string
+  topBook: string | null
   topSubjects: string[] | null
 }
 
