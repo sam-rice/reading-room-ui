@@ -1,7 +1,6 @@
 import { IAuthorBasic } from "@/interfaces/browseDtos"
-import fallbackCover from "@/public/images/fallback-cover.png"
-import Image from "next/image"
 import { FC } from "react"
+import EntityImage from "./EntityImage"
 import EntityLink from "./EntityLink"
 
 interface BookTileProps {
@@ -27,20 +26,14 @@ const BookTile: FC<BookTileProps> = ({
 }) => {
   return (
     <li className="relative col-span-1 flex h-48 rounded-theme-large bg-theme-beige-400 px-8 py-5 transition-colors hover:bg-theme-beige-500">
-      {coverUrl ? (
-        <img
-          className="mr-6 h-full"
-          alt={`cover for ${title}`}
-          src={coverUrl}
-        />
-      ) : (
-        <Image
-          className="mr-6 border border-theme-gray-400"
-          alt={`cover for ${title}`}
-          src={fallbackCover}
-          width={110}
-        />
-      )}
+      <EntityImage
+        className="mr-6 h-full"
+        fallbackClassName="mr-6 border border-theme-gray-400"
+        alt={`cover for ${title}`}
+        src={coverUrl}
+        fallbackWidth={110}
+        variant={"book"}
+      />
       <div>
         <EntityLink
           className="text-2xl"

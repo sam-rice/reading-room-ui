@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { Jost } from "next/font/google"
 import Link from "next/link"
+import { ReactNode } from "react"
 import { twMerge } from "tailwind-merge"
 import Header from "./_components/Header"
 import "./globals.css"
@@ -15,7 +16,7 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode
+  children: ReactNode
 }>) {
   return (
     <html lang="en">

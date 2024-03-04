@@ -4,7 +4,7 @@ import EntityImage from "@/components/EntityImage"
 import PageContainer from "@/components/PageContainer"
 import PageableUncontrolledList from "@/components/PageableUncontrolledList"
 import { IAuthorBook, IAuthorDetails } from "@/interfaces/browseDtos"
-import { FC } from "react"
+import { FC, Suspense } from "react"
 
 interface AuthorDetailsPageProps {
   params: {

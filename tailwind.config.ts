@@ -10,7 +10,7 @@ const config: Config = {
     extend: {
       animation: {
         "theme-text": "text 5s ease infinite",
-        "theme-slow-spin": "spin 35s linear infinite",
+        "theme-slow-spin": "spin 35s linear infinite"
       },
       backgroundColor: {
         "theme-beige-500": "#E4DABB",
