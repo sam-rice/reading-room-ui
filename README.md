@@ -1,19 +1,12 @@
 # Reading Room UI
 
-API Repository: [Reading Room API](https://github.com/sam-rice/reading-room-api)
+**[Deployed Site](https://reading-room-ui.vercel.app/)**
 
 <br />
 
-This is the home of the Reading Room UI, which is currently being built. The WIP version of the UI can be ran locally for demoing purposes. See installation instructions below.
+This is the home of the Reading Room UI, a personal project still in development. 
 
-The project's Java/Spring Boot API is currently deployed and can be demoed via Postman. Instructions and repository can be found [here](https://github.com/sam-rice/reading-room-api?tab=readme-ov-file#local-setup-instructions).
-
-### Future Sprints
-
-- Deployment
-- Integration Testing (Cypress.io)
-- Aesthetic Enhancements (loading placeholder ("progress") components, various design and UX enhancements)
-- Functional Enhancements (back-end pagination, security enhancements, etc.)
+Repository for the project's Java/Spring Boot back-end service [can be found here](https://github.com/sam-rice/reading-room-api).
 
 #### Front End
 
@@ -25,6 +18,7 @@ The project's Java/Spring Boot API is currently deployed and can be demoed via P
   <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" />
   <img src="https://img.shields.io/badge/prettier-1A2C34?style=for-the-badge&logo=prettier&logoColor=F7BA3E" />
   <img src="https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white" />
+  <img src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white" />
 </p>
 
 #### [Back End](https://github.com/sam-rice/reading-room-api)
@@ -39,24 +33,31 @@ The project's Java/Spring Boot API is currently deployed and can be demoed via P
 
 ### Abstract
 
-Reading Room is a full-stack web application that allows users to browse and catalogue a virtual library of books. New users can be registered, authenticated, and create custom "shelves"—individual collections of books. Books with corresponding user notes can then be added or removed from each shelf. Within the "browse" section of the app, users can search for new books by title or author name.
-
-All data is served up via a Java Spring Boot [back end service](https://github.com/sam-rice/reading-room-api), which leverages the [Open Library API](https://openlibrary.org/developers/api) for book and author data.
+Reading Room is a full-stack web application that allows users to browse and catalogue a virtual library of books. New users can be registered, authenticated, and create custom "shelves"—individual collections of books. Books with corresponding user notes can then be edited or added/removed from each shelf. Within the "browse" section of the app, users can search for new books by title or author name.
 
 The app's target users are modern book-lovers who need an instant, mobile way to search for new books and keep track of thier book collections.
 
-### Installation Instructions
+All data is served up via a Java/Spring Boot [back-end service](https://github.com/sam-rice/reading-room-api), which leverages the [Open Library API](https://openlibrary.org/developers/api) for book and author data.
 
-Notes:
+### Demo User Credentials
 
-- Running this project locally requires local installations of [Node and npm](https://nodejs.org/en).
+<code>email: `jimmy@mail.com`
+password: `guitar`</code>
+
+### Future Sprints
+
+- Integration Testing (Cypress.io)
+- Aesthetic Enhancements (loading placeholder ("progress") components, various design and UX enhancements)
+- Functional Enhancements (back-end pagination, security enhancements, etc.)
+
+### Local Installation Instructions
+
+Note: Running this project locally requires installations of [Node and npm](https://nodejs.org/en).
 
 1. Clone this repository to your machine.
 2. `cd` into the top level of the project repository from the command line and install project dependencies by running `npm i`.
-3. Run `npm run dev` to launch the application's server.
-4. Navigate to [http://localhost:3000](http://localhost:3000) in your browser to view the live page.
-5. When prompted, log in with demo user credentials to begin using the app:\
-  email: `jimmy@mail.com`\
-  password: `guitar`
-
+3. To run the app in <ins>development mode</ins>, run `npm run dev` to launch the application's server.
+   - Alternatively, to run in <ins>production mode</ins>, first run `npm run build`, then `npm run start`. 
+5. Navigate to [http://localhost:3000](http://localhost:3000) in your browser to view the live page.
+6. When prompted, log in with [demo user credentials](#demo-user-credentials) to begin using the app:
 
