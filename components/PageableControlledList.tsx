@@ -55,7 +55,7 @@ const PageableControlledList: FC<PageableControlledListProps> = ({
       {totalCurrentItems ? (
         <div className="mb-3 text-right">
           showing {firstItemIndex + 1} - {firstItemIndex + totalCurrentItems} of{" "}
-          {totalItems}
+          {totalItems.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
         </div>
       ) : (
         <div className="mt-10 text-center text-lg text-theme-gray-500">

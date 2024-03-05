@@ -1,7 +1,11 @@
 import { revalidatePath } from "next/cache"
 import { cookies } from "next/headers"
 
-const getAuthToken = () => cookies().get("token")?.value
+const getAuthToken = () => {
+  return new Promise((resolve) => {
+    resolve(cookies().get("token")?.value)
+  })
+}
 
 type HTTPRequestMethod = "GET" | "POST" | "PUT" | "DELETE"
 
@@ -13,12 +17,13 @@ export const fetchWrapper = async <T>(
   revalidationPath?: string,
   body?: Object,
 ): Promise<T> => {
+  const authToken = await getAuthToken()
   try {
-    const response = await fetch(endpoint, {
+    const response = await fetch(process.env.API_BASE_URL + endpoint, {
       method: method,
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${getAuthToken()}`,
+        Authorization: `Bearer ${authToken}`,
       },
       body: body && JSON.stringify(body),
     })
