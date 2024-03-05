@@ -17,8 +17,8 @@ export const fetchWrapper = async <T>(
   revalidationPath?: string,
   body?: Object,
 ): Promise<T> => {
+  const authToken = await getAuthToken()
   try {
-    const authToken = await getAuthToken()
     const response = await fetch(process.env.API_BASE_URL + endpoint, {
       method: method,
       headers: {

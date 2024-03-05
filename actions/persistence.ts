@@ -19,20 +19,18 @@ export const getShelf = async (shelfId: number) => {
 }
 
 export const getAllShelves = async () => {
-  const endpoint = "/shelves"
   return fetchWrapper<IShelfBasic[]>(
     "GET",
-    endpoint,
+    "/shelves",
     200,
     "Failed to get all shelves.",
   )
 }
 
 export const createNewShelf = async (title: string, description: string) => {
-  const endpoint = "/shelves"
   return fetchWrapper<IShelfBasic>(
     "POST",
-    endpoint,
+    "/shelves",
     201,
     "Failed to create shelf.",
     "/shelves",

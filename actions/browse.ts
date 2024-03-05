@@ -1,6 +1,5 @@
 "use server"
 
-import { SEARCH_RESULTS_PAGE_SIZE } from "@/utilities/constants"
 import { fetchWrapper } from "./utilities"
 
 export type EntityType = "books" | "authors"
