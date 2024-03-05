@@ -1,7 +1,6 @@
 "use client"
 
 import { logout } from "@/actions/authorization"
-import logo from "@/public/images/logo.png"
 import { DM_Serif_Display } from "next/font/google"
 import Image from "next/image"
 import Link from "next/link"
@@ -27,9 +26,12 @@ const Header: FC = () => {
           <Link className="h-5/6" href="/shelves">
             <Image
               className="h-full w-auto"
-              src={logo}
+              src="/images/logo.png"
               priority
               alt="Reading Room logo"
+              unoptimized
+              height={0}
+              width={0}
             />
           </Link>
           {!isOnAuthPage && (
