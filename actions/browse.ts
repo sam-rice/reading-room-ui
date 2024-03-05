@@ -17,13 +17,3 @@ export const getEntityDetails = async <T>(
     `Failed to get ${type === "books" ? "book" : "author"} details.`,
   )
 }
-
-export const getSearchResults = async <T>(query: string, type: EntityType, pageNum: number) => {
-  const endpoint = `/search/${type}?q=${query}&size=${SEARCH_RESULTS_PAGE_SIZE}&page=${pageNum ? pageNum : 1}`
-  return fetchWrapper<T>(
-    "GET",
-    endpoint,
-    200,
-    `Failed to get results for "${query}" in "${type}".`,
-  )
-}

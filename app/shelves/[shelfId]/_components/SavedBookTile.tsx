@@ -73,7 +73,7 @@ const SavedBookTile: FC<SavedBookTileProps> = ({
         fallbackClassName="border-theme-gray-400 mr-6 border"
         alt={`cover for ${title}`}
         src={coverUrl}
-        fallbackWidth={110}
+        fallbackWidth={120}
         variant="book"
       />
       <div className="mt-2 grow">

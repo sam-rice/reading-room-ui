@@ -10,6 +10,7 @@ interface EntityImageProps {
   fallbackClassName?: string
   alt: string
   src: string | null
+  fallbackWidth: number
   variant: IEntityImage
 }
 
@@ -18,23 +19,22 @@ const EntityImage: FC<EntityImageProps> = ({
   fallbackClassName,
   alt,
   src,
+  fallbackWidth,
   variant,
 }) => {
-  const SIZES = "(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
   return (
-    <div className={twMerge("relative w-24", className)}>
+    <>
       {src ? (
-        <Image alt={alt} src={src} fill quality={100} sizes={SIZES} />
+        <img className={twMerge("h-fit", className)} alt={alt} src={src} />
       ) : (
         <Image
-          className={fallbackClassName}
+          className={twMerge("h-auto", fallbackClassName)}
           alt={`${variant === "book" ? "book cover" : "author photo"} not available.`}
           src={fallbackCover}
-          sizes={SIZES}
-          fill
+          width={fallbackWidth}
         />
       )}
-    </div>
+    </>
   )
 }
 
