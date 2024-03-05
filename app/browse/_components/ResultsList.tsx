@@ -12,12 +12,11 @@ interface ResultsProps<T> {
 }
 
 async function Results<T>({ query, category, pageNum, resultsMapper }: ResultsProps<T>) {
-  console.log("this is rendering")
   const data = await getSearchResults<ISearchResultsPage<T>>(query, category, pageNum)
 
   const searchSummary = (
     <div className="text-theme-gray-400">
-      {`${data.totalResults} ${category === "authors" ? "author" : "book"} ${data.totalResults === 1 ? "result" : "results"} for "${query}"`}
+      {`${data.totalResults.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} ${category === "authors" ? "author" : "book"} ${data.totalResults === 1 ? "result" : "results"} for "${query}"`}
     </div>
   )
 
