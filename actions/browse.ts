@@ -1,6 +1,6 @@
 "use server"
 
-import { API_BASE_URL, SEARCH_RESULTS_PAGE_SIZE } from "@/utilities/constants"
+import { SEARCH_RESULTS_PAGE_SIZE } from "@/utilities/constants"
 import { fetchWrapper } from "./utilities"
 
 export type EntityType = "books" | "authors"
@@ -9,7 +9,7 @@ export const getEntityDetails = async <T>(
   libraryKey: string,
   type: EntityType,
 ) => {
-  const endpoint = `${API_BASE_URL}/search/${type}/${libraryKey}`
+  const endpoint = `/search/${type}/${libraryKey}`
   return fetchWrapper<T>(
     "GET",
     endpoint,
@@ -19,7 +19,7 @@ export const getEntityDetails = async <T>(
 }
 
 export const getSearchResults = async <T>(query: string, type: EntityType, pageNum: number) => {
-  const endpoint = `${API_BASE_URL}/search/${type}?q=${query}&size=${SEARCH_RESULTS_PAGE_SIZE}&page=${pageNum ? pageNum : 1}`
+  const endpoint = `/search/${type}?q=${query}&size=${SEARCH_RESULTS_PAGE_SIZE}&page=${pageNum ? pageNum : 1}`
   return fetchWrapper<T>(
     "GET",
     endpoint,

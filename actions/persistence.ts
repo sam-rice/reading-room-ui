@@ -6,11 +6,10 @@ import {
   IShelfDetails,
   IUpdateOrDeleteEntityResponse,
 } from "@/interfaces/persistenceDtos"
-import { API_BASE_URL } from "@/utilities/constants"
 import { fetchWrapper } from "./utilities"
 
 export const getShelf = async (shelfId: number) => {
-  const endpoint = `${API_BASE_URL}/shelves/${shelfId}`
+  const endpoint = `/shelves/${shelfId}`
   return fetchWrapper<IShelfDetails>(
     "GET",
     endpoint,
@@ -20,7 +19,7 @@ export const getShelf = async (shelfId: number) => {
 }
 
 export const getAllShelves = async () => {
-  const endpoint = `${API_BASE_URL}/shelves`
+  const endpoint = "/shelves"
   return fetchWrapper<IShelfBasic[]>(
     "GET",
     endpoint,
@@ -30,7 +29,7 @@ export const getAllShelves = async () => {
 }
 
 export const createNewShelf = async (title: string, description: string) => {
-  const endpoint = `${API_BASE_URL}/shelves`
+  const endpoint = "/shelves"
   return fetchWrapper<IShelfBasic>(
     "POST",
     endpoint,
@@ -42,7 +41,7 @@ export const createNewShelf = async (title: string, description: string) => {
 }
 
 export const deleteShelf = async (shelfId: number) => {
-  const endpoint = `${API_BASE_URL}/shelves/${shelfId}`
+  const endpoint = `/shelves/${shelfId}`
   return fetchWrapper<IUpdateOrDeleteEntityResponse>(
     "DELETE",
     endpoint,
@@ -57,7 +56,7 @@ export const updateShelf = async (
   title: string,
   description: string,
 ) => {
-  const endpoint = `${API_BASE_URL}/shelves/${shelfId}`
+  const endpoint = `/shelves/${shelfId}`
   return fetchWrapper<IUpdateOrDeleteEntityResponse>(
     "PUT",
     endpoint,
@@ -73,7 +72,7 @@ export const updateBook = async (
   bookId: number,
   userNote: string,
 ) => {
-  const endpoint = `${API_BASE_URL}/shelves/${shelfId}/books/${bookId}`
+  const endpoint = `/shelves/${shelfId}/books/${bookId}`
   return fetchWrapper<IUpdateOrDeleteEntityResponse>(
     "PUT",
     endpoint,
@@ -85,7 +84,7 @@ export const updateBook = async (
 }
 
 export const deleteBookFromShelf = async (shelfId: number, bookId: number) => {
-  const endpoint = `${API_BASE_URL}/shelves/${shelfId}/books/${bookId}`
+  const endpoint = `/shelves/${shelfId}/books/${bookId}`
   return fetchWrapper<IUpdateOrDeleteEntityResponse>(
     "DELETE",
     endpoint,
@@ -96,7 +95,7 @@ export const deleteBookFromShelf = async (shelfId: number, bookId: number) => {
 }
 
 export const addBookToShelf = async (shelfId: number, libraryKey: string) => {
-  const endpoint = `${API_BASE_URL}/shelves/${shelfId}/books`
+  const endpoint = `/shelves/${shelfId}/books`
   return fetchWrapper<ISavedBook>(
     "POST",
     endpoint,

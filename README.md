@@ -50,7 +50,6 @@ The app's target users are modern book-lovers who need an instant, mobile way to
 Notes:
 
 - Running this project locally requires local installations of [Node and npm](https://nodejs.org/en).
-- Since the project is actively being developed, the UI is currently configured to connect to a locally-hosted instance of the project's Java API. You can either follow the [installation instructions](https://github.com/sam-rice/reading-room-api?tab=readme-ov-file#local-setup-instructions) to install and run the API locally, or switch the `API_BASE_URL` variable in `/utilities/constants.ts` to connect to the deployed version of the API.
 
 1. Clone this repository to your machine.
 2. `cd` into the top level of the project repository from the command line and install project dependencies by running `npm i`.

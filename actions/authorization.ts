@@ -1,7 +1,6 @@
 "use server"
 
 import { ISuccessfulAuthResponse } from "@/interfaces/persistenceDtos"
-import { API_BASE_URL } from "@/utilities/constants"
 import { redirect } from "next/navigation"
 import { cookies } from "next/headers"
 
@@ -11,7 +10,7 @@ export const logout = async () => {
 }
 
 export const loginUser = async (email: string, password: string) => {
-  const endpoint = `${API_BASE_URL}/users/login`
+  const endpoint = "/users/login"
   return authorizationFetchWrapper(
     endpoint,
     { email, password },
@@ -25,7 +24,7 @@ export const registerUser = async (
   email: string,
   password: string,
 ) => {
-  const endpoint = `${API_BASE_URL}/users/register`
+  const endpoint = "/users/register"
   return authorizationFetchWrapper(
     endpoint,
     { firstName, lastName, email, password },
@@ -39,7 +38,7 @@ const authorizationFetchWrapper = async (
   errorMessage: string,
 ): Promise<ISuccessfulAuthResponse | { error: string }> => {
   try {
-    const response = await fetch(endpoint, {
+    const response = await fetch(process.env.API_BASE_URL + endpoint, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -19,7 +19,7 @@ export const fetchWrapper = async <T>(
 ): Promise<T> => {
   try {
     const authToken = await getAuthToken()
-    const response = await fetch(endpoint, {
+    const response = await fetch(process.env.API_BASE_URL + endpoint, {
       method: method,
       headers: {
         "Content-Type": "application/json",
