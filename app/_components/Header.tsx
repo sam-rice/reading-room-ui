@@ -26,9 +26,12 @@ const Header: FC = () => {
           <Link className="h-5/6" href="/shelves">
             <Image
               className="h-full w-auto"
-              src="@/public/images/logo.png"
+              src="/images/logo.png"
               priority
               alt="Reading Room logo"
+              unoptimized
+              height={0}
+              width={0}
             />
           </Link>
           {!isOnAuthPage && (
