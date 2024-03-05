@@ -26,11 +26,11 @@ const Header: FC = () => {
           <Link className="h-5/6" href="/shelves">
             <Image
               className="h-full w-auto"
-              src="/images/logo.png"
+              src="/logo.png"
               priority
               alt="Reading Room logo"
               unoptimized
-              height={0}
+              height={30}
               width={0}
             />
           </Link>
