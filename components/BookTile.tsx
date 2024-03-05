@@ -31,7 +31,6 @@ const BookTile: FC<BookTileProps> = ({
         fallbackClassName="mr-6 border border-theme-gray-400"
         alt={`cover for ${title}`}
         src={coverUrl}
-        fallbackWidth={110}
         variant={"book"}
       />
       <div>
