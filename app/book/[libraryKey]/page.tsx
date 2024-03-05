@@ -39,7 +39,6 @@ const BookDetailsPage: FC<BookDetailsPageProps> = async ({ params }) => {
       <div className="mb-8 mt-20 flex">
         <div className="mr-14 flex w-1/2 justify-center">
           <EntityImage
-            className="h-[450px]"
             alt={`cover for ${book.title}`}
             src={book.coverUrl}
             variant="book"

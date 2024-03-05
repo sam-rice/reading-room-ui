@@ -1,4 +1,3 @@
-import fallbackCover from "@/public/images/fallback-cover.png"
 import Image from "next/image"
 import { FC } from "react"
 import { twMerge } from "tailwind-merge"
@@ -30,8 +29,9 @@ const EntityImage: FC<EntityImageProps> = ({
         <Image
           className={twMerge("h-auto", fallbackClassName)}
           alt={`${variant === "book" ? "book cover" : "author photo"} not available.`}
-          src={fallbackCover}
+          src="/fallback-cover.png"
           width={fallbackWidth}
+          height={0}
         />
       )}
     </>
