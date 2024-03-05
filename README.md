@@ -4,7 +4,7 @@
 
 <br />
 
-This is the home of the Reading Room UI, a personal project still in development. 
+This is the home of the Reading Room UI, the front-end of a full-stack personal project still in development.
 
 Repository for the project's Java/Spring Boot back-end service [can be found here](https://github.com/sam-rice/reading-room-api).
 
@@ -31,6 +31,12 @@ Repository for the project's Java/Spring Boot back-end service [can be found her
   <img src="https://img.shields.io/badge/Heroku-430098?style=for-the-badge&logo=heroku&logoColor=white" />
 </p>
 
+<br />
+
+### Demo
+
+![reading-room-demo](https://github.com/sam-rice/reading-room-ui/assets/108169988/aa624f8d-77c9-489b-98ac-58127dddb27e)
+
 ### Abstract
 
 Reading Room is a full-stack web application that allows users to browse and catalogue a virtual library of books. New users can be registered, authenticated, and create custom "shelves"—individual collections of books. Books with corresponding user notes can then be edited or added/removed from each shelf. Within the "browse" section of the app, users can search for new books by title or author name.
@@ -39,16 +45,24 @@ The app's target users are modern book-lovers who need an instant, mobile way to
 
 All data is served up via a Java/Spring Boot [back-end service](https://github.com/sam-rice/reading-room-api), which leverages the [Open Library API](https://openlibrary.org/developers/api) for book and author data.
 
-### Demo User Credentials
+<br />
+
+### Instructions
+
+To demo the app, visit the [deployed site](https://reading-room-ui.vercel.app/) and log in as a demo user to get started:
 
 <code>email: `jimmy@mail.com`
 password: `guitar`</code>
+
+<br />
 
 ### Future Sprints
 
 - Integration Testing (Cypress.io)
 - Aesthetic Enhancements (loading placeholder ("progress") components, various design and UX enhancements)
 - Functional Enhancements (back-end pagination, security enhancements, etc.)
+
+<br />
 
 ### Local Installation Instructions
 
