@@ -29,7 +29,7 @@ const Pager: FC<PagerProps> = ({
           onClick={pageBackward}
           disabled={backwardIsDisabled}
         >
-          <ChevronLeft className="-mr-2 text-4xl" />
+          <ChevronLeft className="text-4xl" />
           back
         </button>
         <span className="text-3xl">{currentPage}</span>
@@ -39,7 +39,7 @@ const Pager: FC<PagerProps> = ({
           disabled={forwardIsDisabled}
         >
           next
-          <ChevronRight className="-ml-2 text-4xl" />
+          <ChevronRight className="text-4xl" />
         </button>
       </div>
     </div>

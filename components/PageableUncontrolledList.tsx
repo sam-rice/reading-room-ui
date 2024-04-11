@@ -1,16 +1,18 @@
 "use client"
 
-import { Children, FC, ReactNode, useRef, useState } from "react"
+import { SEARCH_RESULTS_PAGE_SIZE } from "@/utilities/constants"
+import { useRouter, useSearchParams } from "next/navigation"
+import { Children, FC, ReactNode, useRef } from "react"
 import { twMerge } from "tailwind-merge"
 import Pager from "./Pager"
 
 interface PageableUncontrolledListProps {
   outerClassName?: string
   listClassName?: string
-  children: ReactNode
   headingNode?: ReactNode
-  itemsPerPage: number
+  children: ReactNode
   noItemsMessage: string
+  totalItems: number
 }
 
 const PageableUncontrolledList: FC<PageableUncontrolledListProps> = ({
@@ -18,31 +20,30 @@ const PageableUncontrolledList: FC<PageableUncontrolledListProps> = ({
   listClassName,
   children,
   headingNode,
-  itemsPerPage,
   noItemsMessage,
+  totalItems,
 }) => {
-  const [currentPage, setCurrentPage] = useState(1)
   const sectionRef = useRef<HTMLElement>(null)
+  const router = useRouter()
+  const params = useSearchParams()
+  const currentPageParam = params.get("page")
 
-  const allChildren = Children.toArray(children)
-  const totalItems = allChildren.length
-  const numberOfPages = Math.ceil(totalItems / itemsPerPage)
-
-  const lastItemIndex = currentPage * itemsPerPage
-  const firstItemIndex = lastItemIndex - itemsPerPage
-
-  const currentPageItems = allChildren.slice(firstItemIndex, lastItemIndex)
-
-  const scrollToSection = () => sectionRef.current?.scrollIntoView()
+  const currentPageNum = currentPageParam ? parseInt(currentPageParam) : 1
+  const numberOfPages = Math.ceil(totalItems / SEARCH_RESULTS_PAGE_SIZE)
+  const firstItemIndex =
+    currentPageNum * SEARCH_RESULTS_PAGE_SIZE - SEARCH_RESULTS_PAGE_SIZE
+  const totalCurrentItems = Children.toArray(children).length
 
   const pageForward = () => {
-    setCurrentPage(currentPage + 1)
-    scrollToSection()
+    router.push(
+      `/browse?q=${params.get("q")}&cat=${params.get("cat")}&page=${currentPageNum + 1}`,
+    )
   }
 
   const pageBackward = () => {
-    setCurrentPage(currentPage - 1)
-    scrollToSection()
+    router.push(
+      `/browse?q=${params.get("q")}&cat=${params.get("cat")}&page=${currentPageNum - 1}`,
+    )
   }
 
   return (
@@ -51,10 +52,10 @@ const PageableUncontrolledList: FC<PageableUncontrolledListProps> = ({
       ref={sectionRef}
     >
       {headingNode}
-      {!!currentPageItems.length ? (
+      {totalCurrentItems ? (
         <div className="mb-3 text-right">
-          showing {firstItemIndex + 1} -{" "}
-          {firstItemIndex + currentPageItems.length} of {totalItems}
+          showing {firstItemIndex + 1} - {firstItemIndex + totalCurrentItems} of{" "}
+          {totalItems.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
         </div>
       ) : (
         <div className="mt-10 text-center text-lg text-theme-gray-500">
@@ -67,11 +68,11 @@ const PageableUncontrolledList: FC<PageableUncontrolledListProps> = ({
           listClassName,
         )}
       >
-        {currentPageItems}
+        {children}
       </ul>
-      {!!currentPageItems.length && (
+      {!!totalCurrentItems && (
         <Pager
-          currentPage={currentPage}
+          currentPage={currentPageNum}
           numberOfPages={numberOfPages}
           totalItems={totalItems}
           pageForward={pageForward}

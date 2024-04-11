@@ -2,7 +2,7 @@ import { getEntityDetails } from "@/actions/browse"
 import BookTile from "@/components/BookTile"
 import EntityImage from "@/components/EntityImage"
 import PageContainer from "@/components/PageContainer"
-import PageableUncontrolledList from "@/components/PageableUncontrolledList"
+import PageableControlledList from "@/components/PageableControlledList"
 import { IAuthorBook, IAuthorDetails } from "@/interfaces/browseDtos"
 import { FC, Suspense } from "react"
 
@@ -56,14 +56,14 @@ const AuthorDetailsPage: FC<AuthorDetailsPageProps> = async ({ params }) => {
           {author.bio && <p className="mt-10">{author.bio}</p>}
         </div>
       </div>
-      <PageableUncontrolledList
+      <PageableControlledList
         outerClassName="mt-8"
         headingNode={listHeadingNode}
         itemsPerPage={30}
         noItemsMessage="No books by author."
       >
         {bookTiles}
-      </PageableUncontrolledList>
+      </PageableControlledList>
     </PageContainer>
   )
 }
