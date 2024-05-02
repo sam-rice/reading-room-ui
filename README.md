@@ -4,7 +4,7 @@
 
 <br />
 
-This is the home of the Reading Room UI, the front-end of a full-stack personal project still in development.
+This is the home of the Reading Room UI, the front-end of a full-stack personal project.
 
 Repository for the project's Java/Spring Boot back-end service [can be found here](https://github.com/sam-rice/reading-room-api).
 
@@ -41,7 +41,7 @@ Repository for the project's Java/Spring Boot back-end service [can be found her
 
 Reading Room is a full-stack web application that allows users to browse and catalogue a virtual library of books. New users can be registered, authenticated, and create custom "shelves"—individual collections of books. Books with corresponding user notes can then be edited or added/removed from each shelf. Within the "browse" section of the app, users can search for new books by title or author name.
 
-The app's target users are modern book-lovers who need an instant, mobile way to search for new books and keep track of thier book collections.
+The app's target users are modern book-lovers who need an instant, mobile way to search for new books and keep track of their book collections.
 
 All data is served up via a Java/Spring Boot [back-end service](https://github.com/sam-rice/reading-room-api), which leverages the [Open Library API](https://openlibrary.org/developers/api) for book and author data.
 
