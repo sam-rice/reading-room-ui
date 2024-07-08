@@ -47,6 +47,11 @@ All data is served up via a Java/Spring Boot [back-end service](https://github.c
 
 <br />
 
+### Project Architecture Diagram
+![RR High-Level Architecture Diagram](https://github.com/sam-rice/reading-room-ui/assets/108169988/afb39bba-cba9-4bc4-8f72-28899ade4688)
+
+<br />
+
 ### Instructions
 
 To demo the app, visit the [deployed site](https://reading-room-ui.vercel.app/) and log in as a demo user to get started:
